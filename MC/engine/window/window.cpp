@@ -16,7 +16,7 @@ namespace engine {
 		glfwDestroyWindow(window);
 	}
 
-	void Window::GLEWInit() {
+	void Window::initGLEW() {
 		// Init GREW which links opengl functions to driver
 		glewExperimental = GL_TRUE;
 
@@ -27,7 +27,7 @@ namespace engine {
 		}
 	}
 
-	void Window::OpenglOptInit(bool is_fill) {
+	void Window::openglOptInit(bool is_fill) {
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);			// enable z coordinate
 		glCullFace(GL_BACK);			// don't draw back of a face
@@ -39,7 +39,7 @@ namespace engine {
 		glPolygonMode(GL_FRONT_AND_BACK, is_fill? GL_FILL : GL_LINE);
 	}
 
-	void Window::Init(int context_major, int context_minor, bool is_full_screen) {
+	void Window::init(int context_major, int context_minor, bool is_full_screen) {
 		glfwInit();
 
 		// Opengl target: major.minor
@@ -51,6 +51,8 @@ namespace engine {
 		GLFWmonitor* monitor = is_full_screen? glfwGetPrimaryMonitor() : NULL;
 		window = glfwCreateWindow(window_width, window_height, window_name, monitor, NULL);
 
+		glfwGetFramebufferSize(window, &frame_buffer_width, &frame_buffer_height);
+
 		// Set the width and height of framebuffer same as the window
 		glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
 
@@ -58,20 +60,22 @@ namespace engine {
 		glfwMakeContextCurrent(window);
 
 		// Init GLEW;
-		this->GLEWInit();
+		this->initGLEW();
 
 		// Init Opengl option
-		this->OpenglOptInit(true);
-
-
+		this->openglOptInit(true);
 	}
 
-	bool Window::ShouldClose() {
+	bool Window::shouldClose() {
 		return glfwWindowShouldClose(window);
 	}
 
-	void Window::Update() {
+	void Window::update() {
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+	}
+
+	void Window::initShader(engine::Shader* shader) {
+		this->shader = shader;
 	}
 }
