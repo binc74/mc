@@ -6,7 +6,7 @@
 #include "../graphics/shader.h"
 
 namespace engine {
-	class Window {
+	class Game {
 	private:
 		int window_height, window_width;
 		const char* window_name;
@@ -19,8 +19,8 @@ namespace engine {
 		GLFWwindow* window;
 		int frame_buffer_width, frame_buffer_height;
 
-		Window(int window_width, int window_height, const char* window_name);
-		~Window();
+		Game(int window_width, int window_height, const char* window_name);
+		~Game();
 		void init(int context_major, int context_minor, bool is_full_screen);
 		bool shouldClose();
 		void update();

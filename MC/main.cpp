@@ -4,7 +4,7 @@
 #include <glm.hpp>
 
 #include "libs.h"
-#include "engine/window/window.h"
+#include "engine/window/game.h"
 #include "engine/graphics/shader.h"
 #include "engine/graphics/core/model_matrix.h"
 #include "engine/graphics/core/projection_matrix.h"

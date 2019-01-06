@@ -131,7 +131,7 @@
     <ClCompile Include="engine\graphics\shader.cpp" />
     <ClCompile Include="engine\graphics\shapes\triangle.cpp" />
     <ClCompile Include="engine\graphics\texture.cpp" />
-    <ClCompile Include="engine\window\window.cpp" />
+    <ClCompile Include="engine\window\game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +144,7 @@
     <ClInclude Include="engine\graphics\shader.h" />
     <ClInclude Include="engine\graphics\shapes\triangle.h" />
     <ClInclude Include="engine\graphics\texture.h" />
-    <ClInclude Include="engine\window\window.h" />
+    <ClInclude Include="engine\window\game.h" />
     <ClInclude Include="libs.h" />
   </ItemGroup>
   <ItemGroup>

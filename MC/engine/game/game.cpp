@@ -1,22 +1,22 @@
-#include "window.h"
+#include "game.h"
 
 namespace engine {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
 	}
 
-	Window::Window(int window_width, int window_height, const char* window_name) {	
+	Game::Game(int window_width, int window_height, const char* window_name) {
 		this->window_height = window_height;
 		this->window_width = window_width;
 		this->window_name = window_name;	
 	}
 
-	Window::~Window() {
+	Game::~Game() {
 		glfwTerminate();
 		glfwDestroyWindow(window);
 	}
 
-	void Window::initGLEW() {
+	void Game::initGLEW() {
 		// Init GREW which links opengl functions to driver
 		glewExperimental = GL_TRUE;
 
@@ -27,7 +27,7 @@ namespace engine {
 		}
 	}
 
-	void Window::openglOptInit(bool is_fill) {
+	void Game::openglOptInit(bool is_fill) {
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);			// enable z coordinate
 		glCullFace(GL_BACK);			// don't draw back of a face
@@ -39,7 +39,7 @@ namespace engine {
 		glPolygonMode(GL_FRONT_AND_BACK, is_fill? GL_FILL : GL_LINE);
 	}
 
-	void Window::init(int context_major, int context_minor, bool is_full_screen) {
+	void Game::init(int context_major, int context_minor, bool is_full_screen) {
 		glfwInit();
 
 		// Opengl target: major.minor
@@ -66,16 +66,16 @@ namespace engine {
 		this->openglOptInit(true);
 	}
 
-	bool Window::shouldClose() {
+	bool Game::shouldClose() {
 		return glfwWindowShouldClose(window);
 	}
 
-	void Window::update() {
+	void Game::update() {
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	void Window::initShader(engine::Shader* shader) {
+	void Game::initShader(engine::Shader* shader) {
 		this->shader = shader;
 	}
 }

@@ -21,9 +21,6 @@
     <ClCompile Include="engine\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="engine\window\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="engine\graphics\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,15 +42,15 @@
     <ClCompile Include="engine\graphics\shapes\triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="engine\window\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine\camera\camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\window\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine\graphics\material.h">
@@ -78,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine\graphics\shapes\triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\window\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
