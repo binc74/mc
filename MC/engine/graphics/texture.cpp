@@ -7,8 +7,8 @@ namespace engine {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); // explaination on opengl.com
 	}
 
-	Texture::Texture(const char* uri) {
-		this->type = GL_TEXTURE_2D;
+	Texture::Texture(const char* uri, GLenum type) {
+		this->type = type;
 
 		unsigned char* image = SOIL_load_image(uri, &width, &height,
 			NULL, SOIL_LOAD_RGBA); // since png uses rgba
@@ -19,14 +19,14 @@ namespace engine {
 		if (image) {
 			glTexImage2D(type, 0, GL_RGBA, width, height, 0, GL_RGBA,
 				GL_UNSIGNED_BYTE, image);
-			glGenerateMipmap(GL_TEXTURE_2D);		// different resolution of image
+			glGenerateMipmap(type);		// different resolution of image
 		}
 		else {
 			std::cerr << "error loading textures from " << uri << std::endl;
 		}
 
 		glActiveTexture(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindTexture(type, 0);
 		SOIL_free_image_data(image);		// remove all data from memory
 	}
 

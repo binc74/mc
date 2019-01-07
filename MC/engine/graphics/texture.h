@@ -16,7 +16,7 @@ namespace engine {
 		GLenum type;
 		int width, height;
 
-		Texture(const char* uri);
+		Texture(const char* uri, GLenum type);
 		~Texture();
 		static void initTextureOpt2D();
 		GLuint getId();

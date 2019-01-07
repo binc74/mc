@@ -128,19 +128,7 @@ namespace engine {
 	}
 
 	void Game::initMeshes() {
-		std::vector<engine::Vertex> mat;
-		engine::ModelMatrix* mm = new ModelMatrix();
-
-		mat.push_back(Vertex(-0.5, 0.5, 0, 1, 0, 0, 0, 1, 0, 0, -1));
-		mat.push_back(Vertex(-0.5, -0.5, 0, 0, 1, 0, 0, 0, 0, 0, -1));
-		mat.push_back(Vertex(0.5, -0.5, 0, 0, 0, 1, 1, 0, 0, 0, -1));
-		mat.push_back(Vertex(0.5, 0.5, 0, 0, 1, 0, 1, 1, 0, 0, -1));
-
-		mm->setPosition(1, 0, 0);
-		mm->setRotation(0);
-		mm->setScale(1);
-
-		meshes.push_back(new Square(mm, mat));
+		meshes.push_back(new Square(0, 0, 0, 2, 2, 1, 1));
 	}
 
 	void Game::initLights() {

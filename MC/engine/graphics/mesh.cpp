@@ -2,7 +2,6 @@
 
 namespace engine {
 	Mesh::Mesh() {
-
 	}
 
 	Mesh::Mesh(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures) {

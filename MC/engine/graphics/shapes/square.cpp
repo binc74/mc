@@ -1,25 +1,27 @@
 #include "square.h"
 
 namespace engine {
-	Square::Square(engine::ModelMatrix* model_matrix,
-		vector<engine::Vertex> vertices) : Mesh() {
-		this->model_matrix = model_matrix;
-		this->vertices = vertices;
+	Square::Square(float px, float py, float pz,
+		float width, float height, float t_width_num, float t_height_num) : Mesh() {
+		this->model_matrix = new ModelMatrix();
+		this->vertices = vector<engine::Vertex>();
 		this->indices = vector<unsigned int>{
 			0, 1, 2,
 			0, 2, 3
 		};
 
-		initMesh();
-	}
+		// Init vertices for the square
+		float h_width = width / 2, h_height = height / 2;
 
-	Square::Square(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures,
-		vector<engine::Vertex> vertices) : Mesh(model_matrix, textures) {
-		this->vertices = vertices;
-		this->indices = vector<unsigned int>{ 
-			0, 1, 2,
-			0, 2, 3
-		};
+		vertices.push_back(Vertex(-h_width, h_height, 0, 1, 1, 1, 0, t_height_num, 0, 0, -1));
+		vertices.push_back(Vertex(-h_width, -h_height, 0, 1, 1, 1, 0, 0, 0, 0, -1));
+		vertices.push_back(Vertex(h_width, -h_height, 0, 1, 1, 1, t_width_num, 0, 0, 0, -1));
+		vertices.push_back(Vertex(h_width, h_height, 0, 1, 1, 1, t_width_num, t_height_num, 0, 0, -1));
+
+		// Init model matrix of ths square
+		model_matrix->setPosition(px, py, pz);
+		model_matrix->setRotation(0);
+		model_matrix->setScale(1);
 
 		initMesh();
 	}
@@ -27,5 +29,21 @@ namespace engine {
 	Square::~Square() {
 		//delete model_matrix;
 		Mesh::~Mesh();
+	}
+
+	void Square::setTopLeftColor(float r, float g, float b) {
+		vertices[0].color = glm::vec3(r, g, b);
+	}
+
+	void Square::setTopRightColor(float r, float g, float b) {
+		vertices[3].color = glm::vec3(r, g, b);
+	}
+
+	void Square::setBottomLeftColor(float r, float g, float b) {
+		vertices[1].color = glm::vec3(r, g, b);
+	}
+
+	void Square::setBottomRightColor(float r, float g, float b) {
+		vertices[2].color = glm::vec3(r, g, b);
 	}
 }
