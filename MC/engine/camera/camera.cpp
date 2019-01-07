@@ -21,8 +21,6 @@ namespace engine{
 	}
 
 	glm::mat4 Camera::getViewMatrix() {
-		glm::mat4 view_matrix(1.f);
-
 		return glm::lookAt(camera_position, camera_position + camera_front,
 			direction_up);
 	}

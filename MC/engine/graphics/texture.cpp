@@ -7,9 +7,8 @@ namespace engine {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR); // explaination on opengl.com
 	}
 
-	Texture::Texture(const char* uri, GLint index, GLenum type) {
-		this->index = index;
-		this->type = type;
+	Texture::Texture(const char* uri) {
+		this->type = GL_TEXTURE_2D;
 
 		unsigned char* image = SOIL_load_image(uri, &width, &height,
 			NULL, SOIL_LOAD_RGBA); // since png uses rgba
@@ -39,7 +38,7 @@ namespace engine {
 		return id;
 	}
 
-	void Texture::bind() {
+	void Texture::bind(int index) {
 		glActiveTexture(GL_TEXTURE0 + index);
 		glBindTexture(type, id);
 	}

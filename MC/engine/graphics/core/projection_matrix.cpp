@@ -12,13 +12,9 @@ namespace engine {
 	}
 
 	glm::mat4 ProjectionMatrix::getMatrix(int frame_buffer_width, int frame_buffer_height) {
-		glm::mat4 proj_matrix(1.f);
-
-		proj_matrix = glm::perspective(glm::radians(fov),
-			(float) (frame_buffer_width) / frame_buffer_height,
+		return glm::perspective(glm::radians(fov),
+			static_cast<float>(frame_buffer_width) / frame_buffer_height,
 			near_plane,
 			far_plane);
-
-		return proj_matrix;
 	}
 }

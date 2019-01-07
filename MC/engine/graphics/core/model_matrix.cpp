@@ -23,8 +23,16 @@ namespace engine {
 		rotation = glm::vec3(x, y, z);
 	}
 
+	void ModelMatrix::setRotation(float x) {
+		rotation = glm::vec3(x, x, x);
+	}
+
 	void ModelMatrix::setScale(float x, float y, float z) {
 		scale = glm::vec3(x, y, z);
+	}
+
+	void ModelMatrix::setScale(float x) {
+		scale = glm::vec3(x, x, x);
 	}
 
 	void ModelMatrix::changePosition(float dx, float dy, float dz) {

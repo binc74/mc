@@ -27,7 +27,8 @@ namespace engine {
 		GLint success;
 
 		GLuint shader = glCreateShader(type);
-		const GLchar* src = loadShaderSource(filename).c_str();
+		std::string str = loadShaderSource(filename);
+		const GLchar* src = str.c_str();
 		glShaderSource(shader, 1, &src, NULL);
 		glCompileShader(shader);
 
@@ -44,18 +45,18 @@ namespace engine {
 		return shader;
 	}
 
-	void Shader::linkProgram(GLuint vertexShader, GLuint geometryShader, GLuint fragShader) {
+	void Shader::linkProgram(GLuint vertex_shader, GLuint geo_shader, GLuint frag_shader) {
 		GLint success;
 
 		id = glCreateProgram();
 
-		glAttachShader(id, vertexShader);
+		glAttachShader(id, vertex_shader);
 
-		if (geometryShader) {
-			glAttachShader(id, geometryShader);
+		if (geo_shader) {
+			glAttachShader(id, geo_shader);
 		}
 
-		glAttachShader(id, vertexShader);
+		glAttachShader(id, frag_shader);
 
 		glLinkProgram(id);
 

@@ -18,6 +18,7 @@ namespace engine {
 	class Shader {
 	private:
 		GLuint id;
+		GLenum type;
 
 		std::string loadShaderSource(const char* filename);
 		GLuint loadShader(GLenum type, const char* filename);

@@ -124,27 +124,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="engine\camera\camera.cpp" />
+    <ClCompile Include="engine\game\game.cpp" />
     <ClCompile Include="engine\graphics\core\model_matrix.cpp" />
     <ClCompile Include="engine\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="engine\graphics\material.cpp" />
     <ClCompile Include="engine\graphics\mesh.cpp" />
     <ClCompile Include="engine\graphics\shader.cpp" />
+    <ClCompile Include="engine\graphics\shapes\square.cpp" />
     <ClCompile Include="engine\graphics\shapes\triangle.cpp" />
     <ClCompile Include="engine\graphics\texture.cpp" />
-    <ClCompile Include="engine\window\game.cpp" />
+    <ClCompile Include="engine\graphics\texture2d.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\camera\camera.h" />
+    <ClInclude Include="engine\game\game.h" />
     <ClInclude Include="engine\graphics\core\model_matrix.h" />
     <ClInclude Include="engine\graphics\core\projection_matrix.h" />
     <ClInclude Include="engine\graphics\core\vertex.h" />
     <ClInclude Include="engine\graphics\material.h" />
     <ClInclude Include="engine\graphics\mesh.h" />
     <ClInclude Include="engine\graphics\shader.h" />
+    <ClInclude Include="engine\graphics\shapes\square.h" />
     <ClInclude Include="engine\graphics\shapes\triangle.h" />
     <ClInclude Include="engine\graphics\texture.h" />
-    <ClInclude Include="engine\window\game.h" />
+    <ClInclude Include="engine\graphics\texture2d.h" />
     <ClInclude Include="libs.h" />
   </ItemGroup>
   <ItemGroup>

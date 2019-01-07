@@ -24,10 +24,11 @@ namespace engine {
 		vector<Texture> textures;
 		engine::ModelMatrix* model_matrix;
 
+		Mesh();
 		Mesh(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures);
 		~Mesh();	
 		void update(engine::Shader* shader);
-		void draw(engine::Shader* shader);
+		void render();
 	};
 }
 

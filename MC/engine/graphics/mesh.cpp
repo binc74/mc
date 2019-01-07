@@ -1,6 +1,10 @@
 #include "mesh.h"
 
 namespace engine {
+	Mesh::Mesh() {
+
+	}
+
 	Mesh::Mesh(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures) {
 		this->textures = textures;
 		this->model_matrix = model_matrix;
@@ -21,7 +25,6 @@ namespace engine {
 
 		glBindVertexArray(VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
 		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -51,11 +54,10 @@ namespace engine {
 		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
 	}
 
-	void Mesh::draw(engine::Shader* shader) {
-		
-
+	void Mesh::render() {
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		std::cout << model_matrix->position.z << std::endl;
 		glBindVertexArray(0);
 	}
 }
