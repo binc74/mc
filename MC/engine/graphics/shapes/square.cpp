@@ -3,12 +3,14 @@
 namespace engine {
 	Square::Square(float px, float py, float pz,
 		float width, float height, float t_width_num, float t_height_num) : Mesh() {
-		this->model_matrix = new ModelMatrix();
-		this->vertices = vector<engine::Vertex>();
-		this->indices = vector<unsigned int>{
+		model_matrix = new ModelMatrix();
+		vertices = vector<engine::Vertex>();
+		material = Material(glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(1.f));
+		indices = vector<unsigned int>{
 			0, 1, 2,
 			0, 2, 3
 		};
+
 
 		// Init vertices for the square
 		float h_width = width / 2, h_height = height / 2;

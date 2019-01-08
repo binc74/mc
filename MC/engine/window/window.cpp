@@ -89,7 +89,6 @@ namespace engine {
 		initProjectionMatrix();
 		initShaders();
 		initTexturesOpt();
-		initMaterials();
 		initMeshes();
 		initLights();
 		initUniform();
@@ -115,13 +114,8 @@ namespace engine {
 		Texture::initTextureOpt2D();
 	}
 
-	void Window::initMaterials() {
-		materials.push_back(new Material(glm::vec3(0.1f), glm::vec3(1.f),
-			glm::vec3(1.f), 0, 1));
-	}
-
 	void Window::initMeshes() {
-		engine::Square* sq = new Square(0, 0, 0, 2, 2, 1, 1);
+		engine::Square* sq = new Square(0, 0, 0, 1, 1, 1, 1);
 
 		sq->addTexture(new Texture2D("resources/textures/123.png"));
 		sq->addTexture(new Texture2D("resources/textures/234.png"));
@@ -177,8 +171,6 @@ namespace engine {
 	}
 
 	void Window::updateUniforms() {
-		materials[0]->sendToShader(*shaders[0]);
-
 		glfwGetFramebufferSize(window, &frame_buffer_width, &frame_buffer_height);
 
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(
@@ -198,15 +190,14 @@ namespace engine {
 	void Window::render() {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the three buffers
-
-		materials[0]->sendToShader(*shaders[0]);
-
 		updateUniforms();
 
 		shaders[0]->use();
 
-		meshes[0]->update(shaders[0]);
-		meshes[0]->render(shaders[0]);
+		for (auto it: meshes) {
+			it->update(shaders[0]);
+			it->render(shaders[0]);
+		}		
 
 		glfwSwapBuffers(window);
 		glFlush();

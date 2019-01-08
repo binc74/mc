@@ -18,14 +18,12 @@ namespace engine {
 		glm::vec3 ambient;
 		glm::vec3 diffuse;
 		glm::vec3 specular;
-		GLint diffuse_tex;
-		GLint specular_tex;
 
 	public:
-		Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular,
-			GLint diffuse_tex, GLint specular_tex);
+		Material();
+		Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
 		~Material();
-		void sendToShader(Shader& shader_id);
+		void sendToShader(Shader& shader_id, GLint diffuse_tex, GLint specular_tex);
 	};
 }
 

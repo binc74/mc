@@ -31,7 +31,6 @@ namespace engine {
 		void initProjectionMatrix();
 		void initShaders();
 		void initTexturesOpt();
-		void initMaterials();
 		void initMeshes();
 		void initLights();
 		void initUniform();

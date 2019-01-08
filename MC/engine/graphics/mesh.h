@@ -23,6 +23,7 @@ namespace engine {
 		vector<unsigned int> indices;
 		vector<Texture*> textures;
 		engine::ModelMatrix* model_matrix;
+		engine::Material material;
 
 		Mesh();
 		Mesh(engine::ModelMatrix* model_matrix);

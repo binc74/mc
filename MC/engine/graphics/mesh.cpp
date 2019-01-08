@@ -59,9 +59,9 @@ namespace engine {
 	void Mesh::render(engine::Shader* shader) {
 		for (int i = 0; i < textures.size(); ++i) {
 			textures[i]->bind(i);
-			std::string t = "texture" + std::to_string(i);
-			shader->setUniform1i(i, t.c_str());
 		}
+		
+		material.sendToShader(*shader, 0, 1);
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

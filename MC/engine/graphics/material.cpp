@@ -1,20 +1,22 @@
 #include "material.h"
 
 namespace engine {
-	Material::Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular,
-		GLint diffuse_tex, GLint specular_tex) {
+	Material::Material() {
+
+	}
+
+
+	Material::Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular) {
 		this->ambient = ambient;
 		this->diffuse = diffuse;
 		this->specular = specular;
-		this->diffuse_tex = diffuse_tex;
-		this->specular_tex = specular_tex;
 	}
 
 	Material::~Material() {
 
 	}
 
-	void Material::sendToShader(Shader& shader) {
+	void Material::sendToShader(Shader& shader, GLint diffuse_tex, GLint specular_tex) {
 		shader.setUniform3fv(ambient, "material.ambient");
 		shader.setUniform3fv(diffuse, "material.diffuse");
 		shader.setUniform3fv(specular, "material.specular");
