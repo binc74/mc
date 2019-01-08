@@ -124,7 +124,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="engine\camera\camera.cpp" />
-    <ClCompile Include="engine\game\game.cpp" />
     <ClCompile Include="engine\graphics\core\model_matrix.cpp" />
     <ClCompile Include="engine\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="engine\graphics\material.cpp" />
@@ -134,11 +133,11 @@
     <ClCompile Include="engine\graphics\shapes\triangle.cpp" />
     <ClCompile Include="engine\graphics\texture.cpp" />
     <ClCompile Include="engine\graphics\texture2d.cpp" />
+    <ClCompile Include="engine\window\window.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\camera\camera.h" />
-    <ClInclude Include="engine\game\game.h" />
     <ClInclude Include="engine\graphics\core\model_matrix.h" />
     <ClInclude Include="engine\graphics\core\projection_matrix.h" />
     <ClInclude Include="engine\graphics\core\vertex.h" />
@@ -149,6 +148,7 @@
     <ClInclude Include="engine\graphics\shapes\triangle.h" />
     <ClInclude Include="engine\graphics\texture.h" />
     <ClInclude Include="engine\graphics\texture2d.h" />
+    <ClInclude Include="engine\window\window.h" />
     <ClInclude Include="libs.h" />
   </ItemGroup>
   <ItemGroup>

@@ -4,13 +4,16 @@ namespace engine {
 	Mesh::Mesh() {
 	}
 
-	Mesh::Mesh(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures) {
+	Mesh::Mesh(engine::ModelMatrix* model_matrix) {
 		this->textures = textures;
 		this->model_matrix = model_matrix;
 	}
 
 	Mesh::~Mesh() {
 		delete model_matrix;
+
+		for (auto it : textures)
+			delete it;
 
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
@@ -53,10 +56,15 @@ namespace engine {
 		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
 	}
 
-	void Mesh::render() {
+	void Mesh::render(engine::Shader* shader) {
+		for (int i = 0; i < textures.size(); ++i) {
+			textures[i]->bind(i);
+			std::string t = "texture" + std::to_string(i);
+			shader->setUniform1i(i, t.c_str());
+		}
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		std::cout << model_matrix->position.z << std::endl;
 		glBindVertexArray(0);
 	}
 }

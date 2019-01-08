@@ -1,25 +1,21 @@
-#include "game.h"
+#include "window.h"
 
 namespace engine {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
 	}
 
-	Game::Game(int window_width, int window_height, const char* window_name) {
+	Window::Window(int window_width, int window_height, const char* window_name) {
 		this->window_height = window_height;
 		this->window_width = window_width;
 		this->window_name = window_name;		
 	}
 
-	Game::~Game() {
+	Window::~Window() {
 		delete camera;
 		delete proj_matrix;
 
 		for (Shader* it : shaders) {
-			delete it;
-		}
-
-		for (Texture* it : textures) {
 			delete it;
 		}
 
@@ -39,7 +35,7 @@ namespace engine {
 		glfwDestroyWindow(window);
 	}
 
-	void Game::initGLEW() {
+	void Window::initGLEW() {
 		// Init GREW which links opengl functions to driver
 		glewExperimental = GL_TRUE;
 
@@ -50,7 +46,7 @@ namespace engine {
 		}
 	}
 
-	void Game::initOpenglOpt(bool is_fill) {
+	void Window::initOpenglOpt(bool is_fill) {
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);			// enable z coordinate
 		glCullFace(GL_BACK);			// don't draw back of a face
@@ -62,7 +58,7 @@ namespace engine {
 		glPolygonMode(GL_FRONT_AND_BACK, is_fill? GL_FILL : GL_LINE);
 	}
 
-	void Game::init(int context_major, int context_minor, bool is_full_screen) {
+	void Window::init(int context_major, int context_minor, bool is_full_screen) {
 		glfwInit();
 
 		// Opengl target: major.minor
@@ -92,50 +88,52 @@ namespace engine {
 		initCamera();
 		initProjectionMatrix();
 		initShaders();
-		initTextures();
+		initTexturesOpt();
 		initMaterials();
 		initMeshes();
 		initLights();
 		initUniform();
 	}
 
-	void Game::initCamera() {
+	void Window::initCamera() {
 		camera = new Camera();
 		camera->setDirectionUp(0.f, 1.f, 0.f);
 		camera->setCameraFront(0.f, 0.f, -1.f);
 		camera->setCameraPosition(0.f, 0.f, 1.f);
 	}
 
-	void Game::initProjectionMatrix() {
+	void Window::initProjectionMatrix() {
 		proj_matrix = new ProjectionMatrix(90.f, 0.1f, 1000.f);
 	}
 
-	void Game::initShaders() {
+	void Window::initShaders() {
 		this->shaders.push_back(new Shader("resources/shaders/vertex_core.glsl", 
 			"resources/shaders/fragment_core.glsl"));
 	}
 
-	void Game::initTextures() {
+	void Window::initTexturesOpt() {
 		Texture::initTextureOpt2D();
-
-		textures.push_back(new Texture2D("resources/textures/123.png"));
-		textures.push_back(new Texture2D("resources/textures/234.png"));
 	}
 
-	void Game::initMaterials() {
+	void Window::initMaterials() {
 		materials.push_back(new Material(glm::vec3(0.1f), glm::vec3(1.f),
 			glm::vec3(1.f), 0, 1));
 	}
 
-	void Game::initMeshes() {
-		meshes.push_back(new Square(0, 0, 0, 2, 2, 1, 1));
+	void Window::initMeshes() {
+		engine::Square* sq = new Square(0, 0, 0, 2, 2, 1, 1);
+
+		sq->addTexture(new Texture2D("resources/textures/123.png"));
+		sq->addTexture(new Texture2D("resources/textures/234.png"));
+		
+		meshes.push_back(sq);
 	}
 
-	void Game::initLights() {
+	void Window::initLights() {
 		lights.push_back(new glm::vec3(0.f, 0.f, 1.f));
 	}
 
-	void Game::initUniform() {
+	void Window::initUniform() {
 		shaders[0]->use();
 		shaders[0]->setUniformMat4fv(meshes[0]->model_matrix->getMatrix(), "model_matrix");
 		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
@@ -146,7 +144,7 @@ namespace engine {
 		shaders[0]->unuse();
 	}
 
-	void Game::updateInput() {
+	void Window::updateInput() {
 		ModelMatrix* mm = meshes[0]->model_matrix;
 
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -178,7 +176,7 @@ namespace engine {
 		}
 	}
 
-	void Game::updateUniforms() {
+	void Window::updateUniforms() {
 		materials[0]->sendToShader(*shaders[0]);
 
 		glfwGetFramebufferSize(window, &frame_buffer_width, &frame_buffer_height);
@@ -187,34 +185,28 @@ namespace engine {
 			frame_buffer_width, frame_buffer_height), "projection_matrix");
 	}
 
-	bool Game::shouldClose() {
+	bool Window::shouldClose() {
 		return glfwWindowShouldClose(window);
 	}
 
-	void Game::update() {
+	void Window::update() {
 		glfwPollEvents();
 
 		updateInput();
 	}
 
-	void Game::render() {
+	void Window::render() {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the three buffers
 
 		materials[0]->sendToShader(*shaders[0]);
 
-		shaders[0]->setUniform1i(0, "texture0");
-		shaders[0]->setUniform1i(1, "texture1");
-		
 		updateUniforms();
 
 		shaders[0]->use();
 
-		textures[0]->bind(0);
-		textures[1]->bind(1);
-
 		meshes[0]->update(shaders[0]);
-		meshes[0]->render();
+		meshes[0]->render(shaders[0]);
 
 		glfwSwapBuffers(window);
 		glFlush();
@@ -225,7 +217,7 @@ namespace engine {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void Game::initShader(engine::Shader* shader) {
+	void Window::initShader(engine::Shader* shader) {
 		//this->shader = shader;
 	}
 }

@@ -31,6 +31,10 @@ namespace engine {
 		Mesh::~Mesh();
 	}
 
+	void Square::addTexture(engine::Texture* texture) {
+		textures.push_back(texture);
+	}
+
 	void Square::setTopLeftColor(float r, float g, float b) {
 		vertices[0].color = glm::vec3(r, g, b);
 	}

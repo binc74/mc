@@ -21,14 +21,14 @@ namespace engine {
 	public:
 		vector<engine::Vertex> vertices;
 		vector<unsigned int> indices;
-		vector<Texture> textures;
+		vector<Texture*> textures;
 		engine::ModelMatrix* model_matrix;
 
 		Mesh();
-		Mesh(engine::ModelMatrix* model_matrix, vector<engine::Texture> textures);
+		Mesh(engine::ModelMatrix* model_matrix);
 		~Mesh();	
 		void update(engine::Shader* shader);
-		void render();
+		void render(engine::Shader* shader);
 	};
 }
 

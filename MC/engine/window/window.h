@@ -14,14 +14,13 @@
 #include "../graphics/shapes/square.h"
 
 namespace engine {
-	class Game {
+	class Window {
 	private:
 		int window_height, window_width;
 		const char* window_name;
 		engine::Camera* camera;
 		engine::ProjectionMatrix* proj_matrix;
 		std::vector<engine::Shader*> shaders;
-		std::vector<engine::Texture*> textures;
 		std::vector<engine::Material*> materials;
 		std::vector<engine::Mesh*> meshes;
 		std::vector<glm::vec3*> lights;
@@ -31,7 +30,7 @@ namespace engine {
 		void initCamera();
 		void initProjectionMatrix();
 		void initShaders();
-		void initTextures();
+		void initTexturesOpt();
 		void initMaterials();
 		void initMeshes();
 		void initLights();
@@ -42,8 +41,8 @@ namespace engine {
 		GLFWwindow* window;
 		int frame_buffer_width, frame_buffer_height;
 
-		Game(int window_width, int window_height, const char* window_name);
-		~Game();
+		Window(int window_width, int window_height, const char* window_name);
+		~Window();
 		void init(int context_major, int context_minor, bool is_full_screen);
 		bool shouldClose();
 		void update();

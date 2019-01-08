@@ -4,14 +4,14 @@
 #include <glm.hpp>
 
 #include "libs.h"
-#include "engine/game/game.h"
+#include "engine/window/window.h"
 
 #include "engine/graphics/shapes/triangle.h"
 
 using namespace engine;
 
 int main() {
-	Game window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
+	Window window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
 	window.init(4, 4, false);
 
 	// Main loop
