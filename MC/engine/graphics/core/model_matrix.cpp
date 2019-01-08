@@ -19,6 +19,10 @@ namespace engine {
 		position = glm::vec3(x, y, z);
 	}
 
+	void ModelMatrix::setPosition(glm::vec3 position) {
+		this->position = position;
+	}
+
 	void ModelMatrix::setRotation(float x, float y, float z) {
 		rotation = glm::vec3(x, y, z);
 	}

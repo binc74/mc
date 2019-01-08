@@ -11,7 +11,7 @@
 #include "../graphics/shader.h"
 #include "../graphics/core/projection_matrix.h"
 #include "../camera/camera.h"
-#include "../graphics/shapes/square.h"
+#include "../graphics/shapes/rectangle.h"
 
 namespace engine {
 	class Window {
@@ -32,6 +32,7 @@ namespace engine {
 		void initShaders();
 		void initTexturesOpt();
 		void initMeshes();
+		void initMaterials();
 		void initLights();
 		void initUniform();
 		void updateInput();

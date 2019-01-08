@@ -16,6 +16,7 @@ namespace engine {
 	class Mesh {
 	protected:
 		unsigned int VAO, VBO, EBO;
+		bool has_specular;
 		void initMesh();
 
 	public:
@@ -23,13 +24,13 @@ namespace engine {
 		vector<unsigned int> indices;
 		vector<Texture*> textures;
 		engine::ModelMatrix* model_matrix;
-		engine::Material material;
 
 		Mesh();
 		Mesh(engine::ModelMatrix* model_matrix);
 		~Mesh();	
+		void setHasSpecular(bool has_specular);
 		void update(engine::Shader* shader);
-		void render(engine::Shader* shader);
+		void render(engine::Shader* shader, engine::Material* material);
 	};
 }
 

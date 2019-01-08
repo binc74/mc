@@ -10,14 +10,14 @@ namespace engine {
 		glm::vec2 texture_coord;
 		glm::vec3 normal;
 
-		Vertex(float px, float py, float pz, 
-			float cx, float cy, float cz,
+		Vertex(glm::vec3 pos, 
+			glm::vec3 color,
 			float tx, float ty,
-			float nx, float ny, float nz) {
-			pos = glm::vec3(px, py, pz);
-			color = glm::vec3(cx, cy, cz);
+			glm::vec3 normal) {
+			this->pos = pos;
+			this->color = color;
 			texture_coord = glm::vec2(tx, ty);
-			normal = glm::vec3(nx, ny, nz);
+			this->normal = normal;
 		}
 	};
 }

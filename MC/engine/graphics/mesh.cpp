@@ -5,7 +5,7 @@ namespace engine {
 	}
 
 	Mesh::Mesh(engine::ModelMatrix* model_matrix) {
-		this->textures = textures;
+		has_specular = true;
 		this->model_matrix = model_matrix;
 	}
 
@@ -52,16 +52,20 @@ namespace engine {
 		glBindVertexArray(0);
 	}
 
+	void Mesh::setHasSpecular(bool has_specular) {
+		this->has_specular = has_specular;
+	}
+
 	void Mesh::update(engine::Shader* shader) {
 		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
 	}
 
-	void Mesh::render(engine::Shader* shader) {
+	void Mesh::render(engine::Shader* shader, engine::Material* material) {
 		for (int i = 0; i < textures.size(); ++i) {
 			textures[i]->bind(i);
 		}
 		
-		material.sendToShader(*shader, 0, 1);
+		material->sendToShader(*shader, 0, 1);
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

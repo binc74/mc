@@ -129,7 +129,8 @@
     <ClCompile Include="engine\graphics\material.cpp" />
     <ClCompile Include="engine\graphics\mesh.cpp" />
     <ClCompile Include="engine\graphics\shader.cpp" />
-    <ClCompile Include="engine\graphics\shapes\square.cpp" />
+    <ClCompile Include="engine\graphics\shapes\rect_prism.cpp" />
+    <ClCompile Include="engine\graphics\shapes\rectangle.cpp" />
     <ClCompile Include="engine\graphics\shapes\triangle.cpp" />
     <ClCompile Include="engine\graphics\texture.cpp" />
     <ClCompile Include="engine\graphics\texture2d.cpp" />
@@ -144,7 +145,8 @@
     <ClInclude Include="engine\graphics\material.h" />
     <ClInclude Include="engine\graphics\mesh.h" />
     <ClInclude Include="engine\graphics\shader.h" />
-    <ClInclude Include="engine\graphics\shapes\square.h" />
+    <ClInclude Include="engine\graphics\shapes\rect_prism.h" />
+    <ClInclude Include="engine\graphics\shapes\rectangle.h" />
     <ClInclude Include="engine\graphics\shapes\triangle.h" />
     <ClInclude Include="engine\graphics\texture.h" />
     <ClInclude Include="engine\graphics\texture2d.h" />

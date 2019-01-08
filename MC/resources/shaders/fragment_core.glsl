@@ -23,9 +23,8 @@ uniform vec3 camera_pos;
 vec3 calculate_diffuse(Material material, vec3 vs_position, vec3 vs_normal, vec3 light_pos0) {
 	vec3 pos_to_light = normalize(light_pos0 - vs_position);
 	float diffuse = clamp(dot(pos_to_light, vs_normal), 0, 1);
-	vec3 diffuse_light = material.diffuse * diffuse;
 
-	return diffuse_light;
+	return material.diffuse * diffuse;
 }
 
 vec3 calculate_specular(Material material, vec3 vs_position, vec3 vs_normal, vec3 light_pos0, vec3 camera_pos) {
@@ -34,12 +33,10 @@ vec3 calculate_specular(Material material, vec3 vs_position, vec3 vs_normal, vec
 	vec3 pos_to_view = normalize(camera_pos - vs_position);
 	float specular_const = pow(max(dot(pos_to_view, reflect_dir), 0), 30);
 
-	return material.specular * specular_const;
+	return material.specular * specular_const * texture(material.specular_tex, vs_texcoord).rgb;
 }
 
 void main() {
-	//fs_color = vec4(vs_color, 1.f);
-
 	// Ambient light
 	vec3 ambient_light = material.ambient;
 
@@ -53,8 +50,7 @@ void main() {
 
 	// final light
 
-	fs_color = vec4(vs_color, 1.f) * texture(material.diffuse_tex, vs_texcoord)
-		* (vec4(ambient_light, 1.f) + vec4(diffuse_light, 1.f)
-		+ vec4(specular_light, 1.f));
+	fs_color = vec4(vs_color, 1.f) * texture(material.diffuse_tex, vs_texcoord) * 
+	(vec4(ambient_light, 1.f) + vec4(diffuse_light, 1.f) + vec4(specular_light, 1.f));
 	//fs_color += texture(texture1, vs_texcoord);
 }

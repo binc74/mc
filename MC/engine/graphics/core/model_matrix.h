@@ -16,6 +16,7 @@ namespace engine {
 		ModelMatrix(float x, float y, float z);
 		~ModelMatrix();
 		void setPosition(float x, float y, float z);
+		void setPosition(glm::vec3 position);
 		void setRotation(float x, float y, float z);
 		void setRotation(float x);
 		void setScale(float x, float y, float z);

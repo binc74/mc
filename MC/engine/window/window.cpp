@@ -98,7 +98,7 @@ namespace engine {
 		camera = new Camera();
 		camera->setDirectionUp(0.f, 1.f, 0.f);
 		camera->setCameraFront(0.f, 0.f, -1.f);
-		camera->setCameraPosition(0.f, 0.f, 1.f);
+		camera->setCameraPosition(0.f, 0.f, 3.f);
 	}
 
 	void Window::initProjectionMatrix() {
@@ -114,17 +114,21 @@ namespace engine {
 		Texture::initTextureOpt2D();
 	}
 
-	void Window::initMeshes() {
-		engine::Square* sq = new Square(0, 0, 0, 1, 1, 1, 1);
+	void Window::initMaterials() {
+		materials.push_back(new Material(glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(1.f)));
+	}
 
-		sq->addTexture(new Texture2D("resources/textures/123.png"));
-		sq->addTexture(new Texture2D("resources/textures/234.png"));
+	void Window::initMeshes() {
+		engine::Rectangle* sq = new Rectangle(glm::vec3(0, 0, 0), glm::vec3(0, -1, 0), glm::vec3(1, -1, 0), 1, 1);
+
+		sq->addTexture(new Texture2D("resources/textures/1.png"));
+		sq->addTexture(new Texture2D("resources/textures/2.png"));
 		
 		meshes.push_back(sq);
 	}
 
 	void Window::initLights() {
-		lights.push_back(new glm::vec3(0.f, 0.f, 1.f));
+		lights.push_back(new glm::vec3(0.f, 0.f, 3.f));
 	}
 
 	void Window::initUniform() {
@@ -196,7 +200,7 @@ namespace engine {
 
 		for (auto it: meshes) {
 			it->update(shaders[0]);
-			it->render(shaders[0]);
+			it->render(shaders[0], materials[0]);
 		}		
 
 		glfwSwapBuffers(window);
