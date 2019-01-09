@@ -9,6 +9,17 @@ namespace engine {
 		this->window_height = window_height;
 		this->window_width = window_width;
 		this->window_name = window_name;		
+
+		dt = 0.f;
+		curr_time = 0.f;
+		last_time = 0.f;
+		last_mouse_x = 0.0;
+		last_mouse_y = 0.0;
+		mouse_x = 0.0;
+		mouse_y = 0.0;
+		mouse_offset_x = 0.0;
+		mouse_offset_y = 0.0;
+		is_first_mouse = true;
 	}
 
 	Window::~Window() {
@@ -56,6 +67,9 @@ namespace engine {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glPolygonMode(GL_FRONT_AND_BACK, is_fill? GL_FILL : GL_LINE);
+
+		// Enable cursor input and hide the cursor inside the window
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 
 	void Window::init(int context_major, int context_minor, bool is_full_screen) {
@@ -143,7 +157,18 @@ namespace engine {
 		shaders[0]->unuse();
 	}
 
+	void Window::updateTime() {
+		curr_time = (float)glfwGetTime();
+		dt = curr_time - last_time;
+		last_time = curr_time;
+	}
+
 	void Window::updateInput() {
+		updateKeyboardInput();
+		updateMouseInput();
+	}
+
+	void Window::updateKeyboardInput() {
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
@@ -171,6 +196,21 @@ namespace engine {
 		else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
 
 		}
+	}
+
+	void Window::updateMouseInput() {
+		glfwGetCursorPos(window, &mouse_x, &mouse_y);
+
+		if (is_first_mouse) {
+			last_mouse_x = mouse_x;
+			last_mouse_y = mouse_y;
+			is_first_mouse = false;
+		}
+
+		mouse_offset_x = mouse_x - last_mouse_x;
+		mouse_offset_y = mouse_y - last_mouse_y;
+		last_mouse_x = mouse_x;
+		last_mouse_y = mouse_y;
 	}
 
 	void Window::updateUniforms() {

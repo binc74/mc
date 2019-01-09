@@ -25,6 +25,18 @@ namespace engine {
 		std::vector<engine::Mesh*> meshes;
 		std::vector<glm::vec3*> lights;
 
+		// Cursor
+		float dt;
+		float curr_time;
+		float last_time;
+		double last_mouse_x;
+		double last_mouse_y;
+		double mouse_x;
+		double mouse_y;
+		double mouse_offset_x;
+		double mouse_offset_y;
+		bool is_first_mouse;
+
 		void initGLEW();
 		void initOpenglOpt(bool is_fill);
 		void initCamera();
@@ -35,8 +47,12 @@ namespace engine {
 		void initMaterials();
 		void initLights();
 		void initUniform();
+		void updateMouseInput();
+		void updateKeyboardInput();
 		void updateInput();
 		void updateUniforms();
+		void updateTime();
+
 	public:
 		GLFWwindow* window;
 		int frame_buffer_width, frame_buffer_height;
