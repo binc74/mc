@@ -60,6 +60,14 @@ namespace engine{
 		*camera_position += camera_right * speed * dt;
 	}
 
+	void Camera::goUp(float dt) {
+		*camera_position += direction_up * speed * dt;
+	}
+
+	void Camera::goDown(float dt) {
+		*camera_position -= direction_up * speed * dt;
+	}
+
 	void Camera::updateByMouseInput(float dt, double offset_x, double offset_y) {
 		float dp = static_cast<float>(offset_y) * sensitivity * dt;
 

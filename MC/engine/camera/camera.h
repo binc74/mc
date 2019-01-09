@@ -32,6 +32,8 @@ namespace engine {
 		void goBack(float dt);
 		void goLeft(float dt);
 		void goRight(float dt);
+		void goUp(float dt);
+		void goDown(float dt);
 
 		void updateByMouseInput(float dt, double offset_x, double offset_y);
 		glm::mat4 getViewMatrix();

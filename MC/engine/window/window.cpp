@@ -38,10 +38,6 @@ namespace engine {
 			delete it;
 		}
 
-		for (glm::vec3* it : lights) {
-			delete it;
-		}
-
 		glfwTerminate();
 		glfwDestroyWindow(window);
 	}
@@ -134,16 +130,42 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		engine::Rectangle* sq = new Rectangle(0, 0, 0, 1, glm::vec3(0.f, 0.f, 0.f));
+		float length = 1;
+		float h_length = length / 2;
 
-		sq->addTexture(new Texture2D("resources/textures/1.png"));
-		sq->addTexture(new Texture2D("resources/textures/2.png"));
-		
-		meshes.push_back(sq);
+		engine::Rectangle* front = new Rectangle(0, 0, 0, length, glm::vec3(0.f, 0.f, 0.f));
+		engine::Rectangle* bot = new Rectangle(0, -h_length, -h_length, length, glm::vec3(90.f, 0.f, 0.f));
+		engine::Rectangle* top = new Rectangle(0, h_length, -h_length, length, glm::vec3(-90.f, 0.f, 0.f));
+		engine::Rectangle* left = new Rectangle(-h_length, 0, -h_length, length, glm::vec3(0.f, -90.f, 0.f));
+		engine::Rectangle* right = new Rectangle(h_length, 0, -h_length, length, glm::vec3(0.f, 90.f, 0.f));
+		engine::Rectangle* back = new Rectangle(0, 0, -length, length, glm::vec3(180.f, 0.f, 0.f));
+
+		Texture* t1 = new Texture2D("resources/textures/1.png");
+		Texture* t2 = new Texture2D("resources/textures/2.png");
+
+		front->addTexture(t1);
+		front->addTexture(t2);
+		bot->addTexture(t1);
+		bot->addTexture(t2);
+		top->addTexture(t1);
+		top->addTexture(t2);
+		left->addTexture(t1);
+		left->addTexture(t2);
+		right->addTexture(t1);
+		right->addTexture(t2);
+		back->addTexture(t1);
+		back->addTexture(t2);
+
+		meshes.push_back(front);
+		meshes.push_back(bot);
+		meshes.push_back(top);
+		meshes.push_back(left);
+		meshes.push_back(right);
+		meshes.push_back(back);
 	}
 
 	void Window::initLights() {
-		lights.push_back(new glm::vec3(0.f, 0.f, 3.f));
+		lights.push_back(camera->camera_position);
 	}
 
 	void Window::initUniform() {
@@ -186,10 +208,10 @@ namespace engine {
 			camera->goRight(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-
+			camera->goUp(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-
+			camera->goDown(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
 
@@ -219,6 +241,7 @@ namespace engine {
 
 		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
 		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
+		shaders[0]->setUniform3fv(*(camera->camera_position), "light_pos0");
 
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(
 			frame_buffer_width, frame_buffer_height), "projection_matrix");
