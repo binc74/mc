@@ -89,6 +89,7 @@ namespace engine {
 		initProjectionMatrix();
 		initShaders();
 		initTexturesOpt();
+		initMaterials();
 		initMeshes();
 		initLights();
 		initUniform();
@@ -119,7 +120,7 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		engine::Rectangle* sq = new Rectangle(glm::vec3(0, 0, 0), glm::vec3(0, -1, 0), glm::vec3(1, -1, 0), 1, 1);
+		engine::Rectangle* sq = new Rectangle(0, 0, 0, 1, glm::vec3(0.f, 0.f, 20.f));
 
 		sq->addTexture(new Texture2D("resources/textures/1.png"));
 		sq->addTexture(new Texture2D("resources/textures/2.png"));
@@ -138,44 +139,45 @@ namespace engine {
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
 		shaders[0]->setUniform3fv(*lights[0], "light_pos0");
 
-		shaders[0]->setUniform3fv(camera->camera_position, "camera_pos");
+		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
 		shaders[0]->unuse();
 	}
 
 	void Window::updateInput() {
-		ModelMatrix* mm = meshes[0]->model_matrix;
-
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-			mm->position.z -= 0.1f;
+			camera->goFront(0.1f);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-			mm->position.z += 0.1f;
+			camera->goBack(0.1f);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-			mm->position.x -= 0.1f;
+			
 		}
 		else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-			mm->position.x += 0.1f;
+
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-			mm->rotation.z += 0.1f;
+			camera->rotateCamX(0.1f);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-			mm->rotation.z -= 0.1f;
+			camera->rotateCamX(-0.1f);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
-			mm->rotation.y += 0.5f;
+
 		}
 		else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
-			mm->rotation.y -= 0.5f;
+
 		}
 	}
 
 	void Window::updateUniforms() {
 		glfwGetFramebufferSize(window, &frame_buffer_width, &frame_buffer_height);
+
+		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
+		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
 
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(
 			frame_buffer_width, frame_buffer_height), "projection_matrix");
@@ -194,9 +196,9 @@ namespace engine {
 	void Window::render() {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the three buffers
-		updateUniforms();
-
 		shaders[0]->use();
+
+		updateUniforms();
 
 		for (auto it: meshes) {
 			it->update(shaders[0]);

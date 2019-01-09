@@ -128,6 +128,8 @@
     <ClCompile Include="engine\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="engine\graphics\material.cpp" />
     <ClCompile Include="engine\graphics\mesh.cpp" />
+    <ClCompile Include="engine\graphics\mesh2d.cpp" />
+    <ClCompile Include="engine\graphics\mesh3d.cpp" />
     <ClCompile Include="engine\graphics\shader.cpp" />
     <ClCompile Include="engine\graphics\shapes\rect_prism.cpp" />
     <ClCompile Include="engine\graphics\shapes\rectangle.cpp" />
@@ -144,6 +146,8 @@
     <ClInclude Include="engine\graphics\core\vertex.h" />
     <ClInclude Include="engine\graphics\material.h" />
     <ClInclude Include="engine\graphics\mesh.h" />
+    <ClInclude Include="engine\graphics\mesh2d.h" />
+    <ClInclude Include="engine\graphics\mesh3d.h" />
     <ClInclude Include="engine\graphics\shader.h" />
     <ClInclude Include="engine\graphics\shapes\rect_prism.h" />
     <ClInclude Include="engine\graphics\shapes\rectangle.h" />

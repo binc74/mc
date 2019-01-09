@@ -1,14 +1,16 @@
 #include "rectangle.h"
 
 namespace engine {
-	Rectangle::Rectangle(glm::vec3 top_left,
-		glm::vec3 bot_left, glm::vec3 bot_right, float t_width_num, float t_height_num) : Mesh() {
-		model_matrix = new ModelMatrix();
-		vertices = vector<engine::Vertex>();
+	void Rectangle::initIndices() {		
 		indices = vector<unsigned int>{
 			0, 1, 2,
 			0, 2, 3
 		};
+	}
+
+	Rectangle::Rectangle(glm::vec3 top_left,
+		glm::vec3 bot_left, glm::vec3 bot_right, float t_width_num, float t_height_num) : Mesh2D() {
+		initIndices();
 
 		// Init vertices for the square
 		glm::vec3 top_right = top_left + bot_right - bot_left;
@@ -37,13 +39,27 @@ namespace engine {
 		initMesh();
 	}
 
+	Rectangle::Rectangle(float px, float py, float pz, float length, glm::vec3 rotation) : Mesh2D() {
+		initIndices();
+		glm::vec3 color = glm::vec3(1.f, 1.f, 1.f);
+		glm::vec3 normal = glm::vec3(0.f, 0.f, 1.f);
+
+		float h_length = length / 2;
+		vertices.push_back(Vertex(glm::vec3(-h_length, h_length, 0), color, 0, 1, normal));
+		vertices.push_back(Vertex(glm::vec3(-h_length, -h_length, 0), color, 0, 0, normal));
+		vertices.push_back(Vertex(glm::vec3(h_length, -h_length, 0), color, 1, 0, normal));
+		vertices.push_back(Vertex(glm::vec3(h_length, h_length, 0), color, 1, 1, normal));
+
+		model_matrix->setPosition(glm::vec3(px, py, pz));
+		model_matrix->setRotation(rotation);
+		model_matrix->setScale(1);
+
+		initMesh();
+	}
+
 	Rectangle::~Rectangle() {
 		//delete model_matrix;
 		Mesh::~Mesh();
-	}
-
-	void Rectangle::addTexture(engine::Texture* texture) {
-		textures.push_back(texture);
 	}
 
 	void Rectangle::setTopLeftColor(float r, float g, float b) {

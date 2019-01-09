@@ -1,10 +1,10 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "../mesh.h"
+#include "../mesh2d.h"
 
 namespace engine {
-	class Triangle : public Mesh {
+	class Triangle : public Mesh2D {
 	private:
 	public:
 		Triangle(engine::ModelMatrix* model_matrix, 

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 
-#include "core/vertex.h"
 #include "texture.h"
 #include "shader.h"
 #include "material.h"
@@ -15,22 +14,18 @@ using namespace std;
 namespace engine {
 	class Mesh {
 	protected:
-		unsigned int VAO, VBO, EBO;
 		bool has_specular;
-		void initMesh();
+		virtual void initMesh() = 0;
 
 	public:
-		vector<engine::Vertex> vertices;
-		vector<unsigned int> indices;
-		vector<Texture*> textures;
 		engine::ModelMatrix* model_matrix;
 
 		Mesh();
 		Mesh(engine::ModelMatrix* model_matrix);
-		~Mesh();	
+		~Mesh();
 		void setHasSpecular(bool has_specular);
-		void update(engine::Shader* shader);
-		void render(engine::Shader* shader, engine::Material* material);
+		virtual void update(engine::Shader* shader) = 0;
+		virtual void render(engine::Shader* shader, engine::Material* material) = 0;
 	};
 }
 
