@@ -8,6 +8,10 @@ namespace engine {
 	Mesh3D::Mesh3D() : Mesh() {
 	}
 
+	Mesh3D::Mesh3D(float px, float py, float pz) : Mesh() {
+		position = glm::vec3(px, py, pz);
+	}
+
 	Mesh3D::Mesh3D(engine::ModelMatrix* model_matrix) : Mesh(model_matrix) {
 
 	}

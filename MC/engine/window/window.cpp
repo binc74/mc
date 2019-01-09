@@ -130,38 +130,23 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		float length = 1;
-		float h_length = length / 2;
-
-		engine::Rectangle* front = new Rectangle(0, 0, 0, length, glm::vec3(0.f, 0.f, 0.f));
-		engine::Rectangle* bot = new Rectangle(0, -h_length, -h_length, length, glm::vec3(90.f, 0.f, 0.f));
-		engine::Rectangle* top = new Rectangle(0, h_length, -h_length, length, glm::vec3(-90.f, 0.f, 0.f));
-		engine::Rectangle* left = new Rectangle(-h_length, 0, -h_length, length, glm::vec3(0.f, -90.f, 0.f));
-		engine::Rectangle* right = new Rectangle(h_length, 0, -h_length, length, glm::vec3(0.f, 90.f, 0.f));
-		engine::Rectangle* back = new Rectangle(0, 0, -length, length, glm::vec3(180.f, 0.f, 0.f));
+		RectPrism* rp1 = new RectPrism(0, 0, 0, 1);
+		RectPrism* rp2 = new RectPrism(1, 0, 0, 1);
+		RectPrism* rp3 = new RectPrism(2, 0, 0, 1);
 
 		Texture* t1 = new Texture2D("resources/textures/1.png");
 		Texture* t2 = new Texture2D("resources/textures/2.png");
 
-		front->addTexture(t1);
-		front->addTexture(t2);
-		bot->addTexture(t1);
-		bot->addTexture(t2);
-		top->addTexture(t1);
-		top->addTexture(t2);
-		left->addTexture(t1);
-		left->addTexture(t2);
-		right->addTexture(t1);
-		right->addTexture(t2);
-		back->addTexture(t1);
-		back->addTexture(t2);
+		rp1->addTextureAll(t1);
+		rp1->addTextureAll(t2);
+		rp2->addTextureAll(t1);
+		rp2->addTextureAll(t2);
+		rp3->addTextureAll(t1);
+		rp3->addTextureAll(t2);
 
-		meshes.push_back(front);
-		meshes.push_back(bot);
-		meshes.push_back(top);
-		meshes.push_back(left);
-		meshes.push_back(right);
-		meshes.push_back(back);
+		meshes.push_back(rp1);
+		meshes.push_back(rp2);
+		meshes.push_back(rp3);
 	}
 
 	void Window::initLights() {
@@ -170,7 +155,6 @@ namespace engine {
 
 	void Window::initUniform() {
 		shaders[0]->use();
-		shaders[0]->setUniformMat4fv(meshes[0]->model_matrix->getMatrix(), "model_matrix");
 		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
 		shaders[0]->setUniform3fv(*lights[0], "light_pos0");

@@ -11,6 +11,7 @@ namespace engine {
 		RectPrism(float x, float y, float z, float length);
 		~RectPrism();
 
+		void addTextureAll(Texture* texture);
 		void addTextureTop(Texture* texture);
 		void addTextureBottom(Texture* texture);
 		void addTextureAllSides(Texture* texture);
