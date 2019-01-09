@@ -17,8 +17,10 @@ namespace engine {
 		int width, height;
 
 		Texture(const char* uri, GLenum type);
+		Texture(const char* uri, GLenum type, int s_width, int s_height);
 		~Texture();
 		static void initTextureOpt2D();
+		unsigned char* getTexture(unsigned char* image, int s_width, int s_height, int posw, int posh);
 		GLuint getId();
 		void bind(int index);
 		void unbind();

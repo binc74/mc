@@ -134,15 +134,16 @@ namespace engine {
 		RectPrism* rp2 = new RectPrism(1, 0, 0, 1);
 		RectPrism* rp3 = new RectPrism(2, 0, 0, 1);
 
-		Texture* t1 = new Texture2D("resources/textures/1.png");
+		Texture* t3 = new Texture2D("resources/textures/1.png");
 		Texture* t2 = new Texture2D("resources/textures/2.png");
+		Texture* t1 = new Texture2D("resources/textures/mc.png", 24, 50);
 
 		rp1->addTextureAll(t1);
-		rp1->addTextureAll(t2);
+		//rp1->addTextureAll(t2);
 		rp2->addTextureAll(t1);
-		rp2->addTextureAll(t2);
+		//rp2->addTextureAll(t2);
 		rp3->addTextureAll(t1);
-		rp3->addTextureAll(t2);
+		//rp3->addTextureAll(t2);
 
 		meshes.push_back(rp1);
 		meshes.push_back(rp2);

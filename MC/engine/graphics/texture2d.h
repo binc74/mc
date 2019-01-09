@@ -8,6 +8,7 @@ namespace engine {
 	private:
 	public:
 		Texture2D(const char* uri);
+		Texture2D(const char* uri, int s_width, int s_height);
 		~Texture2D();
 	};
 }
