@@ -7,9 +7,19 @@
 namespace engine {
 	class Camera {
 	private:
-		glm::vec3* direction_up;
-		glm::vec3* camera_front;
-		
+		glm::vec3 direction_up;
+		glm::vec3 camera_up;
+		glm::vec3 camera_front;
+		glm::vec3 camera_right;
+		float pitch;
+		float yaw;
+		float roll;
+		float speed;
+		float sensitivity;
+		bool y_enable;
+		bool y_reverse;
+
+		void updateVectors();
 	public:
 		glm::vec3* camera_position;
 
@@ -18,14 +28,12 @@ namespace engine {
 		void setDirectionUp(float x, float y, float z);
 		void setCameraFront(float x, float y, float z);
 		void setCameraPosition(float x, float y, float z);
-		void rotateCamX(float d);
-		void rotateCamY(float d);
-		void rotateCamZ(float d);
-		void goFront(float d);
-		void goBack(float d);
-		void goLeft(float d);
-		void goRight(float d);
+		void goFront(float dt);
+		void goBack(float dt);
+		void goLeft(float dt);
+		void goRight(float dt);
 
+		void updateByMouseInput(float dt, double offset_x, double offset_y);
 		glm::mat4 getViewMatrix();
 	};
 }

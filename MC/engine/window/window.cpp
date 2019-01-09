@@ -134,7 +134,7 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		engine::Rectangle* sq = new Rectangle(0, 0, 0, 1, glm::vec3(0.f, 0.f, 20.f));
+		engine::Rectangle* sq = new Rectangle(0, 0, 0, 1, glm::vec3(0.f, 0.f, 0.f));
 
 		sq->addTexture(new Texture2D("resources/textures/1.png"));
 		sq->addTexture(new Texture2D("resources/textures/2.png"));
@@ -164,6 +164,7 @@ namespace engine {
 	}
 
 	void Window::updateInput() {
+		updateTime();
 		updateKeyboardInput();
 		updateMouseInput();
 	}
@@ -173,22 +174,22 @@ namespace engine {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-			camera->goFront(0.1f);
+			camera->goFront(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-			camera->goBack(0.1f);
+			camera->goBack(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-			
+			camera->goLeft(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-
+			camera->goRight(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-			camera->rotateCamX(0.1f);
+
 		}
 		else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-			camera->rotateCamX(-0.1f);
+
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
 
@@ -231,6 +232,7 @@ namespace engine {
 		glfwPollEvents();
 
 		updateInput();
+		camera->updateByMouseInput(dt, mouse_offset_x, mouse_offset_y);
 	}
 
 	void Window::render() {
