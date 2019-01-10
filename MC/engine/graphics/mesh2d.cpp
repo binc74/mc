@@ -3,15 +3,16 @@
 namespace engine {
 	Mesh2D::Mesh2D() : Mesh() {
 		model_matrix = new ModelMatrix();
+		has_set_texture = false;
+		has_set_specular = false;
 	}
 
-	Mesh2D::Mesh2D(engine::ModelMatrix* model_matrix) : Mesh(model_matrix) {	
+	Mesh2D::Mesh2D(engine::ModelMatrix* model_matrix) : Mesh(model_matrix) {
+		has_set_texture = false;
+		has_set_specular = false;
 	}
 
 	Mesh2D::~Mesh2D() {
-		for (auto it : textures)
-			delete it;
-
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
 		glDeleteBuffers(1, &EBO);
@@ -49,8 +50,14 @@ namespace engine {
 		glBindVertexArray(0);
 	}
 
-	void Mesh2D::addTexture(engine::Texture* texture) {
-		textures.push_back(texture);
+	void Mesh2D::setTexture(engine::Texture* texture) {
+		this->texture = *texture;
+		has_set_texture = true;
+	}
+
+	void Mesh2D::setSpecularTexture(engine::Texture* texture) {
+		specular_texture = *texture;
+		has_set_specular = true;
 	}
 
 	void Mesh2D::update(engine::Shader* shader) {
@@ -58,9 +65,10 @@ namespace engine {
 	}
 
 	void Mesh2D::render(engine::Shader* shader, engine::Material* material) {
-		for (int i = 0; i < textures.size(); ++i) {
-			textures[i]->bind(i);
-		}
+		if (has_set_texture)
+			texture.bind(0);
+		if (has_set_specular)
+			specular_texture.bind(1);
 
 		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
 		material->sendToShader(*shader, 0, 1);

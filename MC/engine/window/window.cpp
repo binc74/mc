@@ -1,5 +1,7 @@
 #include "window.h"
 
+#include "../../game/factories/sprite_factory.h"
+
 namespace engine {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
@@ -134,15 +136,18 @@ namespace engine {
 		RectPrism* rp2 = new RectPrism(1, 0, 0, 1);
 		RectPrism* rp3 = new RectPrism(2, 0, 0, 1);
 
-		Texture* t3 = new Texture2D("resources/textures/1.png");
-		Texture* t2 = new Texture2D("resources/textures/2.png");
-		Texture* t1 = new Texture2D("resources/textures/mc.png", 24, 50);
+		game::SpriteFactory sf = game::SpriteFactory();
 
-		rp1->addTextureAll(t1);
+		Texture* t3 = sf.getTexture(GRASS_TOP);
+		Texture* t2 = sf.getTexture(GRASS_SIDE);
+		Texture* t1 = sf.getTexture(SOIL);
+
+		rp1->setTextureAll(t2);
+		rp1->setTextureTop(t3);
 		//rp1->addTextureAll(t2);
-		rp2->addTextureAll(t1);
+		rp2->setTextureAll(t1);
 		//rp2->addTextureAll(t2);
-		rp3->addTextureAll(t1);
+		rp3->setTextureAll(t1);
 		//rp3->addTextureAll(t2);
 
 		meshes.push_back(rp1);
@@ -192,10 +197,10 @@ namespace engine {
 		else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
 			camera->goRight(dt);
 		}
-		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+		else if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
 			camera->goUp(dt);
 		}
-		else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
 			camera->goDown(dt);
 		}
 		else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {

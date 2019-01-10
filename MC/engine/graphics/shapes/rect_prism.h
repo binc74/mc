@@ -11,14 +11,14 @@ namespace engine {
 		RectPrism(float x, float y, float z, float length);
 		~RectPrism();
 
-		void addTextureAll(Texture* texture);
-		void addTextureTop(Texture* texture);
-		void addTextureBottom(Texture* texture);
-		void addTextureAllSides(Texture* texture);
-		void addTextureSide1(Texture* texture);
-		void addTextureSide2(Texture* texture);
-		void addTextureSide3(Texture* texture);
-		void addTextureSide4(Texture* texture);
+		void setTextureAll(Texture* texture);
+		void setTextureTop(Texture* texture);
+		void setTextureBottom(Texture* texture);
+		void setTextureAllSides(Texture* texture);
+		void setTextureSide1(Texture* texture);
+		void setTextureSide2(Texture* texture);
+		void setTextureSide3(Texture* texture);
+		void setTextureSide4(Texture* texture);
 	};
 }
 #endif

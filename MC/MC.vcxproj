@@ -137,6 +137,8 @@
     <ClCompile Include="engine\graphics\texture.cpp" />
     <ClCompile Include="engine\graphics\texture2d.cpp" />
     <ClCompile Include="engine\window\window.cpp" />
+    <ClCompile Include="game\factories\entity_factory.cpp" />
+    <ClCompile Include="game\factories\sprite_factory.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,8 @@
     <ClInclude Include="engine\graphics\texture.h" />
     <ClInclude Include="engine\graphics\texture2d.h" />
     <ClInclude Include="engine\window\window.h" />
+    <ClInclude Include="game\factories\entity_factory.h" />
+    <ClInclude Include="game\factories\sprite_factory.h" />
     <ClInclude Include="libs.h" />
   </ItemGroup>
   <ItemGroup>

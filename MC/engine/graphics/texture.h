@@ -12,15 +12,17 @@ namespace engine {
 	private:
 		GLuint id;		
 
+		void bindTexture(unsigned char* sprite);
+
 	public:
 		GLenum type;
 		int width, height;
 
+		Texture();
 		Texture(const char* uri, GLenum type);
-		Texture(const char* uri, GLenum type, int s_width, int s_height);
+		Texture(unsigned char* sprite, int width, int height, GLenum type);
 		~Texture();
 		static void initTextureOpt2D();
-		unsigned char* getTexture(unsigned char* image, int s_width, int s_height, int posw, int posh);
 		GLuint getId();
 		void bind(int index);
 		void unbind();

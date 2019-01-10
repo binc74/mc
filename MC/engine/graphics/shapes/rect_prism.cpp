@@ -27,40 +27,40 @@ namespace engine {
 		
 	}
 
-	void RectPrism::addTextureAll(Texture* texture) {
+	void RectPrism::setTextureAll(Texture* texture) {
 		for (auto it: meshes) {
-			it->addTexture(texture);
+			it->setTexture(texture);
 		}
 	}
 
-	void RectPrism::addTextureTop(Texture* texture) {
-		meshes[0]->addTexture(texture);
+	void RectPrism::setTextureTop(Texture* texture) {
+		meshes[0]->setTexture(texture);
 	}
 
-	void RectPrism::addTextureBottom(Texture* texture) {
-		meshes[5]->addTexture(texture);
+	void RectPrism::setTextureBottom(Texture* texture) {
+		meshes[5]->setTexture(texture);
 	}
 	
-	void RectPrism::addTextureAllSides(Texture* texture) {
-		meshes[1]->addTexture(texture);
-		meshes[2]->addTexture(texture);
-		meshes[3]->addTexture(texture);
-		meshes[4]->addTexture(texture);
+	void RectPrism::setTextureAllSides(Texture* texture) {
+		meshes[1]->setTexture(texture);
+		meshes[2]->setTexture(texture);
+		meshes[3]->setTexture(texture);
+		meshes[4]->setTexture(texture);
 	}
 	
-	void RectPrism::addTextureSide1(Texture* texture) {
-		meshes[1]->addTexture(texture);
+	void RectPrism::setTextureSide1(Texture* texture) {
+		meshes[1]->setTexture(texture);
 	}
 	
-	void RectPrism::addTextureSide2(Texture* texture) {
-		meshes[2]->addTexture(texture);
+	void RectPrism::setTextureSide2(Texture* texture) {
+		meshes[2]->setTexture(texture);
 	}
 	
-	void RectPrism::addTextureSide3(Texture* texture) {
-		meshes[3]->addTexture(texture);
+	void RectPrism::setTextureSide3(Texture* texture) {
+		meshes[3]->setTexture(texture);
 	}
 	
-	void RectPrism::addTextureSide4(Texture* texture) {
-		meshes[4]->addTexture(texture);
+	void RectPrism::setTextureSide4(Texture* texture) {
+		meshes[4]->setTexture(texture);
 	}
 }
