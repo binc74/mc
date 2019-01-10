@@ -7,19 +7,19 @@
 
 #include "../../engine/graphics/texture2d.h"
 
-enum SpriteType {
-	GRASS_TOP = 0,
-	STONE,
-	SOIL,
-	GRASS_SIDE,
-	PLATE,
-	STONE_BRICK_SIDE,
-	STONE_BRICK_TOP
-};
-
 using namespace engine;
 
 namespace game {
+	enum SpriteType {
+		GRASS_TOP = 0,
+		COBBLESTONE,
+		SOIL,
+		GRASS_SIDE,
+		PLANK,
+		STONE_BRICK_SIDE,
+		STONE_BRICK_TOP
+	};
+
 	class SpriteFactory {
 	private:
 		class Pair {
@@ -46,7 +46,7 @@ namespace game {
 
 		SpriteFactory();
 		~SpriteFactory();
-		Texture2D* getTexture(SpriteType type);
+		Texture2D* getTexture(game::SpriteType type);
 	};
 }
 

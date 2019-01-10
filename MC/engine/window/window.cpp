@@ -1,6 +1,6 @@
 #include "window.h"
 
-#include "../../game/factories/sprite_factory.h"
+#include "../../game/factories/entity_factory.h"
 
 namespace engine {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
@@ -132,27 +132,16 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		RectPrism* rp1 = new RectPrism(0, 0, 0, 1);
-		RectPrism* rp2 = new RectPrism(1, 0, 0, 1);
-		RectPrism* rp3 = new RectPrism(2, 0, 0, 1);
+		game::EntityFactory ef = game::EntityFactory();
 
-		game::SpriteFactory sf = game::SpriteFactory();
-
-		Texture* t3 = sf.getTexture(GRASS_TOP);
-		Texture* t2 = sf.getTexture(GRASS_SIDE);
-		Texture* t1 = sf.getTexture(SOIL);
-
-		rp1->setTextureAll(t2);
-		rp1->setTextureTop(t3);
-		//rp1->addTextureAll(t2);
-		rp2->setTextureAll(t1);
-		//rp2->addTextureAll(t2);
-		rp3->setTextureAll(t1);
-		//rp3->addTextureAll(t2);
-
-		meshes.push_back(rp1);
-		meshes.push_back(rp2);
-		meshes.push_back(rp3);
+		for (int i = -5; i < 5; ++i) {
+			for (int j = -5; j < 5; ++j) {
+				meshes.push_back(ef.getGrassCube(i, -2, j));
+			}
+		}
+	
+		for (int i = -1; i < 5; ++i)
+			meshes.push_back(ef.getCobbleStone(1, i, 1));
 	}
 
 	void Window::initLights() {

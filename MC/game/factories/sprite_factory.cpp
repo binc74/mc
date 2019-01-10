@@ -24,7 +24,7 @@ namespace game {
 		for (int i = 0; i < num_row * num_col; ++i) {
 			sprite_map[i] = Pair(col, row);
 			row++;
-			if (row >= num_row) {
+			if (row == num_row) {
 				row = 0;
 				col++;
 			}
