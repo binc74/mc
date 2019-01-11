@@ -1,7 +1,7 @@
 #ifndef MASTER_RENDERER
 #define MASTER_RENDERER
 
-#include <map>
+#include <unordered_map>
 
 #include "cube_renderer.h"
 #include "../factories/entity_factory.h"
@@ -16,7 +16,7 @@ namespace game {
 	private:
 		Shader* shader;
 		Material* material;
-		std::map<EntityType, CubeRenderer> map;
+		std::unordered_map<EntityType, CubeRenderer*> map;
 		EntityFactory ef;
 
 	public:

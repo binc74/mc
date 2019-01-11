@@ -11,7 +11,6 @@ namespace engine {
 		RectPrism(float x, float y, float z, float length);
 		~RectPrism();
 
-		void render(engine::Shader* shader, engine::Material* material) override;
 		void render(engine::Shader* shader, engine::Material* material, vector<int>& order);
 	};
 }

@@ -49,13 +49,4 @@ namespace engine {
 	void Mesh2D::update(engine::Shader* shader) {
 		
 	}
-
-	void Mesh2D::render(engine::Shader* shader, engine::Material* material) {
-		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
-		material->sendToShader(*shader, 0, 1);
-
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-	}
 }

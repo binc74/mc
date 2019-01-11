@@ -20,7 +20,6 @@ namespace engine {
 		~Mesh2D();	
 
 		void update(engine::Shader* shader) override;
-		void render(engine::Shader* shader, engine::Material* material) override;
 	};
 }
 

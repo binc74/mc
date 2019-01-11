@@ -31,6 +31,8 @@ namespace game {
 			textures[i]->bind(i);
 		}
 
+		std::cout << model_set.size() << std::endl;
+
 		for (auto it: model_set) {
 			it->render(shader, material, order);
 		}

@@ -17,7 +17,6 @@ namespace engine {
 		Mesh3D(engine::ModelMatrix* model_matrix);
 		~Mesh3D();
 		void update(engine::Shader* shader) override;
-		virtual void render(engine::Shader* shader, engine::Material* material) = 0;
 	};
 }
 

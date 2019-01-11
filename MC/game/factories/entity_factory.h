@@ -20,10 +20,10 @@ namespace game {
 		EntityFactory();
 		~EntityFactory();
 
-		CubeRenderer getByType(EntityType type);
-		CubeRenderer getSoilRenderer();
-		CubeRenderer getGrassCubeRenderer();
-		CubeRenderer getCobbleStoneRenderer();
+		CubeRenderer* getByType(EntityType type);
+		CubeRenderer* getSoilRenderer();
+		CubeRenderer* getGrassCubeRenderer();
+		CubeRenderer* getCobbleStoneRenderer();
 	};
 }
 

@@ -7,7 +7,7 @@ namespace game {
 	EntityFactory::~EntityFactory() {
 	}
 
-	CubeRenderer EntityFactory::getByType(EntityType type) {
+	CubeRenderer* EntityFactory::getByType(EntityType type) {
 		switch (type) {
 		case EntityType::SOIL:
 			return getSoilRenderer();
@@ -18,31 +18,31 @@ namespace game {
 		}
 	}
 
-	CubeRenderer EntityFactory::getSoilRenderer() {
-		CubeRenderer cr = CubeRenderer();
+	CubeRenderer* EntityFactory::getSoilRenderer() {
+		CubeRenderer* cr = new CubeRenderer();
 
-		cr.addTexture(sf.getTexture(SpriteType::SOIL));
-		cr.addOrder(0, 0, 0, 0, 0, 0);
-
-		return cr;
-	}
-
-	CubeRenderer EntityFactory::getGrassCubeRenderer() {
-		CubeRenderer cr = CubeRenderer();
-
-		cr.addTexture(sf.getTexture(SpriteType::GRASS_SIDE));
-		cr.addTexture(sf.getTexture(SpriteType::GRASS_TOP));
-		cr.addTexture(sf.getTexture(SpriteType::SOIL));
-		cr.addOrder(1, 0, 0, 0, 0, 2);
+		cr->addTexture(sf.getTexture(SpriteType::SOIL));
+		cr->addOrder(0, 0, 0, 0, 0, 0);
 
 		return cr;
 	}
 
-	CubeRenderer EntityFactory::getCobbleStoneRenderer() {
-		CubeRenderer cr = CubeRenderer();
+	CubeRenderer* EntityFactory::getGrassCubeRenderer() {
+		CubeRenderer* cr = new CubeRenderer();
 
-		cr.addTexture(sf.getTexture(SpriteType::COBBLESTONE));
-		cr.addOrder(0, 0, 0, 0, 0, 0);
+		cr->addTexture(sf.getTexture(SpriteType::GRASS_SIDE));
+		cr->addTexture(sf.getTexture(SpriteType::GRASS_TOP));
+		cr->addTexture(sf.getTexture(SpriteType::SOIL));
+		cr->addOrder(1, 0, 0, 0, 0, 2);
+
+		return cr;
+	}
+
+	CubeRenderer* EntityFactory::getCobbleStoneRenderer() {
+		CubeRenderer* cr = new CubeRenderer();
+
+		cr->addTexture(sf.getTexture(SpriteType::COBBLESTONE));
+		cr->addOrder(0, 0, 0, 0, 0, 0);
 
 		return cr;
 	}

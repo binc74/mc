@@ -27,12 +27,6 @@ namespace engine {
 		
 	}
 
-	void RectPrism::render(engine::Shader* shader, engine::Material* material) {
-		for (auto it : meshes) {
-			//it->render(shader, material);
-		}
-	}
-
 	void RectPrism::render(engine::Shader* shader, engine::Material* material, vector<int>& order) {
 		for (int i = 0; i < 6; ++i) {
 			meshes[i]->render(shader, material, order[i]);

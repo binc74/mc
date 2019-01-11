@@ -135,10 +135,10 @@ namespace engine {
 	void Window::initMeshes() {
 		mr = new game::MasterRenderer(shaders[0], materials[0]);
 
-		for (int i = -10; i < 10; ++i) {
-			for (int j = -10; j < 10; ++j) {
-				RectPrism* rp = new RectPrism(i, j, 0, 1);
-				mr->addModel(game::EntityType::SOIL, rp);
+		for (int i = -5; i < 10; ++i) {
+			for (int j = -5; j < 10; ++j) {
+				RectPrism* rp = new RectPrism(i, -1, j, 1);
+				mr->addModel(game::EntityType::GRASS, rp);
 			}
 		}	
 	}

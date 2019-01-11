@@ -69,6 +69,9 @@
     <ClCompile Include="game\renderer\cube_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game\core\map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\entity_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\core\map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

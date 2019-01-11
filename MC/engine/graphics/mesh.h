@@ -25,7 +25,6 @@ namespace engine {
 		~Mesh();
 		void setHasSpecular(bool has_specular);
 		virtual void update(engine::Shader* shader) = 0;
-		virtual void render(engine::Shader* shader, engine::Material* material) = 0;
 	};
 }
 
