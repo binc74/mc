@@ -50,7 +50,12 @@ void main() {
 
 	// final light
 
+	// disable specular
+	//fs_color = vec4(vs_color, 1.f) * texture(material.diffuse_tex, vs_texcoord) * 
+	//(vec4(ambient_light, 1.f) + vec4(diffuse_light, 1.f) + vec4(specular_light, 1.f));
+
 	fs_color = vec4(vs_color, 1.f) * texture(material.diffuse_tex, vs_texcoord) * 
-	(vec4(ambient_light, 1.f) + vec4(diffuse_light, 1.f) + vec4(specular_light, 1.f));
+	  (vec4(ambient_light, 1.f) + vec4(diffuse_light, 1.f));
+
 	//fs_color += texture(texture1, vs_texcoord);
 }

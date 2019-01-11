@@ -2,12 +2,12 @@
 #define MESH3D_H
 
 #include "mesh.h"
-#include "mesh2d.h"
+#include "shapes/rectangle.h"
 
 namespace engine {
 	class Mesh3D : public Mesh {
 	protected:
-		vector<engine::Mesh2D*> meshes;
+		vector<engine::Rectangle*> meshes;
 		glm::vec3 position;
 
 		void initMesh() override;
@@ -17,7 +17,7 @@ namespace engine {
 		Mesh3D(engine::ModelMatrix* model_matrix);
 		~Mesh3D();
 		void update(engine::Shader* shader) override;
-		void render(engine::Shader* shader, engine::Material* material) override;
+		virtual void render(engine::Shader* shader, engine::Material* material) = 0;
 	};
 }
 

@@ -18,19 +18,6 @@ namespace game {
 		return sprite;
 	}
 
-	void SpriteFactory::initSpriteMapping() {
-		int row = 0, col = 0;
-
-		for (int i = 0; i < num_row * num_col; ++i) {
-			sprite_map[i] = Pair(col, row);
-			row++;
-			if (row == num_row) {
-				row = 0;
-				col++;
-			}
-		}
-	}
-
 	SpriteFactory::SpriteFactory() {
 		int width, height;
 
@@ -52,8 +39,6 @@ namespace game {
 		for (int i = 0; i < cache_size; ++i) {
 			cache[i] = NULL;
 		}
-
-		initSpriteMapping();
 	}
 
 	SpriteFactory::~SpriteFactory() {
@@ -66,9 +51,8 @@ namespace game {
 	}
 
 	Texture2D* SpriteFactory::getTexture(SpriteType type) {
-		Pair p = sprite_map[type];
-
-		unsigned char* sprite = getSprite(p.row, p.col, 1, 1);
+		int index = (int)type;
+		unsigned char* sprite = getSprite(index / num_col, index % num_col, 1, 1);
 		Texture2D* t = new Texture2D(sprite, sprite_width, sprite_height);
 		SOIL_free_image_data(sprite);
 		//cache[0] = t;

@@ -13,6 +13,8 @@
 #include "../camera/camera.h"
 #include "../graphics/shapes/rect_prism.h"
 
+#include "../../game/renderer/master_renderer.h"
+
 namespace engine {
 	class Window {
 	private:
@@ -24,6 +26,8 @@ namespace engine {
 		std::vector<engine::Material*> materials;
 		std::vector<engine::Mesh*> meshes;
 		std::vector<glm::vec3*> lights;
+
+		game::MasterRenderer* mr;
 
 		// Cursor
 		float dt;

@@ -7,32 +7,43 @@ namespace game {
 	EntityFactory::~EntityFactory() {
 	}
 
-	RectPrism* EntityFactory::getCube(float px, float py, float pz) {
-		return new RectPrism(px, py, pz, 1);
+	CubeRenderer EntityFactory::getByType(EntityType type) {
+		switch (type) {
+		case EntityType::SOIL:
+			return getSoilRenderer();
+		case EntityType::GRASS:
+			return getGrassCubeRenderer();
+		case EntityType::COBBLESTONE:
+			return getCobbleStoneRenderer();
+		}
 	}
 
-	RectPrism* EntityFactory::getSoil(float px, float py, float pz) {
-		RectPrism* rp = getCube(px, py, pz);
+	CubeRenderer EntityFactory::getSoilRenderer() {
+		CubeRenderer cr = CubeRenderer();
 
-		rp->setTextureAll(sf.getTexture(SOIL));
+		cr.addTexture(sf.getTexture(SpriteType::SOIL));
+		cr.addOrder(0, 0, 0, 0, 0, 0);
 
-		return rp;
+		return cr;
 	}
 
-	RectPrism* EntityFactory::getGrassCube(float px, float py, float pz) {
-		RectPrism* rp = getCube(px, py, pz);
+	CubeRenderer EntityFactory::getGrassCubeRenderer() {
+		CubeRenderer cr = CubeRenderer();
 
-		rp->setTextureAll(sf.getTexture(GRASS_SIDE));
-		rp->setTextureTop(sf.getTexture(GRASS_TOP));
+		cr.addTexture(sf.getTexture(SpriteType::GRASS_SIDE));
+		cr.addTexture(sf.getTexture(SpriteType::GRASS_TOP));
+		cr.addTexture(sf.getTexture(SpriteType::SOIL));
+		cr.addOrder(1, 0, 0, 0, 0, 2);
 
-		return rp;
+		return cr;
 	}
 
-	RectPrism* EntityFactory::getCobbleStone(float px, float py, float pz) {
-		RectPrism* rp = getCube(px, py, pz);
+	CubeRenderer EntityFactory::getCobbleStoneRenderer() {
+		CubeRenderer cr = CubeRenderer();
 
-		rp->setTextureAll(sf.getTexture(COBBLESTONE));
+		cr.addTexture(sf.getTexture(SpriteType::COBBLESTONE));
+		cr.addOrder(0, 0, 0, 0, 0, 0);
 
-		return rp;
+		return cr;
 	}
 }

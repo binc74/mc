@@ -11,14 +11,8 @@ namespace engine {
 		RectPrism(float x, float y, float z, float length);
 		~RectPrism();
 
-		void setTextureAll(Texture* texture);
-		void setTextureTop(Texture* texture);
-		void setTextureBottom(Texture* texture);
-		void setTextureAllSides(Texture* texture);
-		void setTextureSide1(Texture* texture);
-		void setTextureSide2(Texture* texture);
-		void setTextureSide3(Texture* texture);
-		void setTextureSide4(Texture* texture);
+		void render(engine::Shader* shader, engine::Material* material) override;
+		void render(engine::Shader* shader, engine::Material* material, vector<int>& order);
 	};
 }
 #endif

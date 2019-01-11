@@ -17,6 +17,8 @@ namespace engine {
 		void setTopRightColor(float r, float g, float b);
 		void setBottomLeftColor(float r, float g, float b);
 		void setBottomRightColor(float r, float g, float b);
+
+		void render(engine::Shader* shader, engine::Material* material, int shader_id);
 	};
 }
 

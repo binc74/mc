@@ -27,10 +27,4 @@ namespace engine {
 			it->update(shader);
 		}
 	}
-
-	void Mesh3D::render(engine::Shader* shader, engine::Material* material) {
-		for (auto it : meshes) {
-			it->render(shader, material);
-		}
-	}
 }

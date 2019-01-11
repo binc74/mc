@@ -1,6 +1,7 @@
 #include "window.h"
 
-#include "../../game/factories/entity_factory.h"
+
+#include "../../game/entity_type.h"
 
 namespace engine {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
@@ -132,16 +133,14 @@ namespace engine {
 	}
 
 	void Window::initMeshes() {
-		game::EntityFactory ef = game::EntityFactory();
+		mr = new game::MasterRenderer(shaders[0], materials[0]);
 
-		for (int i = -5; i < 5; ++i) {
-			for (int j = -5; j < 5; ++j) {
-				meshes.push_back(ef.getGrassCube(i, -2, j));
+		for (int i = -10; i < 10; ++i) {
+			for (int j = -10; j < 10; ++j) {
+				RectPrism* rp = new RectPrism(i, j, 0, 1);
+				mr->addModel(game::EntityType::SOIL, rp);
 			}
-		}
-	
-		for (int i = -1; i < 5; ++i)
-			meshes.push_back(ef.getCobbleStone(1, i, 1));
+		}	
 	}
 
 	void Window::initLights() {
@@ -244,10 +243,7 @@ namespace engine {
 
 		updateUniforms();
 
-		for (auto it: meshes) {
-			it->update(shaders[0]);
-			it->render(shaders[0], materials[0]);
-		}		
+		mr->render();
 
 		glfwSwapBuffers(window);
 		glFlush();

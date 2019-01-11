@@ -131,14 +131,15 @@
     <ClCompile Include="engine\graphics\mesh2d.cpp" />
     <ClCompile Include="engine\graphics\mesh3d.cpp" />
     <ClCompile Include="engine\graphics\shader.cpp" />
-    <ClCompile Include="engine\graphics\shapes\rect_prism.cpp" />
     <ClCompile Include="engine\graphics\shapes\rectangle.cpp" />
-    <ClCompile Include="engine\graphics\shapes\triangle.cpp" />
+    <ClCompile Include="engine\graphics\shapes\rect_prism.cpp" />
     <ClCompile Include="engine\graphics\texture.cpp" />
     <ClCompile Include="engine\graphics\texture2d.cpp" />
     <ClCompile Include="engine\window\window.cpp" />
     <ClCompile Include="game\factories\entity_factory.cpp" />
     <ClCompile Include="game\factories\sprite_factory.cpp" />
+    <ClCompile Include="game\renderer\cube_renderer.cpp" />
+    <ClCompile Include="game\renderer\master_renderer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,14 +152,17 @@
     <ClInclude Include="engine\graphics\mesh2d.h" />
     <ClInclude Include="engine\graphics\mesh3d.h" />
     <ClInclude Include="engine\graphics\shader.h" />
-    <ClInclude Include="engine\graphics\shapes\rect_prism.h" />
     <ClInclude Include="engine\graphics\shapes\rectangle.h" />
-    <ClInclude Include="engine\graphics\shapes\triangle.h" />
+    <ClInclude Include="engine\graphics\shapes\rect_prism.h" />
     <ClInclude Include="engine\graphics\texture.h" />
     <ClInclude Include="engine\graphics\texture2d.h" />
     <ClInclude Include="engine\window\window.h" />
+    <ClInclude Include="game\entity_type.h" />
     <ClInclude Include="game\factories\entity_factory.h" />
     <ClInclude Include="game\factories\sprite_factory.h" />
+    <ClInclude Include="game\renderer\master_renderer.h" />
+    <ClInclude Include="game\renderer\cube_renderer.h" />
+    <ClInclude Include="game\sprite_type.h" />
     <ClInclude Include="libs.h" />
   </ItemGroup>
   <ItemGroup>

@@ -27,40 +27,15 @@ namespace engine {
 		
 	}
 
-	void RectPrism::setTextureAll(Texture* texture) {
-		for (auto it: meshes) {
-			it->setTexture(texture);
+	void RectPrism::render(engine::Shader* shader, engine::Material* material) {
+		for (auto it : meshes) {
+			//it->render(shader, material);
 		}
 	}
 
-	void RectPrism::setTextureTop(Texture* texture) {
-		meshes[0]->setTexture(texture);
-	}
-
-	void RectPrism::setTextureBottom(Texture* texture) {
-		meshes[5]->setTexture(texture);
-	}
-	
-	void RectPrism::setTextureAllSides(Texture* texture) {
-		meshes[1]->setTexture(texture);
-		meshes[2]->setTexture(texture);
-		meshes[3]->setTexture(texture);
-		meshes[4]->setTexture(texture);
-	}
-	
-	void RectPrism::setTextureSide1(Texture* texture) {
-		meshes[1]->setTexture(texture);
-	}
-	
-	void RectPrism::setTextureSide2(Texture* texture) {
-		meshes[2]->setTexture(texture);
-	}
-	
-	void RectPrism::setTextureSide3(Texture* texture) {
-		meshes[3]->setTexture(texture);
-	}
-	
-	void RectPrism::setTextureSide4(Texture* texture) {
-		meshes[4]->setTexture(texture);
+	void RectPrism::render(engine::Shader* shader, engine::Material* material, vector<int>& order) {
+		for (int i = 0; i < 6; ++i) {
+			meshes[i]->render(shader, material, order[i]);
+		}
 	}
 }

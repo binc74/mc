@@ -1,25 +1,29 @@
 #ifndef ENTITY_FACTORY_H
 #define ENTITY_FACTORY_H
 
+#include "../entity_type.h"
+#include "../sprite_type.h"
 #include "sprite_factory.h"
-#include "../../engine/graphics/shapes/rect_prism.h"
+#include "../renderer/cube_renderer.h"
 #include "../../engine/graphics/texture2d.h"
 
 using namespace engine;
 
 namespace game {
+	
+
 	class EntityFactory {
 	private:
 		SpriteFactory sf;
 
-		RectPrism* getCube(float px, float py, float pz);
 	public:
 		EntityFactory();
 		~EntityFactory();
 
-		RectPrism* getSoil(float px, float py, float pz);
-		RectPrism* getGrassCube(float px, float py, float pz);
-		RectPrism* getCobbleStone(float px, float py, float pz);
+		CubeRenderer getByType(EntityType type);
+		CubeRenderer getSoilRenderer();
+		CubeRenderer getGrassCubeRenderer();
+		CubeRenderer getCobbleStoneRenderer();
 	};
 }
 
