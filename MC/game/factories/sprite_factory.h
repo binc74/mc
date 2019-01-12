@@ -6,9 +6,8 @@
 #include <SOIL2.h>
 
 #include "../sprite_type.h"
-#include "../../engine/graphics/texture2d.h"
+#include "../graphics/texture2d.h"
 
-using namespace engine;
 namespace game {
 	class SpriteFactory {
 	private:

@@ -3,10 +3,8 @@
 
 #include <unordered_set>
 #include <vector>
-#include "../../engine/graphics/texture2d.h"
-#include "../../engine/graphics/shapes/rect_prism.h"
-
-using namespace engine;
+#include "../graphics/texture2d.h"
+#include "../graphics/shapes/rect_prism.h"
 
 namespace game {
 	class CubeRenderer {

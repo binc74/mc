@@ -3,12 +3,12 @@
 #include <string>
 #include <glm.hpp>
 
-#include "libs.h"
-#include "engine/window/window.h"
+#include "const.h"
+#include "game/window/window.h"
 
-#include "engine/graphics/shapes/triangle.h"
+#include "game/graphics/shapes/triangle.h"
 
-using namespace engine;
+using namespace game;
 
 int main() {
 	Window window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);

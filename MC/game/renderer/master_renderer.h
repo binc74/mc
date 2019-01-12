@@ -4,12 +4,10 @@
 #include <unordered_map>
 
 #include "cube_renderer.h"
-#include "../factories/entity_factory.h"
+#include "../factories/renderer_factory.h"
 #include "../entity_type.h"
-#include "../../engine/graphics/shapes/rect_prism.h"
-#include "../../engine/graphics/shader.h"
-
-using namespace engine;
+#include "../graphics/shapes/rect_prism.h"
+#include "../graphics/shader.h"
 
 namespace game {
 	class MasterRenderer {
@@ -17,7 +15,7 @@ namespace game {
 		Shader* shader;
 		Material* material;
 		std::unordered_map<EntityType, CubeRenderer*> map;
-		EntityFactory ef;
+		RendererFactory ef;
 
 	public:
 		MasterRenderer(Shader* shader, Material* material);

@@ -123,49 +123,55 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="engine\camera\camera.cpp" />
-    <ClCompile Include="engine\graphics\core\model_matrix.cpp" />
-    <ClCompile Include="engine\graphics\core\projection_matrix.cpp" />
-    <ClCompile Include="engine\graphics\material.cpp" />
-    <ClCompile Include="engine\graphics\mesh.cpp" />
-    <ClCompile Include="engine\graphics\mesh2d.cpp" />
-    <ClCompile Include="engine\graphics\mesh3d.cpp" />
-    <ClCompile Include="engine\graphics\shader.cpp" />
-    <ClCompile Include="engine\graphics\shapes\rectangle.cpp" />
-    <ClCompile Include="engine\graphics\shapes\rect_prism.cpp" />
-    <ClCompile Include="engine\graphics\texture.cpp" />
-    <ClCompile Include="engine\graphics\texture2d.cpp" />
-    <ClCompile Include="engine\window\window.cpp" />
-    <ClCompile Include="game\core\map.cpp" />
-    <ClCompile Include="game\factories\entity_factory.cpp" />
+    <ClCompile Include="game\camera\camera.cpp" />
+    <ClCompile Include="game\factories\renderer_factory.cpp" />
     <ClCompile Include="game\factories\sprite_factory.cpp" />
+    <ClCompile Include="game\graphics\core\model_matrix.cpp" />
+    <ClCompile Include="game\graphics\core\projection_matrix.cpp" />
+    <ClCompile Include="game\graphics\material.cpp" />
+    <ClCompile Include="game\graphics\mesh.cpp" />
+    <ClCompile Include="game\graphics\mesh2d.cpp" />
+    <ClCompile Include="game\graphics\mesh3d.cpp" />
+    <ClCompile Include="game\graphics\shader.cpp" />
+    <ClCompile Include="game\graphics\shapes\rectangle.cpp" />
+    <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
+    <ClCompile Include="game\graphics\shapes\triangle.cpp" />
+    <ClCompile Include="game\graphics\texture.cpp" />
+    <ClCompile Include="game\graphics\texture2d.cpp" />
     <ClCompile Include="game\renderer\cube_renderer.cpp" />
     <ClCompile Include="game\renderer\master_renderer.cpp" />
+    <ClCompile Include="game\util\hashing.cpp" />
+    <ClCompile Include="game\window\window.cpp" />
+    <ClCompile Include="game\world\chunk.cpp" />
+    <ClCompile Include="game\world\chunk_map.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\camera\camera.h" />
-    <ClInclude Include="engine\graphics\core\model_matrix.h" />
-    <ClInclude Include="engine\graphics\core\projection_matrix.h" />
-    <ClInclude Include="engine\graphics\core\vertex.h" />
-    <ClInclude Include="engine\graphics\material.h" />
-    <ClInclude Include="engine\graphics\mesh.h" />
-    <ClInclude Include="engine\graphics\mesh2d.h" />
-    <ClInclude Include="engine\graphics\mesh3d.h" />
-    <ClInclude Include="engine\graphics\shader.h" />
-    <ClInclude Include="engine\graphics\shapes\rectangle.h" />
-    <ClInclude Include="engine\graphics\shapes\rect_prism.h" />
-    <ClInclude Include="engine\graphics\texture.h" />
-    <ClInclude Include="engine\graphics\texture2d.h" />
-    <ClInclude Include="engine\window\window.h" />
-    <ClInclude Include="game\core\map.h" />
+    <ClInclude Include="game\camera\camera.h" />
     <ClInclude Include="game\entity_type.h" />
-    <ClInclude Include="game\factories\entity_factory.h" />
+    <ClInclude Include="game\factories\renderer_factory.h" />
     <ClInclude Include="game\factories\sprite_factory.h" />
+    <ClInclude Include="game\graphics\core\model_matrix.h" />
+    <ClInclude Include="game\graphics\core\projection_matrix.h" />
+    <ClInclude Include="game\graphics\core\vertex.h" />
+    <ClInclude Include="game\graphics\material.h" />
+    <ClInclude Include="game\graphics\mesh.h" />
+    <ClInclude Include="game\graphics\mesh2d.h" />
+    <ClInclude Include="game\graphics\mesh3d.h" />
+    <ClInclude Include="game\graphics\shader.h" />
+    <ClInclude Include="game\graphics\shapes\rectangle.h" />
+    <ClInclude Include="game\graphics\shapes\rect_prism.h" />
+    <ClInclude Include="game\graphics\shapes\triangle.h" />
+    <ClInclude Include="game\graphics\texture.h" />
+    <ClInclude Include="game\graphics\texture2d.h" />
     <ClInclude Include="game\renderer\master_renderer.h" />
     <ClInclude Include="game\renderer\cube_renderer.h" />
     <ClInclude Include="game\sprite_type.h" />
-    <ClInclude Include="libs.h" />
+    <ClInclude Include="game\util\hashing.h" />
+    <ClInclude Include="game\window\window.h" />
+    <ClInclude Include="game\world\chunk.h" />
+    <ClInclude Include="game\world\chunk_map.h" />
+    <ClInclude Include="const.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\fragment_core.glsl" />
