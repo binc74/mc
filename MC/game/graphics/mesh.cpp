@@ -5,11 +5,6 @@ namespace game {
 		has_specular = true;
 	}
 
-	Mesh::Mesh(ModelMatrix* model_matrix) {
-		has_specular = true;
-		this->model_matrix = model_matrix;
-	}
-
 	Mesh::~Mesh() {
 		delete model_matrix;
 	}

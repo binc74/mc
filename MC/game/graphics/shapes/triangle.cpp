@@ -2,7 +2,7 @@
 
 namespace game {
 	Triangle::Triangle(ModelMatrix* model_matrix,
-		vector<Vertex> vertices) : Mesh2D(model_matrix) {
+		vector<Vertex> vertices) : Mesh2D() {
 		this->vertices = vertices;
 		this->indices = vector<unsigned int> { 0, 1, 2 };
 

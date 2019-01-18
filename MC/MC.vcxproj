@@ -135,7 +135,6 @@
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\shapes\rectangle.cpp" />
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
-    <ClCompile Include="game\graphics\shapes\triangle.cpp" />
     <ClCompile Include="game\graphics\texture.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
     <ClCompile Include="game\renderer\cube_renderer.cpp" />
@@ -161,9 +160,9 @@
     <ClInclude Include="game\graphics\shader.h" />
     <ClInclude Include="game\graphics\shapes\rectangle.h" />
     <ClInclude Include="game\graphics\shapes\rect_prism.h" />
-    <ClInclude Include="game\graphics\shapes\triangle.h" />
     <ClInclude Include="game\graphics\texture.h" />
     <ClInclude Include="game\graphics\texture2d.h" />
+    <ClInclude Include="game\objects\cube.h" />
     <ClInclude Include="game\renderer\master_renderer.h" />
     <ClInclude Include="game\renderer\cube_renderer.h" />
     <ClInclude Include="game\sprite_type.h" />

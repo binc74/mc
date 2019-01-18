@@ -5,9 +5,6 @@ namespace game {
 		model_matrix = new ModelMatrix();
 	}
 
-	Mesh2D::Mesh2D(ModelMatrix* model_matrix) : Mesh(model_matrix) {
-	}
-
 	Mesh2D::~Mesh2D() {
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
@@ -44,9 +41,5 @@ namespace game {
 		glEnableVertexAttribArray(3);
 
 		glBindVertexArray(0);
-	}
-
-	void Mesh2D::update(Shader* shader) {
-		
 	}
 }

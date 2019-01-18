@@ -14,9 +14,7 @@ namespace game {
 	public:
 		Mesh3D();
 		Mesh3D(float px, float py, float pz);
-		Mesh3D(ModelMatrix* model_matrix);
 		~Mesh3D();
-		void update(Shader* shader) override;
 	};
 }
 

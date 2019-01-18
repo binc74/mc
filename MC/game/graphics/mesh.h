@@ -21,10 +21,8 @@ namespace game {
 		ModelMatrix* model_matrix;
 
 		Mesh();
-		Mesh(ModelMatrix* model_matrix);
 		~Mesh();
 		void setHasSpecular(bool has_specular);
-		virtual void update(Shader* shader) = 0;
 	};
 }
 

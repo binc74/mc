@@ -66,9 +66,6 @@
     <ClCompile Include="game\graphics\shapes\rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\graphics\shapes\triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -140,9 +137,6 @@
     <ClInclude Include="game\graphics\shapes\rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\graphics\shapes\triangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game\graphics\core\model_matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -156,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

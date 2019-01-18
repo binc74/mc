@@ -9,8 +9,6 @@ namespace game {
 		void initIndices();
 
 	public:
-		Rectangle(glm::vec3 top_left,
-			glm::vec3 bot_left, glm::vec3 bot_right, float t_width_num, float t_height_num);
 		Rectangle(float px, float py, float pz, float length, glm::vec3 rotation);
 		~Rectangle();
 		void setTopLeftColor(float r, float g, float b);

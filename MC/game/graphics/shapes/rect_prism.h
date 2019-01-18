@@ -5,7 +5,10 @@
 #include "rectangle.h"
 
 namespace game {
-	class RectPrism : public Mesh3D {
+	class RectPrism : public Mesh2D {
+	private:
+		void initIndices();
+
 	public:
 		RectPrism();
 		RectPrism(float x, float y, float z, float length);

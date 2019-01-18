@@ -8,29 +8,6 @@ namespace game {
 		};
 	}
 
-	Rectangle::Rectangle(glm::vec3 top_left,
-		glm::vec3 bot_left, glm::vec3 bot_right, float t_width_num, float t_height_num) : Mesh2D() {
-		initIndices();
-
-		// Init vertices for the square
-		glm::vec3 top_right = top_left + bot_right - bot_left;
-		glm::vec3 center = (bot_right - top_left) * 0.5f;
-		glm::vec3 color = glm::vec3(1.f, 1.f, 1.f);
-		glm::vec3 normal = glm::vec3(0.f, 0.f, 1.f);
-
-		vertices.push_back(Vertex(top_left - center, color, 0, t_height_num, normal));
-		vertices.push_back(Vertex(bot_left - center, color, 0, 0, normal));
-		vertices.push_back(Vertex(bot_right - center, color, t_width_num, 0, normal));
-		vertices.push_back(Vertex(top_right - center, color, t_width_num, t_height_num, normal));
-
-		// Init model matrix of ths square
-		model_matrix->setPosition(bot_left);
-		model_matrix->setRotation(0);
-		model_matrix->setScale(1);
-
-		initMesh();
-	}
-
 	Rectangle::Rectangle(float px, float py, float pz, float length, glm::vec3 rotation) : Mesh2D() {
 		initIndices();
 		glm::vec3 color = glm::vec3(1.f, 1.f, 1.f);

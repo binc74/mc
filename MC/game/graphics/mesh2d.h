@@ -16,10 +16,7 @@ namespace game {
 		vector<unsigned int> indices;
 
 		Mesh2D();
-		Mesh2D(ModelMatrix* model_matrix);
-		~Mesh2D();	
-
-		void update(Shader* shader) override;
+		~Mesh2D();
 	};
 }
 
