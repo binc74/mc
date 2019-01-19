@@ -135,15 +135,22 @@ namespace game {
 	void Window::initMeshes() {
 		mr = new game::MasterRenderer(shaders[0], materials[0]);
 
-		RectPrism* rp = new RectPrism(0, -1, 0, 1);
-		mr->addModel(game::EntityType::SOIL, rp);
+		//RectPrism* rp = new RectPrism(0, -1, 0, 1);
+		//mr->addModel(game::EntityType::SOIL, rp);
 
-		//for (int i = -5; i < 10; ++i) {
-		//	for (int j = -5; j < 10; ++j) {
-		//		RectPrism* rp = new RectPrism(i, -1, j, 1);
-		//		mr->addModel(game::EntityType::GRASS, rp);
-		//	}
-		//}	
+		for (int i = -5; i < 10; ++i) {
+			for (int j = -5; j < 10; ++j) {
+				RectPrism* rp = new RectPrism(i, -1, j, 1);
+				mr->addModel(game::EntityType::GRASS, rp);
+			}
+		}	
+
+		for (int i = 0; i < 5; ++i) {
+			for (int j = -5; j < 0; ++j) {
+				RectPrism* rp = new RectPrism(j, i, -5, 1);
+				mr->addModel(game::EntityType::GRASS, rp);
+			}
+		}
 	}
 
 	void Window::initLights() {

@@ -44,7 +44,7 @@ void main() {
 	vec3 diffuse_light = calculate_diffuse(material, vs_position, vs_normal, light_pos0);
 
 	// specular light	
-	vec3 specular_light = calculate_specular(material, vs_position, vs_normal, light_pos0, camera_pos);
+	//vec3 specular_light = calculate_specular(material, vs_position, vs_normal, light_pos0, camera_pos);
 
 	// attenuation light
 

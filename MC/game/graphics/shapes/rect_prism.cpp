@@ -18,46 +18,51 @@ namespace game {
 
 	RectPrism::RectPrism(float x, float y, float z, float length) : Mesh2D() {
 		glm::vec3 color = glm::vec3(1.f, 1.f, 1.f);
-		glm::vec3 normal = glm::vec3(0.f, 0.f, 1.f);
+		glm::vec3 normal_top = glm::vec3(0.f, 1.f, 0.f);
+		glm::vec3 normal_bot = glm::vec3(0.f, -1.f, 0.f);
+		glm::vec3 normal_left = glm::vec3(-1.f, 0.f, 0.f);
+		glm::vec3 normal_right = glm::vec3(1.f, 0.f, 0.f);
+		glm::vec3 normal_front = glm::vec3(0.f, 0.f, 1.f);
+		glm::vec3 normal_back = glm::vec3(0.f, 0.f, -1.f);
 		
 
 		float len = 0.5f;
 		// Order: top, front right back left bot
 		// Add top face (vertices: top-front-left -> top-front-right -> top-back-right -> top-back-left)
-		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 0, 1, normal));		// v0 top-front-left
-		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 0, 0, normal));	// v1 top-front-right
-		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 1, 0, normal));		// v2 top-back-right
-		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 1, 1, normal));		// v3 top-back-left
+		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 0, 1, normal_top));		// v0 top-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 0, 0, normal_top));	// v1 top-front-right
+		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 1, 0, normal_top));		// v2 top-back-right
+		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 1, 1, normal_top));		// v3 top-back-left
 
 		// Add front face (vertices: top-front-left -> bot-front-left -> bot-front-right -> top-front-right) 
-		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 0, 1, normal));		// v4 top-front-left
-		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 0, 0, normal));		// v5 bot-front-left
-		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 1, 0, normal));		// v6 bot-front-right
-		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 1, 1, normal));		// v7 top-front-right
+		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 0, 1, normal_front));		// v4 top-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 0, 0, normal_front));		// v5 bot-front-left
+		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 1, 0, normal_front));		// v6 bot-front-right
+		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 1, 1, normal_front));		// v7 top-front-right
 
 		// Add right face
-		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 0, 1, normal));		// v8 top-front-right
-		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 0, 0, normal));		// v9 bot-front-right
-		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 1, 0, normal));		// v10 bot-back-right
-		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 1, 1, normal));		// v11 top-back-right
+		vertices.push_back(Vertex(glm::vec3(len, len, len), color, 0, 1, normal_right));		// v8 top-front-right
+		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 0, 0, normal_right));		// v9 bot-front-right
+		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 1, 0, normal_right));		// v10 bot-back-right
+		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 1, 1, normal_right));		// v11 top-back-right
 
 		// Add back face
-		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 0, 1, normal));		// v12 top-back-right
-		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 0, 0, normal));		// v13 bot-back-right
-		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 1, 0, normal));	// v14 bot-back-left
-		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 1, 1, normal));		// v15 top-back-left
+		vertices.push_back(Vertex(glm::vec3(len, len, -len), color, 0, 1, normal_back));		// v12 top-back-right
+		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 0, 0, normal_back));		// v13 bot-back-right
+		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 1, 0, normal_back));	// v14 bot-back-left
+		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 1, 1, normal_back));		// v15 top-back-left
 
 		// Add left face
-		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 0, 1, normal));		// v16 top-back-left
-		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 0, 0, normal));	// v17 bot-back-left
-		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 1, 0, normal));		// v18 bot-front-left
-		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 1, 1, normal));		// v19 top-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, len, -len), color, 0, 1, normal_left));		// v16 top-back-left
+		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 0, 0, normal_left));	// v17 bot-back-left
+		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 1, 0, normal_left));		// v18 bot-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, len, len), color, 1, 1, normal_left));		// v19 top-front-left
 
 		// Add bot face
-		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 0, 1, normal));		// v20 bot-front-left
-		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 0, 0, normal));	// v21 bot-back-left
-		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 1, 0, normal));		// v22 bot-back-right
-		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 1, 1, normal));		// v23 bot-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, -len, len), color, 0, 1, normal_bot));		// v20 bot-front-left
+		vertices.push_back(Vertex(glm::vec3(-len, -len, -len), color, 0, 0, normal_bot));	// v21 bot-back-left
+		vertices.push_back(Vertex(glm::vec3(len, -len, -len), color, 1, 0, normal_bot));		// v22 bot-back-right
+		vertices.push_back(Vertex(glm::vec3(len, -len, len), color, 1, 1, normal_bot));		// v23 bot-front-left
 
 		// Init model matrix and mesh
 		model_matrix->setPosition(glm::vec3(x, y, z));
