@@ -6,8 +6,6 @@
 #include "const.h"
 #include "game/window/window.h"
 
-#include "game/graphics/shapes/triangle.h"
-
 using namespace game;
 
 int main() {

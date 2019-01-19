@@ -21,7 +21,7 @@ namespace game {
 
 	public:
 		Material();
-		Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
+		Material(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular);
 		~Material();
 		void sendToShader(Shader& shader_id, GLint diffuse_tex, GLint specular_tex);
 	};

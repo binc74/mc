@@ -131,9 +131,7 @@
     <ClCompile Include="game\graphics\material.cpp" />
     <ClCompile Include="game\graphics\mesh.cpp" />
     <ClCompile Include="game\graphics\mesh2d.cpp" />
-    <ClCompile Include="game\graphics\mesh3d.cpp" />
     <ClCompile Include="game\graphics\shader.cpp" />
-    <ClCompile Include="game\graphics\shapes\rectangle.cpp" />
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
     <ClCompile Include="game\graphics\texture.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
@@ -156,9 +154,7 @@
     <ClInclude Include="game\graphics\material.h" />
     <ClInclude Include="game\graphics\mesh.h" />
     <ClInclude Include="game\graphics\mesh2d.h" />
-    <ClInclude Include="game\graphics\mesh3d.h" />
     <ClInclude Include="game\graphics\shader.h" />
-    <ClInclude Include="game\graphics\shapes\rectangle.h" />
     <ClInclude Include="game\graphics\shapes\rect_prism.h" />
     <ClInclude Include="game\graphics\texture.h" />
     <ClInclude Include="game\graphics\texture2d.h" />

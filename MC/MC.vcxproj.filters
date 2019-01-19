@@ -42,9 +42,6 @@
     <ClCompile Include="game\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\graphics\mesh3d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\graphics\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -61,9 +58,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\graphics\texture2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game\graphics\shapes\rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp">
@@ -125,16 +119,10 @@
     <ClInclude Include="game\graphics\mesh2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\graphics\mesh3d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game\graphics\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\shapes\rect_prism.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\graphics\shapes\rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\core\model_matrix.h">

@@ -6,7 +6,7 @@ namespace game {
 	}
 
 
-	Material::Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular) {
+	Material::Material(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular) {
 		this->ambient = ambient;
 		this->diffuse = diffuse;
 		this->specular = specular;

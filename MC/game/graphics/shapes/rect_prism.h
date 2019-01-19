@@ -1,8 +1,7 @@
 #ifndef RECT_PRISM_H
 #define RECT_PRISM_H
 
-#include "../mesh3d.h"
-#include "rectangle.h"
+#include "../mesh2d.h"
 
 namespace game {
 	class RectPrism : public Mesh2D {
