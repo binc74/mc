@@ -11,14 +11,23 @@ namespace game {
 	private:
 		std::unordered_set<RectPrism*> objs;
 		std::unordered_map<int, RectPrism*> pos;
-		int posx, posy;
+		int px, pz;
+
+		inline int hashXYZ(const glm::vec3& pos) {
+			int xi = (int)pos.x - px;
+			int zi = (int)pos.y;
+			int yi = (int)pos.z - pz;
+
+			return yi * 10000 + xi * 100 + zi;
+		}
 
 	public:
 		Chunk();
-		Chunk(int posx, int posy);
+		Chunk(int px, int pz);
 		~Chunk();
+
 		void addObj(RectPrism* obj);
-		void deleteObj(RectPrism* obj);
+		void removeObj(RectPrism* obj);
 	};
 }
 

@@ -14,6 +14,10 @@ namespace game {
 		~RectPrism();
 
 		void render(Shader* shader, Material* material, vector<int>& order);
+
+		inline glm::vec3 getPos() {
+			return model_matrix->position;
+		}
 	};
 }
 #endif

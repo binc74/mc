@@ -5,8 +5,9 @@ namespace game {
 
 	}
 
-	Chunk::Chunk(int posx, int posy) {
-
+	Chunk::Chunk(int px, int pz) {
+		this->px = px;
+		this->pz = pz;
 	}
 
 	Chunk::~Chunk() {
@@ -19,7 +20,7 @@ namespace game {
 
 	}
 
-	void Chunk::deleteObj(RectPrism* obj) {
+	void Chunk::removeObj(RectPrism* obj) {
 
 	}
 }

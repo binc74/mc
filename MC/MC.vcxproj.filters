@@ -36,9 +36,6 @@
     <ClCompile Include="game\factories\renderer_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\util\hashing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\factories\renderer_factory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\util\hashing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\camera\camera.h">
