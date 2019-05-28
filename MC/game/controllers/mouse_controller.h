@@ -2,19 +2,28 @@
 #define MOUSE_CONTROLLER_H
 
 #include "controller.h"
+#include "../camera/camera.h"
 
 namespace game {
 	class MouseController : public Controller {
 	private:
-		GLFWwindow* window;
+		Camera* camera;
+		
+		double last_mouse_x;
+		double last_mouse_y;
+		double mouse_x;
+		double mouse_y;
+		double mouse_offset_x;
+		double mouse_offset_y;
+		bool is_first_mouse;
 
 		void initParams();
 
 	public:
 		MouseController();
-		MouseController(GLFWwindow* window);
+		MouseController(GLFWwindow* window, Camera* camera);
 
-		void updateInput();
+		void updateInput(float dt);
 	};
 }
 

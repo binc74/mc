@@ -12,17 +12,6 @@ namespace game {
 		this->window_height = window_height;
 		this->window_width = window_width;
 		this->window_name = window_name;		
-
-		dt = 0.f;
-		curr_time = 0.f;
-		last_time = 0.f;
-		last_mouse_x = 0.0;
-		last_mouse_y = 0.0;
-		mouse_x = 0.0;
-		mouse_y = 0.0;
-		mouse_offset_x = 0.0;
-		mouse_offset_y = 0.0;
-		is_first_mouse = true;
 	}
 
 	Window::~Window() {
@@ -106,6 +95,12 @@ namespace game {
 		initMeshes();
 		initLights();
 		initUniform();
+		initControllers();
+	}
+
+	void Window::initControllers() {
+		mc.addController(new MouseController(window, camera));
+		mc.addController(new KeyboardController(window, camera));
 	}
 
 	void Window::initCamera() {
@@ -167,61 +162,8 @@ namespace game {
 		shaders[0]->unuse();
 	}
 
-	void Window::updateTime() {
-		curr_time = (float)glfwGetTime();
-		dt = curr_time - last_time;
-		last_time = curr_time;
-	}
-
 	void Window::updateInput() {
-		updateTime();
-		updateKeyboardInput();
-		updateMouseInput();
-	}
-
-	void Window::updateKeyboardInput() {
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-			glfwSetWindowShouldClose(window, GLFW_TRUE);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-			camera->goFront(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-			camera->goBack(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-			camera->goLeft(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-			camera->goRight(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-			camera->goUp(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-			camera->goDown(dt);
-		}
-		else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
-
-		}
-		else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
-
-		}
-	}
-
-	void Window::updateMouseInput() {
-		glfwGetCursorPos(window, &mouse_x, &mouse_y);
-
-		if (is_first_mouse) {
-			last_mouse_x = mouse_x;
-			last_mouse_y = mouse_y;
-			is_first_mouse = false;
-		}
-
-		mouse_offset_x = mouse_x - last_mouse_x;
-		mouse_offset_y = mouse_y - last_mouse_y;
-		last_mouse_x = mouse_x;
-		last_mouse_y = mouse_y;
+		mc.updateInput();
 	}
 
 	void Window::updateUniforms() {
@@ -243,7 +185,6 @@ namespace game {
 		glfwPollEvents();
 
 		updateInput();
-		camera->updateByMouseInput(dt, mouse_offset_x, mouse_offset_y);
 	}
 
 	void Window::render() {

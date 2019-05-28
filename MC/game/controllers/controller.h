@@ -1,6 +1,6 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
-#include <glew.h>
+
 #include <glfw3.h>
 
 namespace game {
@@ -14,7 +14,7 @@ namespace game {
 
 		~Controller();
 
-		virtual void updateInput() = 0;
+		virtual void updateInput(float dt) = 0;
 	};
 }
 

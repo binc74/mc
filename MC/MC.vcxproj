@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="game\camera\camera.cpp" />
+    <ClCompile Include="game\controllers\controller.cpp" />
+    <ClCompile Include="game\controllers\keyboard_controller.cpp" />
+    <ClCompile Include="game\controllers\main_controller.cpp" />
+    <ClCompile Include="game\controllers\mouse_controller.cpp" />
     <ClCompile Include="game\factories\renderer_factory.cpp" />
     <ClCompile Include="game\factories\sprite_factory.cpp" />
     <ClCompile Include="game\graphics\core\model_matrix.cpp" />
@@ -143,6 +147,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\camera\camera.h" />
+    <ClInclude Include="game\controllers\controller.h" />
+    <ClInclude Include="game\controllers\keyboard_controller.h" />
+    <ClInclude Include="game\controllers\main_controller.h" />
+    <ClInclude Include="game\controllers\mouse_controller.h" />
     <ClInclude Include="game\entity_type.h" />
     <ClInclude Include="game\factories\renderer_factory.h" />
     <ClInclude Include="game\factories\sprite_factory.h" />

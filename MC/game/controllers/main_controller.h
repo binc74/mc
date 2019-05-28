@@ -4,23 +4,26 @@
 #include <vector>
 
 #include <glfw3.h>
+
 #include "controller.h"
-#include "mouse_controller.h"
 
 namespace game {
 	class MainController {
 	private:
-		GLFWwindow* window;
 		std::vector<Controller*> controllers;
 
-		void initControllers();
+		// Use to calculate dt
+		float dt;
+		float last_time;
+
+		void initParams();
+		void updateTime();
 
 	public:
 		MainController();
-		MainController(GLFWwindow* window);
-
 		~MainController();
 
+		void addController(Controller* cont);
 		void updateInput();
 	};
 }

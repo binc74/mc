@@ -2,13 +2,7 @@
 
 namespace game {
 	MainController::MainController() {
-		// Default constructor
-	}
-
-	MainController::MainController(GLFWwindow* window) {
-		this->window = window;
-
-		initControllers();
+		initParams();
 	}
 
 	MainController::~MainController() {
@@ -17,13 +11,26 @@ namespace game {
 		}
 	}
 
-	void MainController::initControllers() {
-		controllers.push_back(new MouseController(window));
+	void MainController::initParams() {
+		dt = 0.f;
+		last_time = 0.f;
+	}
+
+	void MainController::updateTime() {
+		float curr_time = (float)glfwGetTime();
+		dt = curr_time - last_time;
+		last_time = curr_time;
+	}
+
+	void MainController::addController(Controller* cont) {
+		controllers.push_back(cont);
 	}
 
 	void MainController::updateInput() {
+		updateTime();
+
 		for (Controller* it : controllers) {
-			it->updateInput();
+			it->updateInput(dt);
 		}
 	}
 }
