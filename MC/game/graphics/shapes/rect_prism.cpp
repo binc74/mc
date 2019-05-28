@@ -77,7 +77,7 @@ namespace game {
 		
 	}
 
-	void RectPrism::render(Shader* shader, Material* material, vector<int>& order) {
+	void RectPrism::render(Shader* shader, Material* material, std::vector<int>& order) {
 		shader->setUniformMat4fv(model_matrix->getMatrix(), "model_matrix");
 		glBindVertexArray(VAO);
 

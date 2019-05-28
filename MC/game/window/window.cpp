@@ -37,7 +37,7 @@ namespace game {
 			delete it;
 		}
 
-		for (Mesh* it : meshes) {
+		for (Mesh2D* it : meshes) {
 			delete it;
 		}
 
@@ -148,7 +148,7 @@ namespace game {
 		for (int i = 0; i < 5; ++i) {
 			for (int j = -5; j < 0; ++j) {
 				RectPrism* rp = new RectPrism(j, i, -5, 1);
-				mr->addModel(game::EntityType::GRASS, rp);
+				mr->addModel(game::EntityType::COBBLESTONE, rp);
 			}
 		}
 	}

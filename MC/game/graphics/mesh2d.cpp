@@ -1,7 +1,8 @@
 #include "mesh2d.h"
 
 namespace game {
-	Mesh2D::Mesh2D() : Mesh() {
+	Mesh2D::Mesh2D() {
+		has_specular = true;
 		model_matrix = new ModelMatrix();
 	}
 
@@ -9,6 +10,8 @@ namespace game {
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
 		glDeleteBuffers(1, &EBO);
+
+		delete model_matrix;
 	}
 
 	void Mesh2D::initMesh() {
@@ -41,5 +44,9 @@ namespace game {
 		glEnableVertexAttribArray(3);
 
 		glBindVertexArray(0);
+	}
+
+	void Mesh2D::setHasSpecular(bool has_specular) {
+		this->has_specular = has_specular;
 	}
 }

@@ -5,7 +5,7 @@
 #include <glew.h>
 #include <glfw3.h>
 
-#include "../graphics/mesh.h"
+#include "../graphics/mesh2d.h"
 #include "../graphics/material.h"
 #include "../graphics/texture2d.h"
 #include "../graphics/shader.h"
@@ -24,7 +24,7 @@ namespace game {
 		ProjectionMatrix* proj_matrix;
 		std::vector<Shader*> shaders;
 		std::vector<Material*> materials;
-		std::vector<Mesh*> meshes;
+		std::vector<Mesh2D*> meshes;
 		std::vector<glm::vec3*> lights;
 
 		game::MasterRenderer* mr;

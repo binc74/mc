@@ -13,7 +13,7 @@ namespace game {
 		RectPrism(float x, float y, float z, float length);
 		~RectPrism();
 
-		void render(Shader* shader, Material* material, vector<int>& order);
+		void render(Shader* shader, Material* material, std::vector<int>& order);
 
 		inline glm::vec3 getPos() {
 			return model_matrix->position;

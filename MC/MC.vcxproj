@@ -129,7 +129,6 @@
     <ClCompile Include="game\graphics\core\model_matrix.cpp" />
     <ClCompile Include="game\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="game\graphics\material.cpp" />
-    <ClCompile Include="game\graphics\mesh.cpp" />
     <ClCompile Include="game\graphics\mesh2d.cpp" />
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
@@ -151,7 +150,6 @@
     <ClInclude Include="game\graphics\core\projection_matrix.h" />
     <ClInclude Include="game\graphics\core\vertex.h" />
     <ClInclude Include="game\graphics\material.h" />
-    <ClInclude Include="game\graphics\mesh.h" />
     <ClInclude Include="game\graphics\mesh2d.h" />
     <ClInclude Include="game\graphics\shader.h" />
     <ClInclude Include="game\graphics\shapes\rect_prism.h" />
