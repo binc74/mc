@@ -1,6 +1,7 @@
 #include "window.h"
 
-
+#include "../controllers/commands/include_command.h"
+#include "../controllers/keyboard_controller.h"
 #include "../../game/entity_type.h"
 
 namespace game {
@@ -100,7 +101,17 @@ namespace game {
 
 	void Window::initControllers() {
 		mc.addController(new MouseController(window, camera));
-		mc.addController(new KeyboardController(window, camera));
+		
+		KeyboardController* kc = new KeyboardController(window);
+		kc->addInputCommand(GLFW_KEY_ESCAPE, new CloseWindowCommand(window));
+		kc->addInputCommand(GLFW_KEY_W, new MoveFrontCommand(camera));
+		kc->addInputCommand(GLFW_KEY_S, new MoveBackCommand(camera));
+		kc->addInputCommand(GLFW_KEY_A, new MoveLeftCommand(camera));
+		kc->addInputCommand(GLFW_KEY_D, new MoveRightCommand(camera));
+		kc->addInputCommand(GLFW_KEY_SPACE, new MoveUpCommand(camera));
+		kc->addInputCommand(GLFW_KEY_Q, new MoveDownCommand(camera));
+
+		mc.addController(kc);
 	}
 
 	void Window::initCamera() {
@@ -182,8 +193,6 @@ namespace game {
 	}
 
 	void Window::update() {
-		glfwPollEvents();
-
 		updateInput();
 	}
 

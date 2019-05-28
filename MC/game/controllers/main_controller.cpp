@@ -27,6 +27,7 @@ namespace game {
 	}
 
 	void MainController::updateInput() {
+		glfwPollEvents();
 		updateTime();
 
 		for (Controller* it : controllers) {

@@ -147,6 +147,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\camera\camera.h" />
+    <ClInclude Include="game\controllers\commands\close_window_command.h" />
+    <ClInclude Include="game\controllers\commands\include_command.h" />
+    <ClInclude Include="game\controllers\commands\input_command.h" />
+    <ClInclude Include="game\controllers\commands\move_back_command.h" />
+    <ClInclude Include="game\controllers\commands\move_down_command.h" />
+    <ClInclude Include="game\controllers\commands\move_front_command.h" />
+    <ClInclude Include="game\controllers\commands\move_left_command.h" />
+    <ClInclude Include="game\controllers\commands\move_right_command.h" />
+    <ClInclude Include="game\controllers\commands\move_up_command.h" />
     <ClInclude Include="game\controllers\controller.h" />
     <ClInclude Include="game\controllers\keyboard_controller.h" />
     <ClInclude Include="game\controllers\main_controller.h" />

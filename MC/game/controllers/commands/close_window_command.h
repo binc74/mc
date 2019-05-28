@@ -4,19 +4,18 @@
 #include <glfw3.h>
 
 #include "input_command.h"
-#include "../../window/window.h"
 
 namespace game {
 	class CloseWindowCommand : public InputCommand {
 	private:
-		game::Window* window;
+		GLFWwindow* window;
 
 	public:
 		CloseWindowCommand() {
 
 		}
 
-		CloseWindowCommand(game::Window* window) {
+		CloseWindowCommand(GLFWwindow* window) {
 			this->window = window;
 		}
 
