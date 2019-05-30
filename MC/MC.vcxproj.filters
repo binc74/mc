@@ -42,9 +42,6 @@
     <ClCompile Include="game\graphics\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\graphics\texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\graphics\material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,9 +102,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\camera\camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\graphics\texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\texture2d.h">

@@ -135,7 +135,7 @@ namespace game {
 	}
 
 	void Window::initTexturesOpt() {
-		Texture::initTextureOpt2D();
+		Texture2D::initTextureOpt2D();
 	}
 
 	void Window::initMaterials() {

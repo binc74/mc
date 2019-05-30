@@ -1,8 +1,7 @@
 #ifndef SPRITE_FACTORY_H
 #define SPRITE_FACTORY_H
 
-#include <vector>
-#include <map>
+#include <unordered_map>
 #include <SOIL2.h>
 
 #include "../sprite_type.h"
@@ -12,7 +11,7 @@ namespace game {
 	class SpriteFactory {
 	private:
 		unsigned char* sprite_sheet;
-		std::vector<Texture2D*> cache;
+		std::unordered_map<int, Texture2D*> cache;
 		int num_row, num_col;
 		int sprite_width, sprite_height;
 

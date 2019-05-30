@@ -136,7 +136,6 @@
     <ClCompile Include="game\graphics\mesh2d.cpp" />
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
-    <ClCompile Include="game\graphics\texture.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
     <ClCompile Include="game\renderer\cube_renderer.cpp" />
     <ClCompile Include="game\renderer\master_renderer.cpp" />
@@ -170,7 +169,6 @@
     <ClInclude Include="game\graphics\mesh2d.h" />
     <ClInclude Include="game\graphics\shader.h" />
     <ClInclude Include="game\graphics\shapes\rect_prism.h" />
-    <ClInclude Include="game\graphics\texture.h" />
     <ClInclude Include="game\graphics\texture2d.h" />
     <ClInclude Include="game\objects\cube.h" />
     <ClInclude Include="game\renderer\master_renderer.h" />

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "texture.h"
+#include "texture2d.h"
 #include "shader.h"
 #include "material.h"
 #include "core/model_matrix.h"

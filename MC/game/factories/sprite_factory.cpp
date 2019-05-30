@@ -32,30 +32,27 @@ namespace game {
 
 		sprite_width = width / num_col;
 		sprite_height = height / num_row;
-
-		// Book 100 places for cache.
-		int cache_size = 100;
-		cache = std::vector<Texture2D*> (cache_size);
-		for (int i = 0; i < cache_size; ++i) {
-			cache[i] = NULL;
-		}
 	}
 
 	SpriteFactory::~SpriteFactory() {
 		SOIL_free_image_data(sprite_sheet);
 
 		for (auto it: cache) {
-			if (it != NULL)
-				delete it;
+			delete it.second;
 		}
 	}
 
 	Texture2D* SpriteFactory::getTexture(SpriteType type) {
 		int index = (int)type;
+
+		if (cache.find(index) != cache.end()) {
+			return cache[index];
+		}
+		
 		unsigned char* sprite = getSprite(index / num_col, index % num_col, 1, 1);
 		Texture2D* t = new Texture2D(sprite, sprite_width, sprite_height);
+		cache[index] = t;
 		SOIL_free_image_data(sprite);
-		//cache[0] = t;
 
 		return t;
 	}
