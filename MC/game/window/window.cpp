@@ -19,6 +19,8 @@ namespace game {
 		delete camera;
 		delete proj_matrix;
 
+		shaders[0]->unuse();
+
 		for (Shader* it : shaders) {
 			delete it;
 		}
@@ -97,6 +99,8 @@ namespace game {
 		initLights();
 		initUniform();
 		initControllers();
+
+		shaders[0]->use();
 	}
 
 	void Window::initControllers() {
@@ -144,8 +148,8 @@ namespace game {
 		//RectPrism* rp = new RectPrism(0, -1, 0, 1);
 		//mr->addModel(game::EntityType::SOIL, rp);
 
-		for (int i = -5; i < 10; ++i) {
-			for (int j = -5; j < 10; ++j) {
+		for (int i = -5; i < 20; ++i) {
+			for (int j = -5; j < 20; ++j) {
 				RectPrism* rp = new RectPrism(i, -1, j, 1);
 				mr->addModel(game::EntityType::GRASS, rp);
 			}
@@ -164,13 +168,13 @@ namespace game {
 	}
 
 	void Window::initUniform() {
-		shaders[0]->use();
+		//shaders[0]->use();
 		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
 		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
 		shaders[0]->setUniform3fv(*lights[0], "light_pos0");
 
 		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
-		shaders[0]->unuse();
+		//shaders[0]->unuse();
 	}
 
 	void Window::updateInput() {
@@ -199,7 +203,7 @@ namespace game {
 	void Window::render() {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the three buffers
-		shaders[0]->use();
+		//shaders[0]->use();
 
 		updateUniforms();
 
@@ -208,10 +212,10 @@ namespace game {
 		glfwSwapBuffers(window);
 		glFlush();
 
-		glBindVertexArray(0);
-		shaders[0]->unuse();
-		glActiveTexture(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindVertexArray(0);
+		//shaders[0]->unuse();
+		//glActiveTexture(0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void Window::initShader(Shader* shader) {

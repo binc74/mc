@@ -24,12 +24,12 @@ namespace game {
 	}
 
 	void MasterRenderer::render() {
-		shader->use();
+		//shader->use();
 
 		for (auto it: map) {
 			it.second->render(shader, material);
 		}
 
-		shader->unuse();
+		//shader->unuse();
 	}
 }

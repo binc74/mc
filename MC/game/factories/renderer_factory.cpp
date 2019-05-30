@@ -16,6 +16,8 @@ namespace game {
 		case EntityType::COBBLESTONE:
 			return getCobbleStoneRenderer();
 		}
+
+		return NULL;
 	}
 
 	CubeRenderer* RendererFactory::getSoilRenderer() {
