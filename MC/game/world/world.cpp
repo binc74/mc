@@ -11,12 +11,12 @@ namespace game {
 
 	void World::addObj(RectPrism* obj) {
 		glm::vec3 pos = obj->getPos();
-		long long hp = hashXYZ(pos);
+		long hp = hashXYZ(pos);
 
 		auto it = chunks.find(hp);
 
 		if (it == chunks.end()) {
-			Chunk* c = new Chunk();
+			Chunk* c = new Chunk((int)pos.x << 4, (int)pos.y << 4, (int)pos.z << 4);
 			c->addObj(obj);
 			chunks[hp] = c;
 		}
@@ -40,10 +40,14 @@ namespace game {
 	}
 
 	void World::update(float dt) {
-
+		for (auto it: chunks) {
+			it.second->update(dt);
+		}
 	}
 
 	void World::draw() {
-
+		for (auto it : chunks) {
+			it.second->draw();
+		}
 	}
 }

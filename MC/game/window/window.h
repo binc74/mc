@@ -13,7 +13,7 @@
 #include "../camera/camera.h"
 #include "../graphics/shapes/rect_prism.h"
 
-#include "../../game/renderer/master_renderer.h"
+#include "../world/world.h"
 #include "../controllers/main_controller.h"
 #include "../controllers/mouse_controller.h"
 #include "../controllers/keyboard_controller.h"
@@ -30,7 +30,7 @@ namespace game {
 		std::vector<Mesh2D*> meshes;
 		std::vector<glm::vec3*> lights;
 
-		game::MasterRenderer* mr;
+		game::World world;
 		game::MainController mc;
 
 		void initGLEW();

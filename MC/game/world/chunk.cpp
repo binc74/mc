@@ -18,11 +18,24 @@ namespace game {
 	}
 
 	void Chunk::addObj(RectPrism* obj) {
-
+		if (objs.find(obj) == objs.end()) {
+			objs.insert(obj);
+			pos[hashXYZ(obj->getPos())] = obj;
+		}
+		else {
+			std::cerr << "Error adding obj: obj already exists" << std::endl;
+		}
 	}
 
 	void Chunk::removeObj(RectPrism* obj) {
-
+		auto it = objs.find(obj);
+		if (it != objs.end()) {
+			objs.erase(obj);
+			pos.erase(hashXYZ(obj->getPos()));
+		}
+		else {
+			std::cerr << "Error deleting obj: obj already exists" << std::endl;
+		}
 	}
 
 	void Chunk::update(float dt) {

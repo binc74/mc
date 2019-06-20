@@ -137,11 +137,12 @@
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\shapes\rect_prism.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
+    <ClCompile Include="game\renderer\chunk_renderer.cpp" />
     <ClCompile Include="game\renderer\cube_renderer.cpp" />
     <ClCompile Include="game\renderer\master_renderer.cpp" />
     <ClCompile Include="game\window\window.cpp" />
     <ClCompile Include="game\world\chunk.cpp" />
-    <ClCompile Include="game\world\chunk_map.cpp" />
+    <ClCompile Include="game\world\world.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,13 +172,14 @@
     <ClInclude Include="game\graphics\shapes\rect_prism.h" />
     <ClInclude Include="game\graphics\texture2d.h" />
     <ClInclude Include="game\objects\cube.h" />
+    <ClInclude Include="game\renderer\chunk_renderer.h" />
     <ClInclude Include="game\renderer\master_renderer.h" />
     <ClInclude Include="game\renderer\cube_renderer.h" />
     <ClInclude Include="game\sprite_type.h" />
     <ClInclude Include="game\window\window.h" />
     <ClInclude Include="game\world\chunk.h" />
-    <ClInclude Include="game\world\chunk_map.h" />
     <ClInclude Include="const.h" />
+    <ClInclude Include="game\world\world.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\fragment_core.glsl" />
