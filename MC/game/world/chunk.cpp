@@ -5,8 +5,9 @@ namespace game {
 
 	}
 
-	Chunk::Chunk(int px, int pz) {
+	Chunk::Chunk(int px, int py, int pz) {
 		this->px = px;
+		this->py = py;
 		this->pz = pz;
 	}
 
@@ -21,6 +22,14 @@ namespace game {
 	}
 
 	void Chunk::removeObj(RectPrism* obj) {
+
+	}
+
+	void Chunk::update(float dt) {
+
+	}
+
+	void Chunk::draw() {
 
 	}
 }
