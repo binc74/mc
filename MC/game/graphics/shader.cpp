@@ -70,7 +70,14 @@ namespace game {
 			std::cerr << info_log << std::endl;
 		}
 
-		unuse();
+		glDetachShader(id, vertex_shader);
+
+		if (geo_shader) {
+			glDetachShader(id, geo_shader);
+		}
+
+		glDetachShader(id, frag_shader);
+		//unuse();
 	}
 
 	Shader::Shader(const char* vertex_file, const char* frag_file, const char* geo_file) {
