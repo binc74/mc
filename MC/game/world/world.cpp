@@ -2,14 +2,17 @@
 
 namespace game {
 	World::World() {
-
+		cr = new ChunkRenderer();
 	}
 
 	World::~World() {
-
+		delete cr;
+		for (auto it: chunks) {
+			delete it.second;
+		}
 	}
 
-	void World::addObj(RectPrism* obj) {
+	void World::addObj(Cube* obj) {
 		glm::vec3 pos = obj->getPos();
 		long hp = hashXYZ(pos);
 
@@ -25,7 +28,7 @@ namespace game {
 		}
 	}
 
-	void World::removeObj(RectPrism* obj) {
+	void World::removeObj(Cube* obj) {
 		glm::vec3 pos = obj->getPos();
 		long long hp = hashXYZ(pos);
 
@@ -47,7 +50,7 @@ namespace game {
 
 	void World::draw() {
 		for (auto it : chunks) {
-			it.second->draw();
+			it.second->draw(cr);
 		}
 	}
 }

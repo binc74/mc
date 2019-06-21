@@ -3,16 +3,17 @@
 
 #include <unordered_map>
 #include <unordered_set>
+#include <iostream>
 
-#include "../graphics/shapes/rect_prism.h"
+#include "../objects/cube.h"
 #include "../renderer/chunk_renderer.h"
 
 namespace game {
 	class Chunk {
 	private:
 		ChunkRenderer cr;
-		std::unordered_set<RectPrism*> objs;
-		std::unordered_map<int, RectPrism*> pos;
+		std::unordered_set<Cube*> objs;
+		std::unordered_map<int, Cube*> pos;
 		int px, py, pz;
 
 		inline int hashXYZ(const glm::vec3& pos) {
@@ -28,10 +29,10 @@ namespace game {
 		Chunk(int px, int py, int pz);
 		~Chunk();
 
-		void addObj(RectPrism* obj);
-		void removeObj(RectPrism* obj);
+		void addObj(Cube* obj);
+		void removeObj(Cube* obj);
 		void update(float dt);
-		void draw();
+		void draw(ChunkRenderer* cr);
 	};
 }
 

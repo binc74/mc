@@ -12,12 +12,12 @@ namespace game {
 	}
 
 	Chunk::~Chunk() {
-		for (RectPrism* obj: objs) {
+		for (Cube* obj: objs) {
 			delete obj;
 		}
 	}
 
-	void Chunk::addObj(RectPrism* obj) {
+	void Chunk::addObj(Cube* obj) {
 		if (objs.find(obj) == objs.end()) {
 			objs.insert(obj);
 			pos[hashXYZ(obj->getPos())] = obj;
@@ -27,7 +27,7 @@ namespace game {
 		}
 	}
 
-	void Chunk::removeObj(RectPrism* obj) {
+	void Chunk::removeObj(Cube* obj) {
 		auto it = objs.find(obj);
 		if (it != objs.end()) {
 			objs.erase(obj);
@@ -42,7 +42,13 @@ namespace game {
 
 	}
 
-	void Chunk::draw() {
+	void Chunk::draw(ChunkRenderer* cr) {
+		cr->clear();
 
+		for (Cube* c: objs) {
+			c->pushToMesh(cr);
+		}
+
+		cr->draw();
 	}
 }
