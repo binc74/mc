@@ -7,7 +7,6 @@ namespace game {
 
 	ChunkRenderer::ChunkRenderer(Shader* shader, Material* material) : sf(), 
 		size(0), shader(shader), material(material) {
-		initMesh();
 	}
 
 	ChunkRenderer::~ChunkRenderer() {
@@ -41,6 +40,8 @@ namespace game {
 		glEnableVertexAttribArray(3);
 
 		glBindVertexArray(0);
+
+		std::clog << "InitMesh complete!" << std::endl;
 	}
 
 	void ChunkRenderer::bind() {
