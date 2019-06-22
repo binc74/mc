@@ -10,6 +10,9 @@ namespace game {
 		glm::vec2 texture_coord;
 		glm::vec3 normal;
 
+		Vertex() {
+		}
+
 		Vertex(const glm::vec3& pos, 
 			const glm::vec3& color,
 			float tx, float ty,

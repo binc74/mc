@@ -5,6 +5,8 @@
 
 #include "../objects/cube.h"
 #include "../renderer/chunk_renderer.h"
+#include "../graphics/shader.h"
+#include "../graphics/material.h"
 #include "chunk.h"
 
 namespace game {
@@ -28,6 +30,7 @@ namespace game {
 
 	public:
 		World();
+		World(Shader* shader, Material* material);
 		~World();
 
 		void addObj(Cube* obj);

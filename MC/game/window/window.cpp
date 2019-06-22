@@ -18,6 +18,7 @@ namespace game {
 	Window::~Window() {
 		delete camera;
 		delete proj_matrix;
+		delete world;
 
 		shaders[0]->unuse();
 
@@ -128,7 +129,7 @@ namespace game {
 	}
 
 	void Window::initShaders() {
-		this->shaders.push_back(new Shader("resources/shaders/vertex_core.glsl", 
+		this->shaders.push_back(new Shader("resources/shaders/vertex_fix.glsl", 
 			"resources/shaders/fragment_core.glsl"));
 	}
 
@@ -141,24 +142,27 @@ namespace game {
 	}
 
 	void Window::initMeshes() {
-		mr = new game::MasterRenderer(shaders[0], materials[0]);
+		world = new World(shaders[0], materials[0]);
 
 		//RectPrism* rp = new RectPrism(0, -1, 0, 1);
 		//mr->addModel(game::EntityType::SOIL, rp);
 
-		for (int i = -5; i < 20; ++i) {
-			for (int j = -5; j < 20; ++j) {
-				RectPrism* rp = new RectPrism(i, -1, j, 1);
-				mr->addModel(game::EntityType::GRASS, rp);
-			}
-		}	
+		Cube* g = new Grass(0,0,0);
+		world->addObj(g);
 
-		for (int i = 0; i < 5; ++i) {
-			for (int j = -5; j < 0; ++j) {
-				RectPrism* rp = new RectPrism(j, i, -5, 1);
-				mr->addModel(game::EntityType::COBBLESTONE, rp);
-			}
-		}
+		//for (int i = -5; i < 20; ++i) {
+		//	for (int j = -5; j < 20; ++j) {
+		//		Grass* g = new Grass(i, -1, j);
+		//		world->addObj(g);
+		//	}
+		//}	
+
+		//for (int i = 0; i < 5; ++i) {
+		//	for (int j = -5; j < 0; ++j) {
+		//		Grass* g = new Grass(j, i, -5);
+		//		world->addObj(g);
+		//	}
+		//}
 	}
 
 	void Window::initLights() {
@@ -205,15 +209,12 @@ namespace game {
 
 		updateUniforms();
 
-		mr->render();
+		world->draw();
 
 		glfwSwapBuffers(window);
 		glFlush();
 
-		//glBindVertexArray(0);
 		shaders[0]->unuse();
-		//glActiveTexture(0);
-		//glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void Window::initShader(Shader* shader) {

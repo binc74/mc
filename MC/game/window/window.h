@@ -11,7 +11,9 @@
 #include "../graphics/shader.h"
 #include "../graphics/core/projection_matrix.h"
 #include "../camera/camera.h"
-#include "../graphics/shapes/rect_prism.h"
+
+#include "../objects/cube.h"
+#include "../objects/cubeobjs/grass.h"
 
 #include "../world/world.h"
 #include "../controllers/main_controller.h"
@@ -30,7 +32,7 @@ namespace game {
 		std::vector<Mesh2D*> meshes;
 		std::vector<glm::vec3*> lights;
 
-		game::World world;
+		game::World* world;
 		game::MainController mc;
 
 		void initGLEW();

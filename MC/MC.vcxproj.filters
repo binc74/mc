@@ -78,6 +78,9 @@
     <ClCompile Include="game\renderer\chunk_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game\objects\cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\factories\sprite_factory.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\renderer\chunk_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\grass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

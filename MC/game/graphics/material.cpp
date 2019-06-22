@@ -16,11 +16,11 @@ namespace game {
 
 	}
 
-	void Material::sendToShader(Shader& shader, GLint diffuse_tex, GLint specular_tex) {
-		shader.setUniform3fv(ambient, "material.ambient");
-		shader.setUniform3fv(diffuse, "material.diffuse");
-		shader.setUniform3fv(specular, "material.specular");
-		shader.setUniform1i(diffuse_tex, "material.diffuse_tex");
-		shader.setUniform1i(specular_tex, "material.specular_tex");
+	void Material::sendToShader(Shader* shader, GLint diffuse_tex, GLint specular_tex) {
+		shader->setUniform3fv(ambient, "material.ambient");
+		shader->setUniform3fv(diffuse, "material.diffuse");
+		shader->setUniform3fv(specular, "material.specular");
+		shader->setUniform1i(diffuse_tex, "material.diffuse_tex");
+		shader->setUniform1i(specular_tex, "material.specular_tex");
 	}
 }

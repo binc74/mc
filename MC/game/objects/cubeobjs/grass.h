@@ -13,7 +13,8 @@ namespace game {
 		}
 
 		virtual void pushToMesh(ChunkRenderer* cr) {
-
+			pushVerticesData(cr, SpriteType::GRASS_TOP, SpriteType::GRASS_SIDE, SpriteType::GRASS_SIDE, 
+				SpriteType::GRASS_SIDE, SpriteType::GRASS_SIDE, SpriteType::SOIL);
 		}
 	};
 }

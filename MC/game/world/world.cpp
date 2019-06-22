@@ -5,6 +5,10 @@ namespace game {
 		cr = new ChunkRenderer();
 	}
 
+	World::World(Shader* shader, Material* material) {
+		cr = new ChunkRenderer(shader, material);
+	}
+
 	World::~World() {
 		delete cr;
 		for (auto it: chunks) {
@@ -30,7 +34,7 @@ namespace game {
 
 	void World::removeObj(Cube* obj) {
 		glm::vec3 pos = obj->getPos();
-		long long hp = hashXYZ(pos);
+		long hp = hashXYZ(pos);
 
 		auto it = chunks.find(hp);
 

@@ -23,7 +23,7 @@ namespace game {
 		Material();
 		Material(const glm::vec3& ambient, const glm::vec3& diffuse, const glm::vec3& specular);
 		~Material();
-		void sendToShader(Shader& shader_id, GLint diffuse_tex, GLint specular_tex);
+		void sendToShader(Shader* shader_id, GLint diffuse_tex, GLint specular_tex);
 	};
 }
 

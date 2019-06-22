@@ -5,6 +5,11 @@ namespace game {
 
 	}
 
+	ChunkRenderer::ChunkRenderer(Shader* shader, Material* material) : sf(), 
+		size(0), shader(shader), material(material) {
+
+	}
+
 	ChunkRenderer::~ChunkRenderer() {
 
 	}
@@ -79,7 +84,8 @@ namespace game {
 				vertices.push_back(v);
 			}
 		}
-
+		//shader->use();
+		material->sendToShader(shader, 0, 1);
 		setBuffers();
 
 		int start = 0;
@@ -89,7 +95,9 @@ namespace game {
 			t->bind(0);
 			glDrawArrays(GL_TRIANGLES, start, i.second);
 			start += i.second;
+			std::cout << start << std::endl;
 			t->unbind();
 		}
+		//shader->unuse();
 	}
 }

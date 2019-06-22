@@ -4,7 +4,10 @@
 #include <vector>
 #include <glew.h>
 #include <unordered_map>
+#include <iostream>
 
+#include "../graphics/shader.h"
+#include "../graphics/material.h"
 #include "../graphics/core/vertex.h"
 #include "../graphics/texture2d.h"
 #include "../factories/sprite_factory.h"
@@ -19,12 +22,15 @@ namespace game {
 		std::vector<Vertex> vertices;
 		std::unordered_map<SpriteType, std::vector<Vertex>> textures;
 		SpriteFactory sf;
+		Shader* shader;
+		Material* material;
 		int size;
 
 		void initMesh();
 		void setBuffers();
 	public:
 		ChunkRenderer();
+		ChunkRenderer(Shader* shader, Material* material);
 		~ChunkRenderer();
 
 		void addVertex(SpriteType type, Vertex v);

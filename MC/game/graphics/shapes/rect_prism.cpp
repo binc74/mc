@@ -82,7 +82,7 @@ namespace game {
 		glBindVertexArray(VAO);
 
 		for (int i = 0; i < 6; ++i) {
-			material->sendToShader(*shader, order[i], 1);
+			material->sendToShader(shader, order[i], 1);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)(i * 6 *sizeof(unsigned int)));
 		}
 		
