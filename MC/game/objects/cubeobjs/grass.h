@@ -1,6 +1,8 @@
 #ifndef GRASS_H
 #define GRASS_H
 
+#include <iostream>
+
 #include "../cube.h"
 
 namespace game {

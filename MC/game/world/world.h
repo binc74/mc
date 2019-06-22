@@ -19,11 +19,12 @@ namespace game {
 		inline long hashXYZ(const glm::vec3& pos) {
 			long ans = 0;
 
-			ans += (long)pos.x >> 4;
-			ans += (long)pos.y << 4;
-			ans += (long)pos.z << 12;
-
-			std::clog << "Pos: " << pos.x << " " << pos.y << " " << pos.z << " : " << ans << std::endl;
+			long hx = (long)pos.x >> 4;
+			long hy = (long)pos.y >> 4 << 8;
+			long hz = (long)pos.z >> 4 << 16;
+			ans = hx + hy + hz;
+			//std::clog << "Pos: " << pos.x << " " << pos.y << " " << pos.z << " : " << ans 
+			//	<< " " << hx << " " << hy << " " << hz << std::endl;
 
 			return ans;
 		}

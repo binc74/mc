@@ -17,7 +17,7 @@ namespace game {
 	}
 
 	void World::addObj(Cube* obj) {
-		glm::vec3 pos = obj->getPos();
+		glm::vec3 pos = obj->pos;
 		long hp = hashXYZ(pos);
 
 		auto it = chunks.find(hp);
@@ -30,10 +30,12 @@ namespace game {
 		else {
 			it->second->addObj(obj);
 		}
+
+		std::cout << "Current Chunk Size: " << chunks.size() << std::endl;
 	}
 
 	void World::removeObj(Cube* obj) {
-		glm::vec3 pos = obj->getPos();
+		glm::vec3 pos = obj->pos;
 		long hp = hashXYZ(pos);
 
 		auto it = chunks.find(hp);
@@ -53,8 +55,10 @@ namespace game {
 	}
 
 	void World::draw() {
+		cr->bind();
 		for (auto it : chunks) {
 			it.second->draw(cr);
 		}
+		cr->unbind();
 	}
 }

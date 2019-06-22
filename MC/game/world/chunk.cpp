@@ -20,7 +20,7 @@ namespace game {
 	void Chunk::addObj(Cube* obj) {
 		if (objs.find(obj) == objs.end()) {
 			objs.insert(obj);
-			pos[hashXYZ(obj->getPos())] = obj;
+			pos[hashXYZ(obj->pos)] = obj;
 		}
 		else {
 			std::cerr << "Error adding obj: obj already exists" << std::endl;
@@ -31,7 +31,7 @@ namespace game {
 		auto it = objs.find(obj);
 		if (it != objs.end()) {
 			objs.erase(obj);
-			pos.erase(hashXYZ(obj->getPos()));
+			pos.erase(hashXYZ(obj->pos));
 		}
 		else {
 			std::cerr << "Error deleting obj: obj already exists" << std::endl;

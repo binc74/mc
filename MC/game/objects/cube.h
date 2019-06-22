@@ -9,17 +9,16 @@
 namespace game {
 	class Cube {
 	protected:
-		glm::vec3 pos;
-
 		void pushVerticesData(ChunkRenderer* cr, SpriteType top, SpriteType front, SpriteType right,
 			SpriteType back, SpriteType left, SpriteType bot);
 
 	public:
+		glm::vec3 pos;
+
 		Cube();
 		Cube(float px, float py, float pz);
 		~Cube();
 
-		glm::vec3 getPos();
 		void virtual pushToMesh(ChunkRenderer* cr) = 0;
 		void update(float dt);
 	};

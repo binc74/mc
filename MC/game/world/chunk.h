@@ -20,8 +20,11 @@ namespace game {
 			int xi = (int)pos.x - px;
 			int yi = (int)pos.y - py;
 			int zi = (int)pos.z - pz;
+			int hash = yi * 10000 + xi * 100 + zi;
+			//std::clog << "Pos: " << pos.x << " " << pos.y << " " << pos.z << " : " << hash
+			//	<< " " << yi << " " << xi << " " << zi << std::endl;
 
-			return yi * 10000 + xi * 100 + zi;
+			return hash;
 		}
 
 	public:

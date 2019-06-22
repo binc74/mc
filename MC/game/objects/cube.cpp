@@ -75,10 +75,6 @@ namespace game {
 		cr->addVertex(bot, Vertex(glm::vec3(len, -len, len) + pos, color, 1, 1, normal_bot));		// v23 bot-front-left
 	}
 
-	glm::vec3 Cube::getPos() {
-		return pos;
-	}
-
 	void Cube::update(float dt) {
 
 	}
