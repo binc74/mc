@@ -167,6 +167,15 @@
     <ClInclude Include="game\objects\cubeobjs\soil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\stone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\tnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\vertex_core.glsl">

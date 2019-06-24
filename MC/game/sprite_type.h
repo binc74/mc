@@ -4,12 +4,18 @@
 namespace game {
 	enum SpriteType {
 		GRASS_TOP = 0,
-		COBBLESTONE,
+		STONE,
 		SOIL,
 		GRASS_SIDE,
 		PLANK,
 		STONE_BRICK_SIDE,
-		STONE_BRICK_TOP
+		STONE_BRICK_TOP,
+		BRICK,
+		TNT_SIDE,
+		TNT_TOP,
+		TNT_BOT,
+		COBWEB,
+
 	};
 }
 

@@ -169,6 +169,9 @@
     <ClInclude Include="game\objects\cube.h" />
     <ClInclude Include="game\objects\cubeobjs\grass.h" />
     <ClInclude Include="game\objects\cubeobjs\soil.h" />
+    <ClInclude Include="game\objects\cubeobjs\stone.h" />
+    <ClInclude Include="game\objects\cubeobjs\tnt.h" />
+    <ClInclude Include="game\objects\include.h" />
     <ClInclude Include="game\renderer\chunk_renderer.h" />
     <ClInclude Include="game\sprite_type.h" />
     <ClInclude Include="game\window\window.h" />

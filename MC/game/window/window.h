@@ -12,9 +12,7 @@
 #include "../graphics/core/projection_matrix.h"
 #include "../camera/camera.h"
 
-#include "../objects/cube.h"
-#include "../objects/cubeobjs/soil.h"
-#include "../objects/cubeobjs/grass.h"
+#include "../objects/include.h"
 
 #include "../world/world.h"
 #include "../controllers/main_controller.h"

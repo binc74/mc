@@ -150,13 +150,25 @@ namespace game {
 		//Cube* g = new Soil(0,0,0);
 		//world->addObj(g);
 
-		for (int i = 0; i < 20; ++i) {
+		for (int i = 0; i < 7; ++i) {
 			for (int j = 0; j < 5; ++j) {
 				Cube* g = new Soil(i, -1, j);
 				world->addObj(g);
 			}
 			for (int j = 5; j < 10; ++j) {
 				Cube* g = new Grass(i, -1, j);
+				world->addObj(g);
+			}
+			for (int j = 10; j < 15; ++j) {
+				Cube* g = new Stone(i, -1, j);
+				world->addObj(g);
+			}
+			for (int j = 15; j < 20; ++j) {
+				Cube* g = new Tnt(i, -1, j);
+				world->addObj(g);
+			}
+			for (int j = 20; j < 25; ++j) {
+				Cube* g = new CobWeb(i, -1, j);
 				world->addObj(g);
 			}
 		}	
