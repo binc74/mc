@@ -167,7 +167,12 @@
     <ClInclude Include="game\graphics\shader.h" />
     <ClInclude Include="game\graphics\texture2d.h" />
     <ClInclude Include="game\objects\cube.h" />
+    <ClInclude Include="game\objects\cubeobjs\cobblestone.h" />
+    <ClInclude Include="game\objects\cubeobjs\diamondbrick.h" />
     <ClInclude Include="game\objects\cubeobjs\grass.h" />
+    <ClInclude Include="game\objects\cubeobjs\gravel.h" />
+    <ClInclude Include="game\objects\cubeobjs\oakwood.h" />
+    <ClInclude Include="game\objects\cubeobjs\sand.h" />
     <ClInclude Include="game\objects\cubeobjs\soil.h" />
     <ClInclude Include="game\objects\cubeobjs\stone.h" />
     <ClInclude Include="game\objects\cubeobjs\tnt.h" />

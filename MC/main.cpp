@@ -18,7 +18,5 @@ int main() {
 		window.render();
 	}
 
-	// Free resources and end program
-
 	return 0;
 }

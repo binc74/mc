@@ -6,7 +6,7 @@ namespace game {
 		camera_front = glm::vec3(0.f, 0.f, -1.f);
 		camera_position = new glm::vec3(0.f, 0.f, 4.f);
 		camera_up = direction_up;
-		speed = 3.f;
+		speed = 6.f;
 		sensitivity = 5.f;
 		pitch = 0.f;
 		yaw = -90.f;

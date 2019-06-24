@@ -149,7 +149,7 @@ namespace game {
 
 		//Cube* g = new Soil(0,0,0);
 		//world->addObj(g);
-
+		/*
 		for (int i = 0; i < 50; ++i) {
 			for (int j = 0; j < 5; ++j) {
 				Cube* g = new Soil(world, i, -1, j);
@@ -167,7 +167,51 @@ namespace game {
 				Cube* g = new Tnt(world, i, -1, j);
 				world->addObj(g);
 			}
-		}	
+		}*/
+
+		for (int i = -30; i < 30; ++i) {			
+			for (int k = -30; k < -15; ++k) {
+				if (!(k == -20 || k == -21 || k == -25 ||
+					k == -26 || k == -19 || k == -24)) {
+					for (int j = 0; j < 4; ++j) {
+						Cube* g = new Grass(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 4; j < 8; ++j) {
+						Cube* g = new Sand(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 8; j < 12; ++j) {
+						Cube* g = new CobbleStone(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 12; j < 16; ++j) {
+						Cube* g = new DiamondBrick(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 16; j < 20; ++j) {
+						Cube* g = new Gravel(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 20; j < 24; ++j) {
+						Cube* g = new OakWood(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 24; j < 28; ++j) {
+						Cube* g = new Soil(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 28; j < 32; ++j) {
+						Cube* g = new Stone(world, j, k, i);
+						world->addObj(g);
+					}
+					for (int j = 32; j < 36; ++j) {
+						Cube* g = new Tnt(world, j, k, i);
+						world->addObj(g);
+					}
+				}					
+			}				
+		}
 
 		//for (int i = 0; i < 5; ++i) {
 		//	for (int j = -5; j < 0; ++j) {

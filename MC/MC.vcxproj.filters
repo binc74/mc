@@ -176,6 +176,21 @@
     <ClInclude Include="game\objects\cubeobjs\tnt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\gravel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\diamondbrick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\cobblestone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\sand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\cubeobjs\oakwood.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\vertex_core.glsl">

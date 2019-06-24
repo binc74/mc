@@ -37,7 +37,7 @@ namespace game {
 	SpriteFactory::~SpriteFactory() {
 		SOIL_free_image_data(sprite_sheet);
 
-		for (auto it: cache) {
+		for (auto& it: cache) {
 			delete it.second;
 		}
 	}
