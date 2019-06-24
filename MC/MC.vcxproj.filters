@@ -21,16 +21,7 @@
     <ClCompile Include="game\factories\sprite_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\renderer\master_renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game\renderer\cube_renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\world\chunk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game\factories\renderer_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\camera\camera.cpp">
@@ -46,9 +37,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\graphics\texture2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game\graphics\shapes\rect_prism.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\graphics\core\projection_matrix.cpp">
@@ -86,22 +74,13 @@
     <ClInclude Include="game\factories\sprite_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\renderer\master_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game\sprite_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\renderer\cube_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\entity_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\world\chunk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\factories\renderer_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\camera\camera.h">
@@ -117,9 +96,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\graphics\shapes\rect_prism.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\core\model_matrix.h">
