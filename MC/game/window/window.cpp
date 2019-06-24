@@ -150,7 +150,7 @@ namespace game {
 		//Cube* g = new Soil(0,0,0);
 		//world->addObj(g);
 
-		for (int i = 0; i < 7; ++i) {
+		for (int i = 0; i < 50; ++i) {
 			for (int j = 0; j < 5; ++j) {
 				Cube* g = new Soil(world, i, -1, j);
 				world->addObj(g);
@@ -165,10 +165,6 @@ namespace game {
 			}
 			for (int j = 15; j < 20; ++j) {
 				Cube* g = new Tnt(world, i, -1, j);
-				world->addObj(g);
-			}
-			for (int j = 20; j < 25; ++j) {
-				Cube* g = new CobWeb(world, i, -1, j);
 				world->addObj(g);
 			}
 		}	
