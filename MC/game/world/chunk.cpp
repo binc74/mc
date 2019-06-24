@@ -43,12 +43,21 @@ namespace game {
 	}
 
 	void Chunk::draw(ChunkRenderer* cr) {
-		cr->clear();
+		//cr->clear();
 
 		for (Cube* c: objs) {
 			c->pushToMesh(cr);
 		}
+		
+		//cr->draw();
+	}
 
-		cr->draw();
+	void Chunk::printAllPositons() {	
+		int i = 0;
+		for (Cube* c : objs) {
+			glm::vec3& pos = c->pos;
+			std::clog << i++ << " (" << hashXYZ(pos) << "): " << pos.x << " " << pos.y << " " << pos.z << std::endl;
+		}
+		std::clog << std::endl;
 	}
 }

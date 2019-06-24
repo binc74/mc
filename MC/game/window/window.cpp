@@ -147,22 +147,23 @@ namespace game {
 		//RectPrism* rp = new RectPrism(0, -1, 0, 1);
 		//mr->addModel(game::EntityType::SOIL, rp);
 
-		Cube* g = new Grass(0,0,0);
-		world->addObj(g);
+		//Cube* g = new Soil(0,0,0);
+		//world->addObj(g);
 
-		//for (int i = -5; i < 20; ++i) {
-		//	for (int j = -5; j < 20; ++j) {
-		//		Grass* g = new Grass(i, -1, j);
-		//		world->addObj(g);
-		//	}
-		//}	
+		for (int i = 0; i < 20; ++i) {
+			for (int j = 0; j < 20; ++j) {
+				Cube* g = new Soil(i, -1, j);
+				world->addObj(g);
+			}
+		}	
 
 		//for (int i = 0; i < 5; ++i) {
 		//	for (int j = -5; j < 0; ++j) {
-		//		Grass* g = new Grass(j, i, -5);
+		//		Grass* g = new Soil(j, i, -5);
 		//		world->addObj(g);
 		//	}
 		//}
+		world->updateMesh();
 	}
 
 	void Window::initLights() {
@@ -204,7 +205,7 @@ namespace game {
 
 	void Window::render() {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear the three buffers
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the buffers
 		shaders[0]->use();
 
 		updateUniforms();

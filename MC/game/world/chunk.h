@@ -13,8 +13,7 @@ namespace game {
 	private:
 		ChunkRenderer cr;
 		std::unordered_set<Cube*> objs;
-		std::unordered_map<int, Cube*> pos;
-		int px, py, pz;
+		std::unordered_map<int, Cube*> pos;	
 
 		inline int hashXYZ(const glm::vec3& pos) {
 			int xi = (int)pos.x - px;
@@ -28,6 +27,8 @@ namespace game {
 		}
 
 	public:
+		int px, py, pz;
+
 		Chunk();
 		Chunk(int px, int py, int pz);
 		~Chunk();
@@ -36,6 +37,7 @@ namespace game {
 		void removeObj(Cube* obj);
 		void update(float dt);
 		void draw(ChunkRenderer* cr);
+		void printAllPositons();
 	};
 }
 

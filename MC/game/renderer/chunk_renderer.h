@@ -21,19 +21,21 @@ namespace game {
 		//std::vector<unsigned int> indices;
 		std::vector<Vertex> vertices;
 		std::unordered_map<SpriteType, std::vector<Vertex>> textures;
+		std::vector<std::pair<SpriteType, int>> temp;
 		SpriteFactory sf;
 		Shader* shader;
 		Material* material;
 		int size;
 
-		void initMesh();
-		void setBuffers();
-	public:
+		void initMesh();		
+
+	public:		
 		ChunkRenderer();
 		ChunkRenderer(Shader* shader, Material* material);
 		~ChunkRenderer();
 
 		void addVertex(SpriteType type, Vertex v);
+		void setBuffers();
 		void bind();
 		void unbind();
 		void clear();

@@ -13,6 +13,7 @@
 #include "../camera/camera.h"
 
 #include "../objects/cube.h"
+#include "../objects/cubeobjs/soil.h"
 #include "../objects/cubeobjs/grass.h"
 
 #include "../world/world.h"

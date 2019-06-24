@@ -2,7 +2,6 @@
 
 namespace game {
 	World::World() {
-		cr = new ChunkRenderer();
 	}
 
 	World::World(Shader* shader, Material* material) {
@@ -11,7 +10,7 @@ namespace game {
 
 	World::~World() {
 		delete cr;
-		for (auto it: chunks) {
+		for (auto& it: chunks) {
 			delete it.second;
 		}
 	}
@@ -23,6 +22,7 @@ namespace game {
 		auto it = chunks.find(hp);
 
 		if (it == chunks.end()) {
+			std::clog << "Create new chunk! current size: " << chunks.size() <<std::endl;
 			Chunk* c = new Chunk((int)pos.x << 4, (int)pos.y << 4, (int)pos.z << 4);
 			c->addObj(obj);
 			chunks[hp] = c;
@@ -30,8 +30,6 @@ namespace game {
 		else {
 			it->second->addObj(obj);
 		}
-
-		std::cout << "Current Chunk Size: " << chunks.size() << std::endl;
 	}
 
 	void World::removeObj(Cube* obj) {
@@ -49,16 +47,33 @@ namespace game {
 	}
 
 	void World::update(float dt) {
-		for (auto it: chunks) {
+		for (const auto& it: chunks) {
 			it.second->update(dt);
 		}
 	}
 
-	void World::draw() {
-		cr->bind();
-		for (auto it : chunks) {
+	void World::updateMesh() {
+		for (auto& it : chunks) {
+			//std::clog << "Drawing chunk " << it.first << std::endl;
 			it.second->draw(cr);
 		}
+
+		cr->setBuffers();
+	}
+
+	void World::draw() {
+		//cr->clear();
+		cr->bind();		
+		cr->draw();
 		cr->unbind();
+	}
+
+	void World::printAllChunks() {
+		int i = 0;
+		for (auto& it: chunks) {
+			Chunk* c = it.second;
+			std::clog << "Chunk " << i++ << ": " << c->px << " " << c->py << " " << c->pz << std::endl;
+			c->printAllPositons();
+		}
 	}
 }

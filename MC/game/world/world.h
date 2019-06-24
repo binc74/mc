@@ -38,6 +38,8 @@ namespace game {
 		void removeObj(Cube* obj);
 		void update(float dt);
 		void draw();
+		void updateMesh();
+		void printAllChunks();
 	};
 }
 
