@@ -9,6 +9,8 @@
 #include "../renderer/chunk_renderer.h"
 
 namespace game {
+	class Cube;
+
 	class Chunk {
 	private:
 		ChunkRenderer cr;
@@ -26,6 +28,17 @@ namespace game {
 			return hash;
 		}
 
+		inline int hashXYZ(int x, int y, int z) {
+			int xi = x - px;
+			int yi = y - py;
+			int zi = z - pz;
+			int hash = yi * 10000 + xi * 100 + zi;
+			//std::clog << "Pos: " << pos.x << " " << pos.y << " " << pos.z << " : " << hash
+			//	<< " " << yi << " " << xi << " " << zi << std::endl;
+
+			return hash;
+		}
+
 	public:
 		int px, py, pz;
 
@@ -35,6 +48,7 @@ namespace game {
 
 		void addObj(Cube* obj);
 		void removeObj(Cube* obj);
+		Cube* getObjAt(int x, int y, int z);
 		void update(float dt);
 		void draw(ChunkRenderer* cr);
 		void printAllPositons();

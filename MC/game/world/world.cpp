@@ -68,6 +68,16 @@ namespace game {
 		cr->unbind();
 	}
 
+	Cube* World::getObjAt(int x, int y, int z) {
+		long hash = hashXYZ(x, y, z);
+		auto it = chunks.find(hash);
+		if (it == chunks.end()) {
+			return NULL;
+		}
+
+		return it->second->getObjAt(x, y, z);
+	}
+
 	void World::printAllChunks() {
 		int i = 0;
 		for (auto& it: chunks) {

@@ -9,7 +9,7 @@ namespace game {
 		Grass() : Cube() {
 		}
 
-		Grass(float px, float py, float pz) : Cube(px, py, pz) {
+		Grass(World* world, float px, float py, float pz) : Cube(world, px, py, pz) {
 		}
 
 		void pushToMesh(ChunkRenderer* cr) {

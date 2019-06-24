@@ -9,7 +9,7 @@ namespace game {
 		CobWeb() : Cube() {
 		}
 
-		CobWeb(float px, float py, float pz) : Cube(px, py, pz) {
+		CobWeb(World* world, float px, float py, float pz) : Cube(world, px, py, pz) {
 		}
 
 		void pushToMesh(ChunkRenderer* cr) {

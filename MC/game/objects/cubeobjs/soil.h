@@ -9,7 +9,7 @@ namespace game {
 		Soil() : Cube() {
 		}
 
-		Soil(float px, float py, float pz) : Cube(px, py, pz) {
+		Soil(World* world, float px, float py, float pz) : Cube(world, px, py, pz) {
 		}
 
 		void pushToMesh(ChunkRenderer* cr) {

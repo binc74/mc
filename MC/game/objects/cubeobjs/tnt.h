@@ -9,7 +9,7 @@ namespace game {
 		Tnt() : Cube() {
 		}
 
-		Tnt(float px, float py, float pz) : Cube(px, py, pz) {
+		Tnt(World* world, float px, float py, float pz) : Cube(world, px, py, pz) {
 		}
 
 		void pushToMesh(ChunkRenderer* cr) {

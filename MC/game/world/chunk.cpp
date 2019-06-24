@@ -38,6 +38,16 @@ namespace game {
 		}
 	}
 
+	Cube* Chunk::getObjAt(int x, int y, int z) {
+		int hash = hashXYZ(x, y, z);
+		auto it = pos.find(hash);
+		if (it == pos.end()) {
+			return NULL;
+		}
+
+		return it->second;
+	}
+
 	void Chunk::update(float dt) {
 
 	}

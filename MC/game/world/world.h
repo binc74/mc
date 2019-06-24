@@ -10,6 +10,9 @@
 #include "chunk.h"
 
 namespace game {
+	class Cube;
+	class Chunk;
+
 	class World {
 	private:
 		// Notice:: iterate performance is not that good, may need further changes
@@ -29,6 +32,19 @@ namespace game {
 			return ans;
 		}
 
+		inline long hashXYZ(int x, int y, int z) {
+			long ans = 0;
+
+			long hx = (long)x >> 4;
+			long hy = (long)y >> 4 << 8;
+			long hz = (long)z >> 4 << 16;
+			ans = hx + hy + hz;
+			//std::clog << "Pos: " << pos.x << " " << pos.y << " " << pos.z << " : " << ans 
+			//	<< " " << hx << " " << hy << " " << hz << std::endl;
+
+			return ans;
+		}
+
 	public:
 		World();
 		World(Shader* shader, Material* material);
@@ -38,8 +54,9 @@ namespace game {
 		void removeObj(Cube* obj);
 		void update(float dt);
 		void draw();
-		void updateMesh();
+		void updateMesh();		
 		void printAllChunks();
+		Cube* getObjAt(int x, int y, int z);
 	};
 }
 

@@ -3,12 +3,17 @@
 
 #include <glm.hpp>
 
+#include "../world/world.h"
 #include "../renderer/chunk_renderer.h"
 #include "../sprite_type.h"
 
 namespace game {
+	class World;
+
 	class Cube {
 	protected:
+		World* world;
+
 		void pushVerticesData(ChunkRenderer* cr, SpriteType top, SpriteType front, SpriteType right,
 			SpriteType back, SpriteType left, SpriteType bot);
 
@@ -16,7 +21,7 @@ namespace game {
 		glm::vec3 pos;
 
 		Cube();
-		Cube(float px, float py, float pz);
+		Cube(World* world, float px, float py, float pz);
 		~Cube();
 
 		void virtual pushToMesh(ChunkRenderer* cr) = 0;

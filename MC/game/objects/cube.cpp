@@ -5,7 +5,7 @@ namespace game {
 
 	}
 
-	Cube::Cube(float px, float py, float pz) : pos(px, py, pz) {
+	Cube::Cube(World* world, float px, float py, float pz) : world(world), pos(px, py, pz) {
 
 	}
 
