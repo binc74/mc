@@ -4,22 +4,22 @@
 #include "input_command.h"
 #include "../../camera/camera.h"
 
-namespace game {
+namespace mc {
 	class MoveRightCommand : public InputCommand {
 	private:
-		game::Camera* camera;
+		mc::Camera* camera;
 
 	public:
 		MoveRightCommand() {
 
 		}
 
-		MoveRightCommand(game::Camera* camera) {
+		MoveRightCommand(mc::Camera* camera) {
 			this->camera = camera;
 		}
 
 		void execute(float dt) {
-			camera->goRight(dt);
+			camera->moveRight(dt);
 		}
 	};
 }

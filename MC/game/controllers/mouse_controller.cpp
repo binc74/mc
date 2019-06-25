@@ -1,6 +1,6 @@
 #include "mouse_controller.h"
 
-namespace game {
+namespace mc {
 	MouseController::MouseController() : Controller() {
 		initParams();
 	}

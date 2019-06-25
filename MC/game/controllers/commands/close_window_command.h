@@ -5,7 +5,7 @@
 
 #include "input_command.h"
 
-namespace game {
+namespace mc {
 	class CloseWindowCommand : public InputCommand {
 	private:
 		GLFWwindow* window;

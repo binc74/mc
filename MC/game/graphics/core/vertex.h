@@ -3,7 +3,7 @@
 
 #include <glm.hpp>
 
-namespace game {
+namespace mc {
 	struct Vertex {
 		glm::vec3 pos;
 		glm::vec3 color;

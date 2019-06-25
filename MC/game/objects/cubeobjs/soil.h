@@ -3,7 +3,7 @@
 
 #include "../cube.h"
 
-namespace game {
+namespace mc {
 	class Soil : public Cube {
 	public:
 		Soil() : Cube() {

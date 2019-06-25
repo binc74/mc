@@ -4,7 +4,7 @@
 #include "controller.h"
 #include "../camera/camera.h"
 
-namespace game {
+namespace mc {
 	class MouseController : public Controller {
 	private:
 		Camera* camera;

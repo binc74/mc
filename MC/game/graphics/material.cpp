@@ -1,6 +1,6 @@
 #include "material.h"
 
-namespace game {
+namespace mc {
 	Material::Material() {
 
 	}

@@ -1,6 +1,6 @@
 #include "projection_matrix.h"
 
-namespace game {
+namespace mc {
 	ProjectionMatrix::ProjectionMatrix(float fov, float near_plane, float far_plane) {
 		this->fov = fov;
 		this->near_plane = near_plane;

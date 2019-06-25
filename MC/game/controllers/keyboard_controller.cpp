@@ -1,6 +1,6 @@
 #include "keyboard_controller.h"
 
-namespace game {
+namespace mc {
 	KeyboardController::KeyboardController() : Controller() {
 
 	}

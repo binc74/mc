@@ -7,7 +7,7 @@
 #include "../sprite_type.h"
 #include "../graphics/texture2d.h"
 
-namespace game {
+namespace mc {
 	class SpriteFactory {
 	private:
 		unsigned char* sprite_sheet;
@@ -20,7 +20,7 @@ namespace game {
 
 		SpriteFactory();
 		~SpriteFactory();
-		Texture2D* getTexture(game::SpriteType type);
+		Texture2D* getTexture(mc::SpriteType type);
 	};
 }
 

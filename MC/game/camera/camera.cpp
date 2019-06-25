@@ -1,6 +1,6 @@
 #include "camera.h"
 
-namespace game {
+namespace mc {
 	Camera::Camera() {
 		direction_up = glm::vec3(0.f, 0.f, 1.f);
 		camera_front = glm::vec3(0.f, 0.f, -1.f);
@@ -16,6 +16,12 @@ namespace game {
 		y_reverse = false;
 
 		updateVectors();
+	}
+
+	void Camera::setPosition(float px, float py, float pz) {
+		camera_position->x = px;
+		camera_position->y = py;
+		camera_position->z = pz;
 	}
 
 	Camera::~Camera() {
@@ -40,31 +46,27 @@ namespace game {
 		camera_front = glm::vec3(x, y, z);
 	}
 
-	void Camera::setCameraPosition(float x, float y, float z) {
-		camera_position = new glm::vec3(x, y, z);
-	}
-
-	void Camera::goFront(float dt) {
+	void Camera::moveFront(float dt) {
 		*camera_position += camera_front * speed * dt;
 	}
 
-	void Camera::goBack(float dt) {
+	void Camera::moveBack(float dt) {
 		*camera_position -= camera_front * speed * dt;
 	}
 
-	void Camera::goLeft(float dt) {
+	void Camera::moveLeft(float dt) {
 		*camera_position -= camera_right * speed * dt;
 	}
 
-	void Camera::goRight(float dt) {
+	void Camera::moveRight(float dt) {
 		*camera_position += camera_right * speed * dt;
 	}
 
-	void Camera::goUp(float dt) {
+	void Camera::moveUp(float dt) {
 		*camera_position += direction_up * speed * dt;
 	}
 
-	void Camera::goDown(float dt) {
+	void Camera::moveDown(float dt) {
 		*camera_position -= direction_up * speed * dt;
 	}
 

@@ -1,6 +1,6 @@
 #include "sprite_factory.h"
 
-namespace game {
+namespace mc {
 	// warning: not implement unit_width/height yet!!!!!!!!!!!!!
 	unsigned char* SpriteFactory::getSprite(int pos_row, int pos_col, int unit_width, int unit_height) {
 		// Each pixel is stored in 4 values (r, g, b, a) as the default picture format is bmp

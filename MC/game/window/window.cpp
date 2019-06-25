@@ -2,9 +2,8 @@
 
 #include "../controllers/commands/include_command.h"
 #include "../controllers/keyboard_controller.h"
-#include "../../game/entity_type.h"
 
-namespace game {
+namespace mc {
 	static void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
 	}
@@ -27,10 +26,6 @@ namespace game {
 		}
 
 		for (Material* it : materials) {
-			delete it;
-		}
-
-		for (Mesh2D* it : meshes) {
 			delete it;
 		}
 
@@ -121,7 +116,7 @@ namespace game {
 		camera = new Camera();
 		camera->setDirectionUp(0.f, 1.f, 0.f);
 		camera->setCameraFront(0.f, 0.f, -1.f);
-		camera->setCameraPosition(0.f, 0.f, 3.f);
+		camera->setPosition(0.f, 0.f, 3.f);
 	}
 
 	void Window::initProjectionMatrix() {
@@ -143,31 +138,6 @@ namespace game {
 
 	void Window::initMeshes() {
 		world = new World(shaders[0], materials[0]);
-
-		//RectPrism* rp = new RectPrism(0, -1, 0, 1);
-		//mr->addModel(game::EntityType::SOIL, rp);
-
-		//Cube* g = new Soil(0,0,0);
-		//world->addObj(g);
-		/*
-		for (int i = 0; i < 50; ++i) {
-			for (int j = 0; j < 5; ++j) {
-				Cube* g = new Soil(world, i, -1, j);
-				world->addObj(g);
-			}
-			for (int j = 5; j < 10; ++j) {
-				Cube* g = new Grass(world, i, -1, j);
-				world->addObj(g);
-			}
-			for (int j = 10; j < 15; ++j) {
-				Cube* g = new Stone(world, i, -1, j);
-				world->addObj(g);
-			}
-			for (int j = 15; j < 20; ++j) {
-				Cube* g = new Tnt(world, i, -1, j);
-				world->addObj(g);
-			}
-		}*/
 
 		for (int i = -30; i < 30; ++i) {			
 			for (int k = -30; k < -15; ++k) {

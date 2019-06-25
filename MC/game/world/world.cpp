@@ -1,10 +1,10 @@
 #include "world.h"
 
-namespace game {
+namespace mc {
 	World::World() {
 	}
 
-	World::World(Shader* shader, Material* material) {
+	World::World(mc::Shader* shader, mc::Material* material) {
 		cr = new ChunkRenderer(shader, material);
 	}
 
@@ -15,7 +15,7 @@ namespace game {
 		}
 	}
 
-	void World::addObj(Cube* obj) {
+	void World::addObj(mc::Cube* obj) {
 		glm::vec3 pos = obj->pos;
 		long hp = hashXYZ(pos);
 
@@ -32,7 +32,7 @@ namespace game {
 		}
 	}
 
-	void World::removeObj(Cube* obj) {
+	void World::removeObj(mc::Cube* obj) {
 		glm::vec3 pos = obj->pos;
 		long hp = hashXYZ(pos);
 

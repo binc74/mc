@@ -1,6 +1,6 @@
 #include "controller.h"
 
-namespace game {
+namespace mc {
 	Controller::Controller() {
 		// Nothing
 	}

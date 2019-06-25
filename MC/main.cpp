@@ -6,7 +6,7 @@
 #include "const.h"
 #include "game/window/window.h"
 
-using namespace game;
+using namespace mc;
 
 int main() {
 	Window window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);

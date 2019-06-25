@@ -7,7 +7,7 @@
 #include <glfw3.h>
 #include <SOIL2.h>
 
-namespace game {
+namespace mc {
 	class Texture2D {
 	private:
 		GLuint id;

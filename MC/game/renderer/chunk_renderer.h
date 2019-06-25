@@ -13,7 +13,7 @@
 #include "../factories/sprite_factory.h"
 #include "../sprite_type.h"
 
-namespace game {
+namespace mc {
 	class ChunkRenderer {
 	private:
 		unsigned int VAO, VBO;

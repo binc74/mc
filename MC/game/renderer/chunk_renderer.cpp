@@ -1,6 +1,6 @@
 #include "chunk_renderer.h"
 
-namespace game {
+namespace mc {
 	ChunkRenderer::ChunkRenderer() : sf(), size(0) {		
 	}
 

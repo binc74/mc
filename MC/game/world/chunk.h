@@ -8,12 +8,12 @@
 #include "../objects/cube.h"
 #include "../renderer/chunk_renderer.h"
 
-namespace game {
+namespace mc {
 	class Cube;
 
 	class Chunk {
 	private:
-		ChunkRenderer cr;
+		mc::ChunkRenderer cr;
 		std::unordered_set<Cube*> objs;
 		std::unordered_map<int, Cube*> pos;	
 
@@ -46,11 +46,11 @@ namespace game {
 		Chunk(int px, int py, int pz);
 		~Chunk();
 
-		void addObj(Cube* obj);
-		void removeObj(Cube* obj);
-		Cube* getObjAt(int x, int y, int z);
+		void addObj(mc::Cube* obj);
+		void removeObj(mc::Cube* obj);
+		mc::Cube* getObjAt(int x, int y, int z);
 		void update(float dt);
-		void draw(ChunkRenderer* cr);
+		void draw(mc::ChunkRenderer* cr);
 		void printAllPositons();
 	};
 }

@@ -1,6 +1,6 @@
 #include "model_matrix.h"
 
-namespace game {
+namespace mc {
 	static glm::vec3 direction_x = glm::vec3(1, 0, 0);
 	static glm::vec3 direction_y = glm::vec3(0, 1, 0);
 	static glm::vec3 direction_z = glm::vec3(0, 0, 1);

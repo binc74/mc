@@ -12,7 +12,7 @@
 
 #include "shader.h"
 
-namespace game {
+namespace mc {
 	class Material {
 	private:
 		glm::vec3 ambient;

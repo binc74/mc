@@ -14,7 +14,7 @@
 #include <mat4x4.hpp>
 #include <gtc\type_ptr.hpp>
 
-namespace game {
+namespace mc {
 	class Shader {
 	private:
 		GLuint id;

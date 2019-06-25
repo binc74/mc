@@ -132,7 +132,6 @@
     <ClCompile Include="game\graphics\core\model_matrix.cpp" />
     <ClCompile Include="game\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="game\graphics\material.cpp" />
-    <ClCompile Include="game\graphics\mesh2d.cpp" />
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
     <ClCompile Include="game\objects\cube.cpp" />
@@ -157,13 +156,11 @@
     <ClInclude Include="game\controllers\keyboard_controller.h" />
     <ClInclude Include="game\controllers\main_controller.h" />
     <ClInclude Include="game\controllers\mouse_controller.h" />
-    <ClInclude Include="game\entity_type.h" />
     <ClInclude Include="game\factories\sprite_factory.h" />
     <ClInclude Include="game\graphics\core\model_matrix.h" />
     <ClInclude Include="game\graphics\core\projection_matrix.h" />
     <ClInclude Include="game\graphics\core\vertex.h" />
     <ClInclude Include="game\graphics\material.h" />
-    <ClInclude Include="game\graphics\mesh2d.h" />
     <ClInclude Include="game\graphics\shader.h" />
     <ClInclude Include="game\graphics\texture2d.h" />
     <ClInclude Include="game\objects\cube.h" />

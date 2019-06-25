@@ -1,6 +1,6 @@
 #include "main_controller.h"
 
-namespace game {
+namespace mc {
 	MainController::MainController() {
 		initParams();
 	}

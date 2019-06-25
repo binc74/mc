@@ -33,9 +33,6 @@
     <ClCompile Include="game\graphics\material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game\graphics\mesh2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game\graphics\texture2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -77,9 +74,6 @@
     <ClInclude Include="game\sprite_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\entity_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game\world\chunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -90,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\graphics\mesh2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game\graphics\shader.h">

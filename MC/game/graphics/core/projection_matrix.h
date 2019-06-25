@@ -4,7 +4,7 @@
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 
-namespace game {
+namespace mc {
 	class ProjectionMatrix {
 	private:
 		float fov;

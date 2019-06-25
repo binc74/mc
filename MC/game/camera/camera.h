@@ -4,7 +4,7 @@
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 
-namespace game {
+namespace mc {
 	class Camera {
 	private:
 		glm::vec3 direction_up;
@@ -27,14 +27,14 @@ namespace game {
 		~Camera();
 		void setDirectionUp(float x, float y, float z);
 		void setCameraFront(float x, float y, float z);
-		void setCameraPosition(float x, float y, float z);
-		void goFront(float dt);
-		void goBack(float dt);
-		void goLeft(float dt);
-		void goRight(float dt);
-		void goUp(float dt);
-		void goDown(float dt);
+		void moveFront(float dt);
+		void moveBack(float dt);
+		void moveLeft(float dt);
+		void moveRight(float dt);
+		void moveUp(float dt);
+		void moveDown(float dt);
 
+		void setPosition(float px, float py, float pz);
 		void updateByMouseInput(float dt, double offset_x, double offset_y);
 		glm::mat4 getViewMatrix();
 	};

@@ -1,6 +1,6 @@
 #include "chunk.h"
 
-namespace game {
+namespace mc {
 	Chunk::Chunk() {
 
 	}
@@ -17,7 +17,7 @@ namespace game {
 		}
 	}
 
-	void Chunk::addObj(Cube* obj) {
+	void Chunk::addObj(mc::Cube* obj) {
 		if (objs.find(obj) == objs.end()) {
 			objs.insert(obj);
 			pos[hashXYZ(obj->pos)] = obj;
@@ -27,7 +27,7 @@ namespace game {
 		}
 	}
 
-	void Chunk::removeObj(Cube* obj) {
+	void Chunk::removeObj(mc::Cube* obj) {
 		auto it = objs.find(obj);
 		if (it != objs.end()) {
 			objs.erase(obj);
@@ -38,7 +38,7 @@ namespace game {
 		}
 	}
 
-	Cube* Chunk::getObjAt(int x, int y, int z) {
+	mc::Cube* Chunk::getObjAt(int x, int y, int z) {
 		int hash = hashXYZ(x, y, z);
 		auto it = pos.find(hash);
 		if (it == pos.end()) {
@@ -52,7 +52,7 @@ namespace game {
 
 	}
 
-	void Chunk::draw(ChunkRenderer* cr) {
+	void Chunk::draw(mc::ChunkRenderer* cr) {
 		//cr->clear();
 
 		for (Cube* c: objs) {

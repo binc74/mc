@@ -3,7 +3,7 @@
 
 #include <glfw3.h>
 
-namespace game {
+namespace mc {
 	class Controller {
 	protected:
 		GLFWwindow* window;

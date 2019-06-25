@@ -7,7 +7,7 @@
 
 #include "controller.h"
 
-namespace game {
+namespace mc {
 	class MainController {
 	private:
 		std::vector<Controller*> controllers;

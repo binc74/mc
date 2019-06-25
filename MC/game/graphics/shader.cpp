@@ -1,6 +1,6 @@
 #include "shader.h"
 
-namespace game {
+namespace mc {
 	std::string Shader::loadShaderSource(const char* filename) {
 		std::string temp = "";
 		std::string src = "";

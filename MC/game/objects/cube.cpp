@@ -1,6 +1,6 @@
 #include "cube.h"
 
-namespace game {
+namespace mc {
 	Cube::Cube() : pos(0, 0, 0) {
 
 	}

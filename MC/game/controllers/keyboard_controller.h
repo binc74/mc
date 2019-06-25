@@ -8,7 +8,7 @@
 #include "../camera/camera.h"
 #include "commands/input_command.h"
 
-namespace game {
+namespace mc {
 	class KeyboardController : public Controller {
 	private:
 		std::unordered_set<int> keys;

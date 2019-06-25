@@ -1,7 +1,7 @@
 #ifndef SPRITE_TYPE_H
 #define SPRITE_TYPE_H
 
-namespace game {
+namespace mc {
 	enum SpriteType {
 		GRASS_TOP = 0,
 		STONE,

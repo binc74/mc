@@ -9,15 +9,15 @@
 #include "../graphics/material.h"
 #include "chunk.h"
 
-namespace game {
+namespace mc {
 	class Cube;
 	class Chunk;
 
 	class World {
 	private:
 		// Notice:: iterate performance is not that good, may need further changes
-		std::unordered_map<long, Chunk*> chunks;
-		ChunkRenderer* cr;
+		std::unordered_map<long, mc::Chunk*> chunks;
+		mc::ChunkRenderer* cr;
 
 		inline long hashXYZ(const glm::vec3& pos) {
 			long ans = 0;
@@ -47,11 +47,11 @@ namespace game {
 
 	public:
 		World();
-		World(Shader* shader, Material* material);
+		World(mc::Shader* shader, mc::Material* material);
 		~World();
 
-		void addObj(Cube* obj);
-		void removeObj(Cube* obj);
+		void addObj(mc::Cube* obj);
+		void removeObj(mc::Cube* obj);
 		void update(float dt);
 		void draw();
 		void updateMesh();		

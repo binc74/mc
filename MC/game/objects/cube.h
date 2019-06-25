@@ -7,7 +7,7 @@
 #include "../renderer/chunk_renderer.h"
 #include "../sprite_type.h"
 
-namespace game {
+namespace mc {
 	class World;
 
 	class Cube {
