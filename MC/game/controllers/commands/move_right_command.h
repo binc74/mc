@@ -2,24 +2,26 @@
 #define MOVE_RIGHT_COMMAND_H
 
 #include "input_command.h"
-#include "../../camera/camera.h"
+#include "../../player/player.h"
 
 namespace mc {
+	class Player;
+
 	class MoveRightCommand : public InputCommand {
 	private:
-		mc::Camera* camera;
+		mc::Player* player;
 
 	public:
 		MoveRightCommand() {
 
 		}
 
-		MoveRightCommand(mc::Camera* camera) {
-			this->camera = camera;
+		MoveRightCommand(mc::Player* player) {
+			this->player = player;
 		}
 
 		void execute(float dt) {
-			camera->moveRight(dt);
+			player->moveRight(dt);
 		}
 	};
 }

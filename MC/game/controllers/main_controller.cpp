@@ -22,7 +22,7 @@ namespace mc {
 		last_time = curr_time;
 	}
 
-	void MainController::addController(Controller* cont) {
+	void MainController::addController(mc::Controller* cont) {
 		controllers.push_back(cont);
 	}
 

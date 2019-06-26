@@ -1,13 +1,16 @@
 #ifndef MOUSE_CONTROLLER_H
 #define MOUSE_CONTROLLER_H
 
+#include <glew.h>
+#include <glfw3.h>
+
 #include "controller.h"
-#include "../camera/camera.h"
+#include "../player/player.h"
 
 namespace mc {
 	class MouseController : public Controller {
 	private:
-		Camera* camera;
+		mc::Player* player;
 		
 		double last_mouse_x;
 		double last_mouse_y;
@@ -20,8 +23,7 @@ namespace mc {
 		void initParams();
 
 	public:
-		MouseController();
-		MouseController(GLFWwindow* window, Camera* camera);
+		MouseController(GLFWwindow* window, mc::Player* player);
 
 		void updateInput(float dt);
 	};

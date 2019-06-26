@@ -1,16 +1,21 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <glm.hpp>
+
 #include "../camera/camera.h"
 
-namespace game {
+namespace mc {
 	class Camera;
 
 	class Player {
 	private:
-		Camera camera;
+		float moving_speed;
 
 	public:
+		glm::vec3 pos;
+		mc::Camera camera;
+
 		Player();
 		Player(float px, float py, float pz);
 		~Player();
@@ -21,6 +26,8 @@ namespace game {
 		void moveRight(float dt);
 		void moveUp(float dt);
 		void moveDown(float dt);
+
+		glm::mat4 getViewMatrix();
 	};
 }
 

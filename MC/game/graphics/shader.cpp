@@ -85,8 +85,8 @@ namespace mc {
 
 		vertexShader = loadShader(GL_VERTEX_SHADER, vertex_file);
 
-		if (geo_file != "")
-			geometryShader = loadShader(GL_GEOMETRY_SHADER, geo_file);
+		//if (geo_file != "")
+		//	geometryShader = loadShader(GL_GEOMETRY_SHADER, geo_file);
 
 		fragShader = loadShader(GL_FRAGMENT_SHADER, frag_file);
 

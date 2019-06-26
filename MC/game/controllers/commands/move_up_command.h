@@ -2,24 +2,26 @@
 #define MOVE_UP_COMMAND_H
 
 #include "input_command.h"
-#include "../../camera/camera.h"
+#include "../../player/player.h"
 
 namespace mc {
+	class Player;
+
 	class MoveUpCommand : public InputCommand {
 	private:
-		mc::Camera* camera;
+		mc::Player* player;
 
 	public:
 		MoveUpCommand() {
 
 		}
 
-		MoveUpCommand(mc::Camera* camera) {
-			this->camera = camera;
+		MoveUpCommand(mc::Player* player) {
+			this->player = player;
 		}
 
 		void execute(float dt) {
-			camera->moveUp(dt);
+			player->moveUp(dt);
 		}
 	};
 }

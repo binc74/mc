@@ -1,6 +1,7 @@
 #ifndef CLOSE_WINDOW_COMMAND_H
 #define CLOSE_WINDOW_COMMAND_H
 
+#include <glew.h>
 #include <glfw3.h>
 
 #include "input_command.h"

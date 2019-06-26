@@ -15,19 +15,7 @@ namespace mc {
 	}
 
 	Window::~Window() {
-		delete camera;
 		delete proj_matrix;
-		delete world;
-
-		shaders[0]->unuse();
-
-		for (Shader* it : shaders) {
-			delete it;
-		}
-
-		for (Material* it : materials) {
-			delete it;
-		}
 
 		glfwTerminate();
 		glfwDestroyWindow(window);
@@ -86,138 +74,42 @@ namespace mc {
 		// Init Opengl option
 		initOpenglOpt(true);
 
-		initCamera();
 		initProjectionMatrix();
-		initShaders();
 		initTexturesOpt();
-		initMaterials();
-		initMeshes();
 		initLights();
-		initUniform();
-		initControllers();
-	}
-
-	void Window::initControllers() {
-		mc.addController(new MouseController(window, camera));
-		
-		KeyboardController* kc = new KeyboardController(window);
-		kc->addInputCommand(GLFW_KEY_ESCAPE, new CloseWindowCommand(window));
-		kc->addInputCommand(GLFW_KEY_W, new MoveFrontCommand(camera));
-		kc->addInputCommand(GLFW_KEY_S, new MoveBackCommand(camera));
-		kc->addInputCommand(GLFW_KEY_A, new MoveLeftCommand(camera));
-		kc->addInputCommand(GLFW_KEY_D, new MoveRightCommand(camera));
-		kc->addInputCommand(GLFW_KEY_SPACE, new MoveUpCommand(camera));
-		kc->addInputCommand(GLFW_KEY_Q, new MoveDownCommand(camera));
-
-		mc.addController(kc);
-	}
-
-	void Window::initCamera() {
-		camera = new Camera();
-		camera->setDirectionUp(0.f, 1.f, 0.f);
-		camera->setCameraFront(0.f, 0.f, -1.f);
-		camera->setPosition(0.f, 0.f, 3.f);
+		//initUniform();
 	}
 
 	void Window::initProjectionMatrix() {
 		proj_matrix = new ProjectionMatrix(90.f, 0.1f, 100.f);
 	}
 
-	void Window::initShaders() {
-		this->shaders.push_back(new Shader("resources/shaders/vertex_fix.glsl", 
-			"resources/shaders/fragment_core.glsl"));
-	}
-
 	void Window::initTexturesOpt() {
 		Texture2D::initTextureOpt2D();
 	}
 
-	void Window::initMaterials() {
-		materials.push_back(new Material(glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(1.f)));
-	}
-
-	void Window::initMeshes() {
-		world = new World(shaders[0], materials[0]);
-
-		for (int i = -30; i < 30; ++i) {			
-			for (int k = -30; k < -15; ++k) {
-				if (!(k == -20 || k == -21 || k == -25 ||
-					k == -26 || k == -19 || k == -24)) {
-					for (int j = 0; j < 4; ++j) {
-						Cube* g = new Grass(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 4; j < 8; ++j) {
-						Cube* g = new Sand(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 8; j < 12; ++j) {
-						Cube* g = new CobbleStone(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 12; j < 16; ++j) {
-						Cube* g = new DiamondBrick(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 16; j < 20; ++j) {
-						Cube* g = new Gravel(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 20; j < 24; ++j) {
-						Cube* g = new OakWood(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 24; j < 28; ++j) {
-						Cube* g = new Soil(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 28; j < 32; ++j) {
-						Cube* g = new Stone(world, j, k, i);
-						world->addObj(g);
-					}
-					for (int j = 32; j < 36; ++j) {
-						Cube* g = new Tnt(world, j, k, i);
-						world->addObj(g);
-					}
-				}					
-			}				
-		}
-
-		//for (int i = 0; i < 5; ++i) {
-		//	for (int j = -5; j < 0; ++j) {
-		//		Grass* g = new Soil(j, i, -5);
-		//		world->addObj(g);
-		//	}
-		//}
-		world->updateMesh();
-	}
-
 	void Window::initLights() {
-		lights.push_back(camera->camera_position);
+		lights.push_back(player->pos);
 	}
 
 	void Window::initUniform() {
 
-		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
-		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
-		shaders[0]->setUniform3fv(*lights[0], "light_pos0");
+		shader->setUniformMat4fv(player->getViewMatrix(), "view_matrix");
+		shader->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
+		shader->setUniform3fv(lights[0], "light_pos0");
 
-		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
+		shader->setUniform3fv(player->pos, "camera_pos");
 
-	}
-
-	void Window::updateInput() {
-		mc.updateInput();
 	}
 
 	void Window::updateUniforms() {
 		glfwGetFramebufferSize(window, &frame_buffer_width, &frame_buffer_height);
 
-		shaders[0]->setUniformMat4fv(camera->getViewMatrix(), "view_matrix");
-		shaders[0]->setUniform3fv(*(camera->camera_position), "camera_pos");
-		shaders[0]->setUniform3fv(*(camera->camera_position), "light_pos0");
+		shader->setUniformMat4fv(player->getViewMatrix(), "view_matrix");
+		shader->setUniform3fv(player->pos, "camera_pos");
+		shader->setUniform3fv(player->pos, "light_pos0");
 
-		shaders[0]->setUniformMat4fv(proj_matrix->getMatrix(
+		shader->setUniformMat4fv(proj_matrix->getMatrix(
 			frame_buffer_width, frame_buffer_height), "projection_matrix");
 	}
 
@@ -225,14 +117,13 @@ namespace mc {
 		return glfwWindowShouldClose(window);
 	}
 
-	void Window::update() {		
-		updateInput();
+	void Window::update() {	
 	}
 
-	void Window::render() {
+	void Window::render(mc::World* world) {
 		glClearColor(0.f, 0.f, 0.f, 1.f); // rgba
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the buffers
-		shaders[0]->use();
+		shader->use();
 
 		updateUniforms();
 
@@ -241,10 +132,18 @@ namespace mc {
 		glfwSwapBuffers(window);
 		glFlush();
 
-		shaders[0]->unuse();
+		shader->unuse();
 	}
 
-	void Window::initShader(Shader* shader) {
-		//this->shader = shader;
+	void Window::setPlayer(mc::Player* player) {
+		this->player = player;
+	}
+
+	void Window::setShader(mc::Shader* shader) {
+		this->shader = shader;
+	}
+
+	void Window::setMaterial(mc::Material* material) {
+		this->material = material;
 	}
 }

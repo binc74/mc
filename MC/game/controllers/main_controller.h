@@ -2,7 +2,7 @@
 #define MAIN_CONTROLLER_H
 
 #include <vector>
-
+#include <glew.h>
 #include <glfw3.h>
 
 #include "controller.h"
@@ -10,7 +10,7 @@
 namespace mc {
 	class MainController {
 	private:
-		std::vector<Controller*> controllers;
+		std::vector<mc::Controller*> controllers;
 
 		// Use to calculate dt
 		float dt;
@@ -23,7 +23,7 @@ namespace mc {
 		MainController();
 		~MainController();
 
-		void addController(Controller* cont);
+		void addController(mc::Controller* cont);
 		void updateInput();
 	};
 }

@@ -1,6 +1,8 @@
 #ifndef CUBE_H
 #define CUBE_H
 
+#include <glew.h>
+#include <glfw3.h>
 #include <glm.hpp>
 
 #include "../world/world.h"

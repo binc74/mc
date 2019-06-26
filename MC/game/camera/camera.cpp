@@ -6,7 +6,6 @@ namespace mc {
 		camera_front = glm::vec3(0.f, 0.f, -1.f);
 		camera_position = new glm::vec3(0.f, 0.f, 4.f);
 		camera_up = direction_up;
-		speed = 6.f;
 		sensitivity = 5.f;
 		pitch = 0.f;
 		yaw = -90.f;
@@ -46,28 +45,28 @@ namespace mc {
 		camera_front = glm::vec3(x, y, z);
 	}
 
-	void Camera::moveFront(float dt) {
-		*camera_position += camera_front * speed * dt;
+	void Camera::moveFront(float d) {
+		*camera_position += camera_front * d;
 	}
 
-	void Camera::moveBack(float dt) {
-		*camera_position -= camera_front * speed * dt;
+	void Camera::moveBack(float d) {
+		*camera_position -= camera_front * d;
 	}
 
-	void Camera::moveLeft(float dt) {
-		*camera_position -= camera_right * speed * dt;
+	void Camera::moveLeft(float d) {
+		*camera_position -= camera_right * d;
 	}
 
-	void Camera::moveRight(float dt) {
-		*camera_position += camera_right * speed * dt;
+	void Camera::moveRight(float d) {
+		*camera_position += camera_right * d;
 	}
 
-	void Camera::moveUp(float dt) {
-		*camera_position += direction_up * speed * dt;
+	void Camera::moveUp(float d) {
+		*camera_position += direction_up * d;
 	}
 
-	void Camera::moveDown(float dt) {
-		*camera_position -= direction_up * speed * dt;
+	void Camera::moveDown(float d) {
+		*camera_position -= direction_up * d;
 	}
 
 	void Camera::updateByMouseInput(float dt, double offset_x, double offset_y) {

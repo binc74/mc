@@ -6,44 +6,29 @@
 #include <glfw3.h>
 
 #include "../graphics/material.h"
-#include "../graphics/texture2d.h"
 #include "../graphics/shader.h"
 #include "../graphics/core/projection_matrix.h"
-#include "../camera/camera.h"
-
-#include "../objects/include.h"
 
 #include "../world/world.h"
-#include "../controllers/main_controller.h"
-#include "../controllers/mouse_controller.h"
-#include "../controllers/keyboard_controller.h"
+#include "../player/player.h"
 
 namespace mc {
 	class Window {
 	private:
 		int window_height, window_width;
 		const char* window_name;
-		mc::Camera* camera;
 		mc::ProjectionMatrix* proj_matrix;
-		std::vector<Shader*> shaders;
-		std::vector<Material*> materials;
-		std::vector<glm::vec3*> lights;
+		mc::Shader* shader;
+		mc::Material* material;
+		std::vector<glm::vec3> lights;
 
-		mc::World* world;
-		mc::MainController mc;
+		mc::Player* player;
 
 		void initGLEW();
 		void initOpenglOpt(bool is_fill);
-		void initControllers();
-		void initCamera();
 		void initProjectionMatrix();
-		void initShaders();
 		void initTexturesOpt();
-		void initMeshes();
-		void initMaterials();
-		void initLights();
-		void initUniform();
-		void updateInput();
+		void initLights();		
 		void updateUniforms();
 
 	public:
@@ -52,11 +37,15 @@ namespace mc {
 
 		Window(int window_width, int window_height, const char* window_name);
 		~Window();
+
+		void initUniform();
 		void init(int context_major, int context_minor, bool is_full_screen);
+		void setShader(mc::Shader* shader);
+		void setMaterial(mc::Material* material);
+		void setPlayer(mc::Player* player);
 		bool shouldClose();
 		void update();
-		void render();
-		void initShader(Shader* shader);
+		void render(mc::World* world);
 	};
 }
 

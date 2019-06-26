@@ -1,21 +1,15 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <glm.hpp>
-
+#include "game/game.h"
 #include "const.h"
-#include "game/window/window.h"
 
 using namespace mc;
 
 int main() {
-	Window window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
-	window.init(4, 4, false);
+	Game game(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	// Main loop
-	while (!window.shouldClose()) {
-		window.update();
-		window.render();
+	while (!game.shouldClose()) {
+		game.update();
+		game.render();
 	}
 
 	return 0;

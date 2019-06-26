@@ -1,14 +1,10 @@
 #include "mouse_controller.h"
 
 namespace mc {
-	MouseController::MouseController() : Controller() {
-		initParams();
-	}
+	MouseController::MouseController(GLFWwindow* window, mc::Player* player) : Controller(window) {
+		this->player = player;
 
-	MouseController::MouseController(GLFWwindow* window, Camera* camera) : Controller(window) {
-		this->camera = camera;
-
-		initParams();
+		this->initParams();
 	}
 
 	void MouseController::initParams() {
@@ -22,7 +18,7 @@ namespace mc {
 	}
 
 	void MouseController::updateInput(float dt) {
-		glfwGetCursorPos(window, &mouse_x, &mouse_y);
+		glfwGetCursorPos(this->window, &mouse_x, &mouse_y);
 
 		if (is_first_mouse) {
 			last_mouse_x = mouse_x;
@@ -35,6 +31,6 @@ namespace mc {
 		last_mouse_x = mouse_x;
 		last_mouse_y = mouse_y;
 
-		camera->updateByMouseInput(dt, mouse_offset_x, mouse_offset_y);
+		this->player->camera.updateByMouseInput(dt, mouse_offset_x, mouse_offset_y);
 	}
 }

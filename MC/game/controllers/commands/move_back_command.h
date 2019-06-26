@@ -2,24 +2,26 @@
 #define MOVE_BACK_COMMAND_H
 
 #include "input_command.h"
-#include "../../camera/camera.h"
+#include "../../player/player.h"
 
 namespace mc {
+	class Player;
+
 	class MoveBackCommand : public InputCommand {
 	private:
-		mc::Camera* camera;
+		mc::Player* player;
 
 	public:
 		MoveBackCommand() {
 
 		}
 
-		MoveBackCommand(mc::Camera* camera) {
-			this->camera = camera;
+		MoveBackCommand(mc::Player* player) {
+			this->player = player;
 		}
 
 		void execute(float dt) {
-			camera->moveBack(dt);
+			player->moveBack(dt);
 		}
 	};
 }

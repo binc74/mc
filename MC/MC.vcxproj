@@ -129,12 +129,14 @@
     <ClCompile Include="game\controllers\main_controller.cpp" />
     <ClCompile Include="game\controllers\mouse_controller.cpp" />
     <ClCompile Include="game\factories\sprite_factory.cpp" />
+    <ClCompile Include="game\game.cpp" />
     <ClCompile Include="game\graphics\core\model_matrix.cpp" />
     <ClCompile Include="game\graphics\core\projection_matrix.cpp" />
     <ClCompile Include="game\graphics\material.cpp" />
     <ClCompile Include="game\graphics\shader.cpp" />
     <ClCompile Include="game\graphics\texture2d.cpp" />
     <ClCompile Include="game\objects\cube.cpp" />
+    <ClCompile Include="game\player\player.cpp" />
     <ClCompile Include="game\renderer\chunk_renderer.cpp" />
     <ClCompile Include="game\window\window.cpp" />
     <ClCompile Include="game\world\chunk.cpp" />
@@ -157,6 +159,7 @@
     <ClInclude Include="game\controllers\main_controller.h" />
     <ClInclude Include="game\controllers\mouse_controller.h" />
     <ClInclude Include="game\factories\sprite_factory.h" />
+    <ClInclude Include="game\game.h" />
     <ClInclude Include="game\graphics\core\model_matrix.h" />
     <ClInclude Include="game\graphics\core\projection_matrix.h" />
     <ClInclude Include="game\graphics\core\vertex.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="game\objects\cubeobjs\stone.h" />
     <ClInclude Include="game\objects\cubeobjs\tnt.h" />
     <ClInclude Include="game\objects\include.h" />
+    <ClInclude Include="game\player\player.h" />
     <ClInclude Include="game\renderer\chunk_renderer.h" />
     <ClInclude Include="game\sprite_type.h" />
     <ClInclude Include="game\window\window.h" />

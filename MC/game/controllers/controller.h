@@ -1,6 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <glew.h>
 #include <glfw3.h>
 
 namespace mc {
