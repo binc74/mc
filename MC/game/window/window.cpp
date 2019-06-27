@@ -108,6 +108,7 @@ namespace mc {
 		shader->setUniformMat4fv(player->getViewMatrix(), "view_matrix");
 		shader->setUniform3fv(player->pos, "camera_pos");
 		shader->setUniform3fv(player->pos, "light_pos0");
+		std::clog << player->pos.x << std::endl;
 
 		shader->setUniformMat4fv(proj_matrix->getMatrix(
 			frame_buffer_width, frame_buffer_height), "projection_matrix");
