@@ -6,7 +6,7 @@
 #include <glm.hpp>
 
 #include "../world/world.h"
-#include "../renderer/chunk_renderer.h"
+#include "../graphics/renderer/chunk_renderer.h"
 #include "../sprite_type.h"
 
 namespace mc {

@@ -4,7 +4,7 @@
 #include <unordered_set>
 
 #include "../objects/cube.h"
-#include "../renderer/chunk_renderer.h"
+#include "../graphics/renderer/chunk_renderer.h"
 #include "../graphics/shader.h"
 #include "../graphics/material.h"
 #include "chunk.h"
