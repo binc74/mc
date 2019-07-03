@@ -31,6 +31,7 @@ namespace mc {
 		void unuse();
 		void setUniform1i(GLint value, const GLchar* name);
 		void setUniform1f(GLfloat value, const GLchar* name);
+		void setUniform3f(const GLchar* name, GLfloat f1, GLfloat f2, GLfloat f3);
 		void setUniform2fv(glm::fvec2 value, const GLchar* name);
 		void setUniform3fv(glm::fvec3 value, const GLchar* name);
 		void setUniform4fv(glm::fvec4 value, const GLchar* name);

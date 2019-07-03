@@ -6,12 +6,12 @@
 #include <unordered_map>
 #include <iostream>
 
-#include "../graphics/shader.h"
-#include "../graphics/material.h"
-#include "../graphics/core/vertex.h"
-#include "../graphics/texture2d.h"
-#include "../factories/sprite_factory.h"
-#include "../sprite_type.h"
+#include "../shader.h"
+#include "../material.h"
+#include "../core/vertex.h"
+#include "../texture2d.h"
+#include "../../factories/sprite_factory.h"
+#include "../../sprite_type.h"
 
 namespace mc {
 	class ChunkRenderer {

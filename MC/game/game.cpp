@@ -7,6 +7,8 @@ namespace mc {
 		this->window->setPlayer(player);
 		this->window->init(4, 4, false);
 		this->init();
+
+		this->fr = new FontRenderer();
 	}
 
 	Game::~Game() {

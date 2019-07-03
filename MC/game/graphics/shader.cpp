@@ -118,6 +118,10 @@ namespace mc {
 		glUniform1f(glGetUniformLocation(id, name), value);
 	}
 
+	void Shader::setUniform3f(const GLchar* name, GLfloat f1, GLfloat f2, GLfloat f3) {
+		glUniform3f(glGetUniformLocation(id, name), f1, f2, f3);
+	}
+
 	void Shader::setUniform2fv(glm::fvec2 value, const GLchar* name) {
 		glUniform2fv(glGetUniformLocation(id, name), 1, glm::value_ptr(value));
 	}
