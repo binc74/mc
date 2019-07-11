@@ -8,10 +8,9 @@ namespace mc {
 		glViewport(0, 0, width, height);
 	}
 
-	Window::Window(int window_width, int window_height, const char* window_name) {
-		this->window_height = window_height;
-		this->window_width = window_width;
-		this->window_name = window_name;		
+	Window::Window(int window_width, int window_height, const char* window_name) :
+		window_height(window_height), window_width(window_width), window_name(window_name) {
+
 	}
 
 	Window::~Window() {
@@ -78,10 +77,13 @@ namespace mc {
 		initTexturesOpt();
 		initLights();
 		//initUniform();
+		this->fr = new FontRenderer(new mc::Shader("resources/shaders/vertex_font.glsl",
+			"resources/shaders/fragment_font.glsl"), proj_matrix->getMatrix(this->window_width, this->window_height));
 	}
 
 	void Window::initProjectionMatrix() {
 		proj_matrix = new ProjectionMatrix(90.f, 0.1f, 100.f);
+
 	}
 
 	void Window::initTexturesOpt() {
@@ -93,7 +95,6 @@ namespace mc {
 	}
 
 	void Window::initUniform() {
-
 		shader->setUniformMat4fv(player->getViewMatrix(), "view_matrix");
 		shader->setUniformMat4fv(proj_matrix->getMatrix(frame_buffer_width, frame_buffer_height), "projection_matrix");
 		shader->setUniform3fv(lights[0], "light_pos0");
@@ -129,10 +130,10 @@ namespace mc {
 
 		world->draw();
 
+		fr->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+
 		glfwSwapBuffers(window);
 		glFlush();
-
-		shader->unuse();
 	}
 
 	void Window::setPlayer(mc::Player* player) {

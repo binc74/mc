@@ -12,6 +12,8 @@
 #include "../world/world.h"
 #include "../player/player.h"
 
+#include "../graphics/renderer/font_renderer.h"
+
 namespace mc {
 	class Window {
 	private:
@@ -23,6 +25,8 @@ namespace mc {
 		std::vector<glm::vec3> lights;
 
 		mc::Player* player;
+
+		mc::FontRenderer* fr;
 
 		void initGLEW();
 		void initOpenglOpt(bool is_fill);

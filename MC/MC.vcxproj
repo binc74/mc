@@ -183,6 +183,7 @@
     <ClInclude Include="game\objects\include.h" />
     <ClInclude Include="game\player\player.h" />
     <ClInclude Include="game\sprite_type.h" />
+    <ClInclude Include="game\utils\printer.h" />
     <ClInclude Include="game\window\window.h" />
     <ClInclude Include="game\world\chunk.h" />
     <ClInclude Include="const.h" />

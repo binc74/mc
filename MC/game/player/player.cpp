@@ -46,7 +46,12 @@ namespace mc {
 		this->camera.moveDown(dist);
 	}
 
+	glm::vec3 Player::getFront() {
+		return this->camera.camera_front;
+	}
+
 	glm::mat4 Player::getViewMatrix() {
+		mc::Printer::printVec3(camera.camera_front);
 		return camera.getViewMatrix();
 	}
 }

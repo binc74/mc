@@ -10,6 +10,7 @@
 
 #include "../core/character.h"
 #include "../shader.h"
+#include "../../player/player.h"
 
 namespace mc {
 	// From learnopengl.org
@@ -19,14 +20,18 @@ namespace mc {
 		FT_Face face;
 		std::map<GLchar, mc::Character> map;
 		GLuint VAO, VBO;
+		glm::mat4 projection;
+		mc::Shader* shader;
+		mc::Player* player;
+		int window_width, window_height;
 
 		void init();
 
 	public:
-		FontRenderer();
+		FontRenderer(mc::Shader* shader, glm::mat4 projectoion);
 		~FontRenderer();
 
-		void RenderText(mc::Shader* s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
+		void renderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 	};
 }
 

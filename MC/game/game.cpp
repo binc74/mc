@@ -1,37 +1,38 @@
 #include "game.h"
 
 namespace mc {
-	Game::Game(int window_width, int window_height) {
+	Game::Game(int window_width, int window_height) :
+		window_width(window_width), window_height(window_height) {
 		this->window = new Window(window_width, window_height, "Mindcraft");
 		this->player = new mc::Player(0.f, 0.f, 0.f);
 		this->window->setPlayer(player);
 		this->window->init(4, 4, false);
-		this->init();
 
-		this->fr = new FontRenderer();
+		this->init();
 	}
 
 	Game::~Game() {
 		delete player;
-		delete shader;
 		delete material;
 		delete mainController;
 		delete window;
 	}
 
 	void Game::init() {
-		this->shader = new mc::Shader("resources/shaders/vertex_fix.glsl",
+		mc::Shader* shaderWorld = new mc::Shader("resources/shaders/vertex_fix.glsl",
 			"resources/shaders/fragment_core.glsl");
+
 		this->material = new mc::Material(glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(1.f));
 		this->mainController = new MainController();
 
-		this->window->setShader(shader);
+		this->window->setShader(shaderWorld);
 		this->window->setMaterial(material);
 		//this->window->initUniform();
 
 		this->initController();
 
-		this->world = new World(shader, material);
+		// Warning:: need to refactor shader in window.cpp
+		this->world = new World(shaderWorld, material);
 		this->initWorld();
 	}
 
@@ -51,6 +52,7 @@ namespace mc {
 	}
 
 	void Game::initWorld() {
+		
 		for (int i = -30; i < 30; ++i) {
 			for (int k = -30; k < -15; ++k) {
 				if (!(k == -20 || k == -21 || k == -25 ||
@@ -94,6 +96,16 @@ namespace mc {
 				}
 			}
 		}
+		
+		/*
+		for (int k = 0; k < 2; ++k) {
+			for (int i = 0; i < 3; ++i) {
+				for (int j = 0; j < 3; ++j) {
+					world->addObj(new Soil(world, i, j, k));
+				}
+			}
+		}
+		*/
 
 		this->world->updateMesh();
 	}
@@ -103,10 +115,10 @@ namespace mc {
 	}
 
 	void Game::update() {
-		mainController->updateInput();
+		this->mainController->updateInput();
 	}
 
 	void Game::render() {
-		this->window->render(this->world);
+		this->window->render(this->world);		
 	}
 }

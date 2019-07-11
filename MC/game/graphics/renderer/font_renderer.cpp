@@ -2,18 +2,25 @@
 
 // From learnopengl.org
 namespace mc {
-	FontRenderer::FontRenderer() {
+	FontRenderer::FontRenderer(mc::Shader* shader, glm::mat4 projection) :
+		shader(shader), player(player), window_width(window_width), window_height(window_height),
+		projection(projection) {
 		this->init();
 	}
 
 	FontRenderer::~FontRenderer() {
-
+		delete this->shader;
 	}
 
 	void FontRenderer::init() {		
+		//this->projection = glm::ortho(0.0f, (float)this->window_width, 0.0f, (float)this->window_height);
+		shader->use();
+		//projection = glm::ortho(0.0f, static_cast<GLfloat>(1280), 0.0f, static_cast<GLfloat>(window_height));
+		shader->setUniformMat4fv(projection, "projection", false);
+
 		if (FT_Init_FreeType(&ft))
 			std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-		
+
 		if (FT_New_Face(ft, "resources/fonts/arial.ttf", 0, &face))
 			std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
@@ -60,14 +67,12 @@ namespace mc {
 			map.insert(std::pair<GLchar, Character>(c, character));
 		}
 
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glBindTexture(GL_TEXTURE_2D, 0);
 		FT_Done_Face(face);
 		FT_Done_FreeType(ft);
 
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		//glm::mat4 projection = glm::
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
@@ -80,11 +85,11 @@ namespace mc {
 		glBindVertexArray(0);
 	}
 
-	void FontRenderer::RenderText(mc::Shader* s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
+	void FontRenderer::renderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 	{
 		// Activate corresponding render state	
-		s->use();
-		s->setUniform3f("textColor", color.x, color.y, color.z);
+		shader->use();
+		shader->setUniform3f("textColor", color.x, color.y, color.z);
 		glActiveTexture(GL_TEXTURE0);
 		glBindVertexArray(VAO);
 
@@ -92,7 +97,7 @@ namespace mc {
 		std::string::const_iterator c;
 		for (c = text.begin(); c != text.end(); c++)
 		{
-			Character ch = map[*c];
+			mc::Character ch = map[*c];
 
 			GLfloat xpos = x + ch.bearing.x * scale;
 			GLfloat ypos = y - (ch.size.y - ch.bearing.y) * scale;
@@ -102,12 +107,12 @@ namespace mc {
 			// Update VBO for each character
 			GLfloat vertices[6][4] = {
 				{ xpos,     ypos + h,   0.0, 0.0 },
-				{ xpos,     ypos,       0.0, 1.0 },
 				{ xpos + w, ypos,       1.0, 1.0 },
+				{ xpos,     ypos,       0.0, 1.0 },
 
 				{ xpos,     ypos + h,   0.0, 0.0 },
-				{ xpos + w, ypos,       1.0, 1.0 },
-				{ xpos + w, ypos + h,   1.0, 0.0 }
+				{ xpos + w, ypos + h,   1.0, 0.0 },
+				{ xpos + w, ypos,       1.0, 1.0 }
 			};
 			// Render glyph texture over quad
 			glBindTexture(GL_TEXTURE_2D, ch.textureID);

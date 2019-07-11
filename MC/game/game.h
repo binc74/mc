@@ -14,7 +14,6 @@
 #include "graphics/shader.h"
 #include "graphics/material.h"
 #include "objects/include.h"
-#include "graphics/renderer/font_renderer.h"
 
 namespace mc {
 	class Game {
@@ -24,9 +23,8 @@ namespace mc {
 		mc::Player* player;
 
 		// Only one shader and material currently
-		mc::Shader* shader;
 		mc::Material* material;
-		mc::FontRenderer* fr;
+		int window_width, window_height;
 
 		void init();
 		void initController();

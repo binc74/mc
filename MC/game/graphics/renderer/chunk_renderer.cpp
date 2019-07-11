@@ -10,7 +10,7 @@ namespace mc {
 	}
 
 	ChunkRenderer::~ChunkRenderer() {
-
+		delete shader;
 	}
 
 	void ChunkRenderer::initMesh() {

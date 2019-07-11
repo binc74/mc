@@ -8,11 +8,13 @@
 
 namespace mc {
 	class Camera {
-	private:
+	public:
 		glm::vec3 direction_up;
 		glm::vec3 camera_up;
 		glm::vec3 camera_front;
 		glm::vec3 camera_right;
+	
+	private:		
 		float pitch;
 		float yaw;
 		float roll;

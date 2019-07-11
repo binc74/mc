@@ -4,6 +4,7 @@
 #include <glm.hpp>
 
 #include "../camera/camera.h"
+#include "../utils/printer.h"
 
 namespace mc {
 	class Camera;
@@ -27,6 +28,7 @@ namespace mc {
 		void moveUp(float dt);
 		void moveDown(float dt);
 
+		glm::vec3 getFront();
 		glm::mat4 getViewMatrix();
 	};
 }
