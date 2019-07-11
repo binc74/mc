@@ -26,7 +26,7 @@ namespace mc {
 	public:
 		glm::vec3* camera_position;
 
-		Camera();
+		Camera(glm::vec3* pos);
 		~Camera();
 		void setDirectionUp(float x, float y, float z);
 		void setCameraFront(float x, float y, float z);

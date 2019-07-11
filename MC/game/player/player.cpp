@@ -1,11 +1,11 @@
 #include "player.h"
 
 namespace mc {
-	Player::Player() {
+	Player::Player() : camera(&pos) {
 
 	}
 
-	Player::Player(float px, float py, float pz) : pos(px, py, pz) {
+	Player::Player(float px, float py, float pz) : pos(px, py, pz) , camera(&pos) {
 		this->moving_speed = 6.0f;
 		this->camera.setPosition(px, py, pz);
 		this->camera.setDirectionUp(0.f, 1.f, 0.f);
