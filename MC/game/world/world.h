@@ -56,6 +56,8 @@ namespace mc {
 		void draw();
 		void updateMesh();		
 		void printAllChunks();
+		void removeObj(int px, int py, int pz);
+		//void removeObj(mc::Cube* obj);
 		Cube* getObjAt(int x, int y, int z);
 	};
 }

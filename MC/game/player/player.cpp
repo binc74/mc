@@ -1,7 +1,7 @@
 #include "player.h"
 
 namespace mc {
-	Player::Player() : camera(&pos) {
+	Player::Player() : pos(0.f, 0.f, 0.f), camera(&pos) {
 
 	}
 

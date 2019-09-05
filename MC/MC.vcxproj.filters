@@ -217,5 +217,11 @@
     <None Include="resources\shaders\vertex_fix.glsl">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="resources\shaders\fragment_font.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\vertex_font.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

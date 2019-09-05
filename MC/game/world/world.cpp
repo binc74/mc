@@ -53,12 +53,14 @@ namespace mc {
 	}
 
 	void World::updateMesh() {
-		for (auto& it : chunks) {
-			//std::clog << "Drawing chunk " << it.first << std::endl;
-			it.second->draw(cr);
-		}
+		if (chunks.size() != 0) {
+			for (auto& it : chunks) {
+				//std::clog << "Drawing chunk " << it.first << std::endl;
+				it.second->draw(cr);
+			}
 
-		cr->setBuffers();
+			cr->setBuffers();
+		}		
 	}
 
 	void World::draw() {
@@ -77,6 +79,14 @@ namespace mc {
 
 		return it->second->getObjAt(x, y, z);
 	}
+
+	void World::removeObj(int px, int py, int pz) {
+
+	}
+
+	//void World::removeObj(mc::Cube* obj) {
+
+	//}
 
 	void World::printAllChunks() {
 		int i = 0;

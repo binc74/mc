@@ -130,7 +130,7 @@ namespace mc {
 
 		world->draw();
 
-		fr->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+		fr->renderText("TTTTTTTTTTTTTTTTT", 5.0f, 5.0f, 10.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
 		glfwSwapBuffers(window);
 		glFlush();

@@ -191,8 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\fragment_core.glsl" />
+    <None Include="resources\shaders\fragment_font.glsl" />
     <None Include="resources\shaders\vertex_core.glsl" />
     <None Include="resources\shaders\vertex_fix.glsl" />
+    <None Include="resources\shaders\vertex_font.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

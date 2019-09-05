@@ -52,7 +52,7 @@ namespace mc {
 	}
 
 	void Game::initWorld() {
-		
+		/*
 		for (int i = -30; i < 30; ++i) {
 			for (int k = -30; k < -15; ++k) {
 				if (!(k == -20 || k == -21 || k == -25 ||
@@ -96,16 +96,17 @@ namespace mc {
 				}
 			}
 		}
+		*/
 		
-		/*
 		for (int k = 0; k < 2; ++k) {
 			for (int i = 0; i < 3; ++i) {
 				for (int j = 0; j < 3; ++j) {
-					world->addObj(new Soil(world, i, j, k));
+					if (!(i == 1 && j == 1 && k == 1))
+						world->addObj(new Soil(world, i, k, j));
 				}
 			}
 		}
-		*/
+
 
 		this->world->updateMesh();
 	}

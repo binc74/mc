@@ -3,8 +3,7 @@
 // From learnopengl.org
 namespace mc {
 	FontRenderer::FontRenderer(mc::Shader* shader, glm::mat4 projection) :
-		shader(shader), player(player), window_width(window_width), window_height(window_height),
-		projection(projection) {
+		shader(shader), player(player), window_width(window_width), window_height(window_height) {
 		this->init();
 	}
 
@@ -15,7 +14,7 @@ namespace mc {
 	void FontRenderer::init() {		
 		//this->projection = glm::ortho(0.0f, (float)this->window_width, 0.0f, (float)this->window_height);
 		shader->use();
-		//projection = glm::ortho(0.0f, static_cast<GLfloat>(1280), 0.0f, static_cast<GLfloat>(window_height));
+		projection = glm::ortho(0.0f, static_cast<GLfloat>(1280), 0.0f, static_cast<GLfloat>(780));
 		shader->setUniformMat4fv(projection, "projection", false);
 
 		if (FT_Init_FreeType(&ft))
@@ -23,6 +22,9 @@ namespace mc {
 
 		if (FT_New_Face(ft, "resources/fonts/arial.ttf", 0, &face))
 			std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		// We set width to 0 because we want to set this dynamically
 		FT_Set_Pixel_Sizes(face, 0, 48);
@@ -37,6 +39,7 @@ namespace mc {
 				std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
 				continue;
 			}
+
 			// Éú³ÉÎÆÀí
 			GLuint texture;
 			glGenTextures(1, &texture);
@@ -62,7 +65,7 @@ namespace mc {
 				texture,
 				glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
 				glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-				face->glyph->advance.x
+				(GLuint)face->glyph->advance.x
 			};
 			map.insert(std::pair<GLchar, Character>(c, character));
 		}
@@ -71,8 +74,8 @@ namespace mc {
 		FT_Done_Face(face);
 		FT_Done_FreeType(ft);
 
-		//glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
@@ -88,6 +91,7 @@ namespace mc {
 	void FontRenderer::renderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 	{
 		// Activate corresponding render state	
+		glDisable(GL_CULL_FACE);
 		shader->use();
 		shader->setUniform3f("textColor", color.x, color.y, color.z);
 		glActiveTexture(GL_TEXTURE0);
@@ -122,6 +126,7 @@ namespace mc {
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			// Render quad
 			glDrawArrays(GL_TRIANGLES, 0, 6);
+
 			// Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
 			x += (ch.advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
 		}

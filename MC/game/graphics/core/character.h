@@ -11,12 +11,12 @@ namespace mc {
 		GLuint textureID;
 		glm::ivec2 size;
 		glm::ivec2 bearing;
-		signed long advance;
+		GLuint advance;
 
 		Character() {
 		}
 
-		Character(GLuint TextureID, glm::ivec2 Size, glm::ivec2 Bearing, signed long Advance) : 
+		Character(GLuint TextureID, glm::ivec2 Size, glm::ivec2 Bearing, GLuint Advance) :
 			textureID(TextureID), size(Size), bearing(Bearing), advance(Advance) {
 		}
 	};
