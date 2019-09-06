@@ -26,8 +26,6 @@ namespace mc {
 
 		mc::Player* player;
 
-		mc::FontRenderer* fr;
-
 		void initGLEW();
 		void initOpenglOpt(bool is_fill);
 		void initProjectionMatrix();

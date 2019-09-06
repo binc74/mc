@@ -2,19 +2,34 @@
 
 // From learnopengl.org
 namespace mc {
-	FontRenderer::FontRenderer(mc::Shader* shader, glm::mat4 projection) :
-		shader(shader), player(player), window_width(window_width), window_height(window_height) {
-		this->init();
+	FontRenderer* FontRenderer::_instance = NULL;
+
+	FontRenderer::FontRenderer() : window_height(0), window_width(0) {
 	}
 
 	FontRenderer::~FontRenderer() {
 		delete this->shader;
 	}
 
+	FontRenderer* FontRenderer::instance() {
+		if (!_instance) _instance = new FontRenderer();
+
+		return _instance;
+	}
+
+	void FontRenderer::setShader(mc::Shader* shader) {
+		this->shader = shader;
+	}
+	
+	void FontRenderer::setWindowParam(int window_width, int window_height) {
+		this->window_width = window_width;
+		this->window_height = window_height;
+	}
+
 	void FontRenderer::init() {		
 		//this->projection = glm::ortho(0.0f, (float)this->window_width, 0.0f, (float)this->window_height);
 		shader->use();
-		projection = glm::ortho(0.0f, static_cast<GLfloat>(1280), 0.0f, static_cast<GLfloat>(780));
+		projection = glm::ortho(0.0f, static_cast<GLfloat>(this->window_width), 0.0f, static_cast<GLfloat>(this->window_height));
 		shader->setUniformMat4fv(projection, "projection", false);
 
 		if (FT_Init_FreeType(&ft))
@@ -92,6 +107,15 @@ namespace mc {
 		texts[tid] = mc::Text(text, x, y, scale, color);
 	}
 
+	void FontRenderer::changeText(int tid, std::string newText) {
+		if (texts.find(tid) == texts.end()) {
+			std::cerr << "Error: No text with id " << tid << std::endl;
+		}
+		else {
+			texts[tid].text = newText;
+		}
+	}
+
 	void FontRenderer::render() {
 		// Activate corresponding render state	
 		glDisable(GL_CULL_FACE);
@@ -100,8 +124,16 @@ namespace mc {
 		glActiveTexture(GL_TEXTURE0);
 		glBindVertexArray(VAO);
 
-		for (auto& iter: texts) {
+		for (auto& iter: this->texts) {
 			renderText(iter.second);
+			glm::vec3 temp = iter.second.color;
+			float r = (temp.x + 0.02);
+			float g = (temp.y + 0.01);
+			float b = (temp.z + 0.005);
+			if (r > 1) r -= 1;
+			if (g > 1) g -= 1;
+			if (b > 1)b -= 1;
+			iter.second.color = glm::vec3(r, g, b);
 		}
 
 		glBindVertexArray(0);

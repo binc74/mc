@@ -16,6 +16,7 @@
 
 namespace mc {
 	// From learnopengl.org
+	// Using singleton design pattern
 	class FontRenderer {
 	private:
 		FT_Library ft;
@@ -24,22 +25,30 @@ namespace mc {
 		GLuint VAO, VBO;
 		glm::mat4 projection;
 		mc::Shader* shader;
-		mc::Player* player;
 		int window_width, window_height;
 
 		std::unordered_map<int, Text> texts;
 
-		void init();
+		static FontRenderer* _instance;
 
-	public:
-		FontRenderer(mc::Shader* shader, glm::mat4 projectoion);
+		FontRenderer();
 		~FontRenderer();
 
-		void addText(int tid, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);		
-		void render();
-
-	protected:
+		FontRenderer(FontRenderer const&){};
+		FontRenderer& operator=(FontRenderer const&) {};
+		
 		void renderText(mc::Text t);
+
+	public:
+		static FontRenderer* instance();
+
+		void setShader(mc::Shader* shader);
+		void setWindowParam(int window_width, int window_height);
+		void init();
+
+		void addText(int tid, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);		
+		void changeText(int tid, std::string newText);
+		void render();
 	};
 }
 
