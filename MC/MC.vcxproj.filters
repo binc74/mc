@@ -206,6 +206,9 @@
     <ClInclude Include="game\utils\printer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game\graphics\core\text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\vertex_core.glsl">

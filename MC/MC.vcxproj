@@ -164,6 +164,7 @@
     <ClInclude Include="game\graphics\core\character.h" />
     <ClInclude Include="game\graphics\core\model_matrix.h" />
     <ClInclude Include="game\graphics\core\projection_matrix.h" />
+    <ClInclude Include="game\graphics\core\text.h" />
     <ClInclude Include="game\graphics\core\vertex.h" />
     <ClInclude Include="game\graphics\material.h" />
     <ClInclude Include="game\graphics\renderer\chunk_renderer.h" />

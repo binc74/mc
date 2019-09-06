@@ -7,10 +7,12 @@
 #include <map>
 #include <glew.h>
 #include <glm.hpp>
+#include <unordered_map>
 
 #include "../core/character.h"
 #include "../shader.h"
 #include "../../player/player.h"
+#include "../core/text.h"
 
 namespace mc {
 	// From learnopengl.org
@@ -25,13 +27,19 @@ namespace mc {
 		mc::Player* player;
 		int window_width, window_height;
 
+		std::unordered_map<int, Text> texts;
+
 		void init();
 
 	public:
 		FontRenderer(mc::Shader* shader, glm::mat4 projectoion);
 		~FontRenderer();
 
-		void renderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
+		void addText(int tid, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);		
+		void render();
+
+	protected:
+		void renderText(mc::Text t);
 	};
 }
 

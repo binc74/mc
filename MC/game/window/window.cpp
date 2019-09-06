@@ -79,6 +79,9 @@ namespace mc {
 		//initUniform();
 		this->fr = new FontRenderer(new mc::Shader("resources/shaders/vertex_font.glsl",
 			"resources/shaders/fragment_font.glsl"), proj_matrix->getMatrix(this->window_width, this->window_height));
+
+		fr->addText(1, "TTTTTTTTTTTTTTTTT", 5.0f, 5.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+		fr->addText(2, "GGGGGGGG", 115.0f, 115.0f, 1.0f, glm::vec3(1, 1.f, 1.f));
 	}
 
 	void Window::initProjectionMatrix() {
@@ -130,7 +133,7 @@ namespace mc {
 
 		world->draw();
 
-		fr->renderText("TTTTTTTTTTTTTTTTT", 5.0f, 5.0f, 10.0f, glm::vec3(0.5, 0.8f, 0.2f));
+		fr->render();
 
 		glfwSwapBuffers(window);
 		glFlush();

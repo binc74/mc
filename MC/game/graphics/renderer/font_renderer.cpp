@@ -88,26 +88,42 @@ namespace mc {
 		glBindVertexArray(0);
 	}
 
-	void FontRenderer::renderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
-	{
+	void FontRenderer::addText(int tid, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color) {
+		texts[tid] = mc::Text(text, x, y, scale, color);
+	}
+
+	void FontRenderer::render() {
 		// Activate corresponding render state	
 		glDisable(GL_CULL_FACE);
 		shader->use();
-		shader->setUniform3f("textColor", color.x, color.y, color.z);
+		
 		glActiveTexture(GL_TEXTURE0);
 		glBindVertexArray(VAO);
 
+		for (auto& iter: texts) {
+			renderText(iter.second);
+		}
+
+		glBindVertexArray(0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+	void FontRenderer::renderText(mc::Text t)
+	{
+		shader->setUniform3f("textColor", t.color.x, t.color.y, t.color.z);
+
 		// Iterate through all characters
 		std::string::const_iterator c;
-		for (c = text.begin(); c != text.end(); c++)
+		GLuint x = t.x;
+		for (c = t.text.begin(); c != t.text.end(); c++)
 		{
 			mc::Character ch = map[*c];
 
-			GLfloat xpos = x + ch.bearing.x * scale;
-			GLfloat ypos = y - (ch.size.y - ch.bearing.y) * scale;
+			GLfloat xpos = x + ch.bearing.x * t.scale;
+			GLfloat ypos = t.y - (ch.size.y - ch.bearing.y) * t.scale;
 
-			GLfloat w = ch.size.x * scale;
-			GLfloat h = ch.size.y * scale;
+			GLfloat w = ch.size.x * t.scale;
+			GLfloat h = ch.size.y * t.scale;
 			// Update VBO for each character
 			GLfloat vertices[6][4] = {
 				{ xpos,     ypos + h,   0.0, 0.0 },
@@ -128,9 +144,7 @@ namespace mc {
 			glDrawArrays(GL_TRIANGLES, 0, 6);
 
 			// Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-			x += (ch.advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
-		}
-		glBindVertexArray(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
+			x += (ch.advance >> 6) * t.scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
+		}		
 	}
 }
